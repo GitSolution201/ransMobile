@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Platform } from 'react-native';
 import ExploreIcon from '@/assets/icons/explore.svg';
-import HeartIcon from '@/assets/icons/heart-tab.svg';
+import HeartIcon from '@/assets/icons/heart.svg';
 import ChatIcon from '@/assets/icons/chat.svg';
 import ProfileIcon from '@/assets/icons/profile.svg';
 
@@ -30,7 +30,13 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
-            <ExploreIcon width={20} height={20} stroke={color} fill={focused ? color : 'none'} />
+            <ExploreIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
           ),
         }}
       />
@@ -39,7 +45,13 @@ export default function TabLayout() {
         options={{
           title: 'Wishlist',
           tabBarIcon: ({ color, focused }) => (
-            <HeartIcon width={20} height={20} stroke={color} fill={focused ? color : 'none'} />
+            <HeartIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
           ),
         }}
       />
@@ -48,7 +60,13 @@ export default function TabLayout() {
         options={{
           title: 'Chat',
           tabBarIcon: ({ color, focused }) => (
-            <ChatIcon width={20} height={20} stroke={color} fill={focused ? color : 'none'} />
+            <ChatIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
           ),
         }}
       />
@@ -57,7 +75,13 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color, focused }) => (
-            <ProfileIcon width={20} height={20} stroke={color} fill={focused ? color : 'none'} />
+            <ProfileIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
           ),
         }}
       />

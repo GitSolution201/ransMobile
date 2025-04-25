@@ -1,9 +1,13 @@
+import React from 'react';
 import { View, Text } from 'react-native';
+import InspectionForm from '../screens/inspection-form';
+import TermsAndConditions from '../screens/terms-conditions';
+import Amenities from '../screens/amenities';
 
-export default function ChatScreen() {
+export default function chat() {
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text className="text-xl font-semibold">Chat</Text>
-    </View>
+    <View className="flex-1 bg-white">
+        <Amenities />
+  </View>
   );
 } 

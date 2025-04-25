@@ -17,6 +17,17 @@ export const Colors = {
     primary: '#0056D3',
     secondary: '#1ABC9C',
     placeholder: '#A5A5A5',
+    textGray: '#737373',
+    lightGray: '#F7F5F5',
+    // Social Media Colors
+    whatsapp: '#25D366',
+    whatsappBg: '#E7F7EF',
+    twitter: '#1DA1F2',
+    twitterBg: '#EDF4FF',
+    facebook: '#1877F2',
+    facebookBg: '#F0EEFF',
+    instagram: '#C837AB',
+    instagramBg: '#FFEDED',
   },
   dark: {
     text: '#ECEDEE',
@@ -25,8 +36,6 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
-    primary: '#0056D3',
-    secondary: '#007AFF',
-    placeholder: '#A5A5A5',
+    secondary: '#007AFF'
   },
 };

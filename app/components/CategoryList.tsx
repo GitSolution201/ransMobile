@@ -38,7 +38,7 @@ export function CategoryList({ onSelectCategory }: CategoryListProps) {
       horizontal
       showsHorizontalScrollIndicator={false}
       className="py-4 max-h-[100px]"
-      contentContainerStyle={{ paddingHorizontal: 16,borderBottomWidth:1,borderColor:'lightgray' ,height:81}}
+      contentContainerStyle={{ paddingHorizontal: 16, borderBottomWidth: 1, borderColor: 'lightgray', height: 81 }}
     >
       {categories.map((category) => {
         const isSelected = selectedId === category.id;
@@ -53,9 +53,11 @@ export function CategoryList({ onSelectCategory }: CategoryListProps) {
             }`}
           >
             <Icon 
-              width={16} 
-              height={16} 
-              color={isSelected ? '#0056D3' : '#9CA3AF'} 
+              width={24} 
+              height={24} 
+              stroke={isSelected ? '#0056D3' : '#9CA3AF'}
+              fill="none"
+              strokeWidth={2}
             />
             <Text
               className={`text-sm pt-3 ${
