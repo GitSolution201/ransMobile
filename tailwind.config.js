@@ -4,16 +4,17 @@ module.exports = {
     "./app/**/*.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}"
   ],
+  presets: [require("nativewind/preset")],
   theme: {
     extend: {
       colors: {
-        primary: '#0056D3',    // From Colors.ts light.primary
-        secondary: '#1ABC9C',  // From Colors.ts light.secondary
-        text: '#11181C',       // From Colors.ts light.text
-        background: '#fff',    // From Colors.ts light.background
-        tint: '#0a7ea4',       // From Colors.ts tintColorLight
-        icon: '#687076',       // From Colors.ts light.icon
-        placeholder: '#A5A5A5', // From Colors.ts light.placeholder
+        background: '#F9FAFB',
+        primary: '#3B82F6',
+        secondary: '#6B7280',
+        text: '#11181C',
+        tint: '#0a7ea4',
+        icon: '#687076',
+        placeholder: '#A5A5A5',
         border: '#A5A5A5'
       },
     },
