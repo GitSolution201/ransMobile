@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ShareIcon from '@/assets/icons/share.svg';
 import BedIcon from '@/assets/icons/bed.svg';
 import BathIcon from '@/assets/icons/bath.svg';
-
+import { router } from 'expo-router';
 const { width } = Dimensions.get('window');
 const CARD_WIDTH = (width - 48) / 2; // 48 = padding (16) * 2 + gap (16)
 
@@ -19,7 +19,7 @@ const properties = [
     baths: 2,
     isNew: true,
     type: 'For Sale',
-    image: 'https://zaitoon.com.pk/wp-content/uploads/2024/10/Real-Estate-Property-1024x576.jpg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQee0-kKRcmXn0R6TeX4nU04t9B0EUp3N7escZE0C5bE_bIdseoQzQjZl4ZcBzD0_8OyXY&usqp=CAU',
   },
   {
     id: '2',
@@ -31,7 +31,7 @@ const properties = [
     baths: 1,
     isNew: true,
     type: 'For Sale',
-    image: 'https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2023-04/media/image/ralph-ravi-kayden-mr1cidduglc-unsplash.jpg?VersionId=okTYWyWvS1CqBAI.l_syVfUcaBsYX07q&itok=L8hAOd9D',
+      image: 'https://www.ziprent.com/assets/pexels-binyamin-mellish-186077-2048x1397.jpg',
   },
   {
     id: '1',
@@ -43,7 +43,7 @@ const properties = [
     baths: 2,
     isNew: true,
     type: 'For Sale',
-    image: 'https://zaitoon.com.pk/wp-content/uploads/2024/10/Real-Estate-Property-1024x576.jpg',
+    image: 'https://ap.rdcpix.com/b1fa4948bbc80f1887298792bc2ace6bl-b2346956481rd-w480_h360.jpg',
   },
   {
     id: '2',
@@ -183,7 +183,7 @@ export function NearBy() {
           <PropertyCard
             {...item}
             onPress={() => {
-              console.log(`Selected property: ${item.title}`);
+             router.push('/screens/product-details')
             }}
           />
         )}

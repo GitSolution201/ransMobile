@@ -6,8 +6,11 @@ import { InputField } from '@/components/InputField';
 import { SocialSignInButtons } from '@/components/SocialSignInButtons';
 import EmailIcon from '@/assets/icons/email.svg';
 import LockIcon from '@/assets/icons/lock.svg';
+import { login } from '@/redux/authSlice';
+import { useDispatch } from 'react-redux';
 
 export default function LoginScreen() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -39,6 +42,8 @@ export default function LoginScreen() {
 
     if (!emailError && !passwordError) {
       // Proceed with login
+      dispatch(login({ email, id: '1' }));
+      router.replace('/(tabs)');
       console.log('Login with:', { email, password });
     }
   };

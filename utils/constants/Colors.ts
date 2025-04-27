@@ -28,6 +28,12 @@ export const Colors = {
     facebookBg: '#F0EEFF',
     instagram: '#C837AB',
     instagramBg: '#FFEDED',
+    // Error Screen Colors
+    errorIconBg: '#FEF3F2',
+    errorIconColor: '#DC2626',
+    errorTitle: '#111827',
+    errorMessage: '#6B7280',
+    errorButton: '#2563EB',
   },
   dark: {
     text: '#ECEDEE',

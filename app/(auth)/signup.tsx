@@ -130,7 +130,7 @@ export default function SignupScreen() {
           <View className="flex-row justify-between my-10">
             <Text 
               className="text-primary"
-              onPress={() => router.push('/(auth)/terms-of-service')}
+              onPress={() => router.push('/screens/terms-conditions')}
             >
               Terms of service
             </Text>

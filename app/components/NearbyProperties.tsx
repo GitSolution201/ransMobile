@@ -14,7 +14,7 @@ const properties = [
     type: 'For Rent' as const,
     isFeatured: true,
     images: [
-      'https://zaitoon.com.pk/wp-content/uploads/2024/10/Real-Estate-Property-1024x576.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV235FHWeChu4q8YVErDrvoElWhseAOsHP0TYB3DaFOpcuO8_S8jc5TqmnPlxvzQpxBAs&usqp=CAU',
       'https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2023-04/media/image/ralph-ravi-kayden-mr1cidduglc-unsplash.jpg?VersionId=okTYWyWvS1CqBAI.l_syVfUcaBsYX07q&itok=L8hAOd9D',
       'https://zaitoon.com.pk/wp-content/uploads/2024/10/Real-Estate-Property-1024x576.jpg',
     ],
@@ -40,7 +40,7 @@ export function NearbyProperties() {
   return (
     <View>
       <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-xl font-semibold text-gray-900">Near By Properties</Text>
+        <Text className="text-xl font-semibold text-gray-900">Featured Properties</Text>
         <Pressable>
           <Text className="text-sm text-gray-500">View All</Text>
         </Pressable>
