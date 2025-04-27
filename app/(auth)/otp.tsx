@@ -2,11 +2,14 @@ import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { router } from 'expo-router';
 import { BackButton } from '@/components/BackButton';
+import { useDispatch } from 'react-redux';
+import { login } from '@/redux/authSlice';
 
 export default function OTPScreen() {
   const [otp, setOtp] = useState(['', '', '', '', '']);
   const [timeLeft, setTimeLeft] = useState(15); // 15 seconds timer
   const inputRefs = useRef<Array<React.RefObject<TextInput>>>([...Array(5)].map(() => useRef<TextInput>(null)));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -38,7 +41,8 @@ export default function OTPScreen() {
     const otpString = otp.join('');
     if (otpString.length === 5) {
       // Handle verification
-      router.push('/(auth)/faq-support');
+      dispatch(login({ email: 'ddembe02@gmail.com', id: '1' }));
+      router.replace('/(auth)/account-setup/welcome');
     }
   };
 
