@@ -1,50 +1,88 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
 import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/utils/constants/Colors';
-import { useColorScheme } from '@/utils/hooks/useColorScheme.web';
+import ExploreIcon from '@/assets/icons/explore.svg';
+import HeartIcon from '@/assets/icons/heart.svg';
+import ChatIcon from '@/assets/icons/chat.svg';
+import ProfileIcon from '@/assets/icons/profile.svg';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#0056D3',
+        tabBarInactiveTintColor: '#6B7280',
+        tabBarStyle: {
+          borderTopWidth: 1,
+          borderTopColor: '#E5E7EB',
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+          ...(Platform.OS === 'ios' ? {
+            height: 85,
+            paddingBottom: 30,
+          } : {}),
+        },
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Explore',
+          tabBarIcon: ({ color, focused }) => (
+            <ExploreIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="wishlist"
+        options={{
+          title: 'Wishlist',
+          tabBarIcon: ({ color, focused }) => (
+            <HeartIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat',
+          tabBarIcon: ({ color, focused }) => (
+            <ChatIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gear" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <ProfileIcon 
+              width={24} 
+              height={24} 
+              stroke={color}
+              fill="none"
+              strokeWidth={2}
+            />
+          ),
         }}
       />
     </Tabs>
