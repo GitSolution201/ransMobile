@@ -1,19 +1,18 @@
 import { Ionicons } from "@expo/vector-icons";
 
-export const amenitiesIcons: { [key: string]: keyof typeof Ionicons.glyphMap } = {
-  'living-room': 'home-outline',
-  'bedrooms': 'bed-outline',
-  'bathroom': 'water-outline',
-  'washing-machine': 'shirt-outline',
-  'parking': 'car-outline',
-  'cctv': 'videocam-outline',
-  'fire-extinguisher': 'flame-outline',
-  'security-dog': 'paw-outline',
-  'security-guard': 'shield-checkmark-outline',
-  'wifi': 'wifi-outline',
-  'office': 'desktop-outline',
-  'kitchen': 'restaurant-outline',
-  'dining': 'cafe-outline',
+export const amenitiesIcons: { [key: string]: any } = {
+  'living-room': require('@/assets/icons/living.png'),
+  'bedrooms': require('@/assets/icons/bedroom.png'),
+  'bathroom': require('@/assets/icons/bathroom.png'),
+  'washing-machine': require('@/assets/icons/washingmachine.png'),
+  'parking': require('@/assets/icons/parking.png'),
+   'cctv': require('@/assets/icons/cctv.png'),
+  'fire-extinguisher': require('@/assets/icons/fire.png'),
+  'security-dog': require('@/assets/icons/dog.png'),
+  'security-guard': require('@/assets/icons/guard.png'),
+  'wifi': require('@/assets/icons/wifi.svg'),
+  'office': require('@/assets/icons/other.png'),
+  'kitchen': require('@/assets/icons/other.png'),
 };
 
 export const legalSettings = [
@@ -255,4 +254,76 @@ export const amenitiesData = [
       { id: '2', icon: 'dining', label: 'Dining' },
     ]
   }
+];
+
+export const notifications = [
+  {
+    id: 1,
+    type: 'payment',
+    user: {
+      name: 'Kasumali Victor',
+      avatar: require('@/assets/images/user1.png'),
+    },
+    message: 'is paying $600 Rent for Busabala Apartment',
+    time: '10:21',
+    actions: ['Accept', 'Decline'],
+  },
+  {
+    id: 2,
+    type: 'review',
+    user: {
+      name: 'Nuwampa Priscilla',
+      avatar: require('@/assets/images/user2.png'),
+    },
+    message: 'reviewed on Busabala Apartment',
+    time: '10:21',
+    review: 'For the time i was a tenant on Busabala Apartment. it has been....',
+    actions: ['Accept', 'Decline'],
+  },
+  {
+    id: 3,
+    type: 'feature',
+    icon: require('@/assets/icons/mail-feature.png'),
+    title: 'New Feature Update',
+    message: "We're pleased to introduce the latest enhancements in our templating experience.",
+    time: '10:21',
+    actions: ['Try It Now'],
+  },
+  {
+    id: 4,
+    type: 'feature',
+    icon: require('@/assets/icons/mail-feature.png'),
+    title: 'New Feature Update',
+    message: "We're pleased to introduce the latest enhancements in our templating experience.",
+    time: '10:21',
+    actions: ['Try It Now'],
+  },
+];
+
+export const messages = [
+  {
+    id: '1',
+    name: 'Nambi Sarah',
+    message: "Hi, I'm very interested in the 3-bedroom.....",
+    time: '10:21',
+    avatar: require('@/assets/images/user1.png'),
+    unread: true,
+  },
+  {
+    id: '2',
+    name: 'Naalya Apartments Group',
+    message: "Hi, I'm very interested in the 3-bedroom.....",
+    time: '10:21',
+    isGroup: true,
+    unread: true,
+  },
+  {
+    id: '3',
+    name: 'Kasumaali Victor',
+    message: "Hi, I'm very interested in the 3-bedroom.....",
+    time: '10:21',
+    avatar: require('@/assets/images/user2.png'),
+    unread: false,
+    isArchived: true,
+  },
 ];

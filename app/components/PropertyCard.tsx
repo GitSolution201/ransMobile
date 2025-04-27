@@ -4,6 +4,9 @@ import { Ionicons } from '@expo/vector-icons';
 import ShareIcon from '@/assets/icons/share.svg';
 import BedIcon from '@/assets/icons/bed.svg';
 import BathIcon from '@/assets/icons/bath.svg';
+import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
+
 interface PropertyCardProps {
   title: string;
   location: string;
@@ -27,8 +30,13 @@ export function PropertyCard({
   isFeatured = false,
   images
 }: PropertyCardProps) {
+  const navigation = useNavigation();
+
   return (
-    <View className="w-[300px] bg-gray-100 rounded-2xl mr-4 shadow-sm">
+    <Pressable
+      className="w-[300px] bg-gray-100 rounded-2xl mr-4 shadow-sm"
+      onPress={() =>router.push('/screens/product-details')}
+    >
       <View className="relative">
         <Image
           source={{ uri: images[0] }}
@@ -111,6 +119,6 @@ export function PropertyCard({
           </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 } 

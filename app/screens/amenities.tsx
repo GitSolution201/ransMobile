@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { Header } from '../components/Header';
 import { Colors } from '@/utils/constants/Colors';
 import { amenitiesData, amenitiesIcons } from '@/utils/helper/DummyData';
-import { Ionicons } from '@expo/vector-icons';
 
 export default function Amenities() {
   return (
@@ -18,10 +17,14 @@ export default function Amenities() {
               {section.data.map((item) => (
                 <View key={item.id} className="flex-row items-center border-b-[0.5px] border-b-[#73737340] pb-4">
                   <View className="w-8 h-8 mr-4 justify-center items-center">
-                    <Ionicons 
-                      name={amenitiesIcons[item.icon] || 'help-outline'}
-                      size={24}
-                      color={Colors.light.textGray}
+                    <Image 
+                      source={amenitiesIcons[item.icon]}
+                      style={{ 
+                        width: 24, 
+                        height: 24,
+                        tintColor: Colors.light.textGray
+                      }}
+                      resizeMode="contain"
                     />
                   </View>
                   <Text className="text-[#737373] text-base">{item.label}</Text>

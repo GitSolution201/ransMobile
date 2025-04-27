@@ -11,8 +11,7 @@ import PaymentScreen from './account-setup/payment';
 
 export default function OnboardingScreen() {
   const handleSignIn = () => {
-    router.replace('/account-setup/welcome');
-    // router.replace('/login');
+    router.replace('/login');
   };
 
   const handleRegister = () => {

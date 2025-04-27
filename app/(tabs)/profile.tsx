@@ -1,7 +1,9 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { legalSettings, privacySettings, settingsData, supportSettings } from '@/utils/helper/DummyData';
-import { useRouter } from 'expo-router';
+import { router, useRouter } from 'expo-router';
+import BellIcon from '@/assets/icons/bell.svg';
+
 
 // Setting Item Component
 type SettingItemProps = {
@@ -25,6 +27,18 @@ function SettingItem({ icon, title, onPress }: SettingItemProps) {
   );
 }
 
+const handleSettingPress = (title: string) => {
+  if (title === 'Notifications') {
+    router.push('/screens/notifications');
+  } else if (title === 'Contact us') {
+    router.push('/screens/contact-us');
+  } else if(title === 'Terms of service' ) {
+    router.push('/screens/terms-conditions');
+  } else {
+    console.log('Setting pressed:', title);
+  }
+}
+
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -34,9 +48,9 @@ export default function ProfileScreen() {
       {/* Header */}
       <View className="flex-row justify-between items-center px-4 pt-14 pb-4">
         <Text className="text-2xl font-bold">Profile</Text>
-        <TouchableOpacity className="relative">
-          <Ionicons name="notifications-outline" size={24} color="black" />
-          <View className="absolute top-0 right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full" />
+        <TouchableOpacity onPress={() => router.push('/screens/notifications')} className="relative">
+          <BellIcon width={24} height={24} />
+          <View className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full" />
         </TouchableOpacity>
       </View>
 
@@ -83,7 +97,7 @@ export default function ProfileScreen() {
             icon={setting.icon}
             title={setting.title}
             onPress={() => {
-              console.log('Setting pressed:', setting.title);
+              handleSettingPress(setting.title)
             }}
           />
         ))}
@@ -98,7 +112,7 @@ export default function ProfileScreen() {
             icon={setting.icon}
             title={setting.title}
             onPress={() => {
-              console.log('Setting pressed:', setting.title);
+              handleSettingPress(setting.title)
             }}
           />
         ))}
@@ -114,6 +128,8 @@ export default function ProfileScreen() {
             title={setting.title}
             onPress={() => {
               if (setting.title === 'Contact us') {
+                router.push('/screens/contact-us');
+              } else if (setting.title === 'Contact us') {
                 router.push('/screens/contact-us');
               } else {
                 console.log('Support setting pressed:', setting.title);
@@ -131,9 +147,7 @@ export default function ProfileScreen() {
             key={setting.id}
             icon={setting.icon}
             title={setting.title}
-            onPress={() => {
-              console.log('Legal setting pressed:', setting.title);
-            }}
+            onPress={() => handleSettingPress(setting.title)}
           />
         ))}
       </View>
@@ -144,7 +158,7 @@ export default function ProfileScreen() {
       </View>
 
       {/* Log Out Button */}
-      <TouchableOpacity className="mx-12 mb-8 bg-[#2563EB] py-4 px-8 rounded-xl">
+      <TouchableOpacity onPress={() => router.push('/(auth)/login')} className="mx-12 mb-8 bg-[#2563EB] py-4 px-8 rounded-xl">
         <Text className="text-white text-center font-semibold">Log Out</Text>
       </TouchableOpacity>
     </ScrollView>

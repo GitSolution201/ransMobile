@@ -121,14 +121,7 @@ export default function RoleScreen() {
       </View>
 
       {/* Bottom Section with Progress and Next Button */}
-      <View className="px-4 pb-12 pt-4 bg-transparent absolute bottom-12 left-0 right-0 z-20">
-        {/* Progress Bar */}
-        <View className="h-1 bg-gray-200 rounded-full mb-4 mx-24">
-          <View className="w-1/3 h-full bg-primary rounded-full" />
-        </View>
-
-       
-      </View>
+    
       <Button  
           text="Next"
           variant="secondary"

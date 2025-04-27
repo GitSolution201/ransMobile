@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import InspectionForm from '../screens/inspection-form';
-import TermsAndConditions from '../screens/terms-conditions';
-import Amenities from '../screens/amenities';
+import { View } from 'react-native';
+import FilterScreen from '../screens/FilterScreen';
+import Messages from '../screens/Messages';
 
-export default function chat() {
+export default function Chat() {
   return (
     <View className="flex-1 bg-white">
-        <Amenities />
-  </View>
+      <Messages/>
+      {/* <FilterScreen /> */}
+    </View>
   );
 } 
