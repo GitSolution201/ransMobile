@@ -29,7 +29,7 @@ export function InputField({
           {icon}
         </View>
         <TextInput
-          className={`flex-1 text-sm text-text ${centered ? 'text-center' : 'text-left'}`}
+          className={` flex-1 h-[56px] text-sm text-text ${centered ? 'text-center' : 'text-left'}`}
           placeholder={placeholder}
           placeholderTextColor="#9CA3AF"
           value={value}

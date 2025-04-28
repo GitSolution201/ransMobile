@@ -72,7 +72,7 @@ export default function SignupScreen() {
         </View>
 
         {/* Form Section */}
-        <View className="px-6 h-[56px]">
+        <View className="px-6">
           {/* Full Name Input */}
           <View className="mt-8">
             <InputField
