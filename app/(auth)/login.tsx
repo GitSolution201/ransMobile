@@ -1,8 +1,9 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { router } from 'expo-router';
 import { BackButton } from '@/components/BackButton';
 import { InputField } from '@/components/InputField';
+import { Button } from '@/components/Button';
 import { SocialSignInButtons } from '@/components/SocialSignInButtons';
 import EmailIcon from '@/assets/icons/email.svg';
 import LockIcon from '@/assets/icons/lock.svg';
@@ -30,6 +31,10 @@ export default function LoginScreen() {
     if (password.length < 6) return 'Password must be at least 6 characters';
     return '';
   };
+
+  const isFormValid = useMemo(() => {
+    return email && password && !errors.email && !errors.password;
+  }, [email, password, errors]);
 
   const handleLogin = () => {
     const emailError = validateEmail(email);
@@ -60,35 +65,34 @@ export default function LoginScreen() {
         {/* Illustration Container */}
         <View className="relative bg-white">
           <Image 
-          resizeMode='contain'
+            resizeMode='contain'
             source={require('@/assets/images/login-illustration.png')}
             className="w-full h-[175px] object-contain"
           />
-          
         </View>
         <View className='px-6'>
-            <Text className="text-sm py-10 ">
-              Let's <Text className="text-primary font-bold">Sign in</Text>
-            </Text>
-          </View>
+          <Text className="text-sm py-10 ">
+            Let's <Text className="text-primary font-bold">Sign in</Text>
+          </Text>
+        </View>
         {/* Form Section */}
         <View className="px-6">
           {/* Input Fields */}
-            <InputField
-              centered={true}
-              icon={<EmailIcon width={20} height={20} />}
-              placeholder="Enter your email or username"
-              value={email}
-              onChangeText={(text) => {
-                setEmail(text);
-                setErrors(prev => ({ ...prev, email: '' }));
-              }}
-              error={errors.email}
-            />
+          <InputField
+            centered={true}
+            icon={<EmailIcon width={20} height={20} />}
+            placeholder="Enter your email or username"
+            value={email}
+            onChangeText={(text) => {
+              setEmail(text);
+              setErrors(prev => ({ ...prev, email: '' }));
+            }}
+            error={errors.email}
+          />
 
           <View className="mt-4">
             <InputField
-            centered={true}
+              centered={true}
               icon={<LockIcon width={22} height={22} />}
               placeholder="Enter your password"
               value={password}
@@ -97,6 +101,7 @@ export default function LoginScreen() {
                 setErrors(prev => ({ ...prev, password: '' }));
               }}
               error={errors.password}
+              secureTextEntry={!showPassword}
             />
           </View>
 
@@ -128,14 +133,13 @@ export default function LoginScreen() {
           </View>
   
           {/* Login Button */}
-          <TouchableOpacity
-            className="bg-primary h-[56px] rounded-xl items-center justify-center mt-8"
+          <Button
+            text="Login"
+            variant="secondary"
             onPress={handleLogin}
-          >
-            <Text className="text-white font-semibold text-base">
-              Login
-            </Text>
-          </TouchableOpacity>
+            disabled={!isFormValid}
+            className="mt-8"
+          />
 
           {/* Register Link - Moved to bottom */}
         

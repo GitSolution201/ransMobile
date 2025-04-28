@@ -162,7 +162,7 @@ export default function PreferencesScreen() {
           variant="secondary"
           position="absolute"
           disabled={selectedOptions.length === 0 ? true : false}
-          onPress={() => router.push('/(auth)/account-setup/role')}
+          onPress={() => router.push('/account-setup/role')}
         />
     </View>
   );

@@ -99,7 +99,7 @@ const ReviewCard: React.FC<Review> = ({
 const ReviewsSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
   <View className="mb-8">
     <View className="flex-row justify-between items-center mb-4">
-      <Text className="text-2xl font-bold text-blue-600">Reviews</Text>
+      <Text className="text-base font-bold text-blue-600">Reviews</Text>
       <View className="flex-row items-center">
         <Text className="text-yellow-400 text-xl mr-1">★</Text>
         <Text className="text-lg font-bold text-gray-900">4.6</Text>
@@ -117,7 +117,7 @@ const ReviewsSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
 
 const LocationFacilitiesSection = () => (
   <View className="mb-10">
-    <Text className="text-2xl font-bold mb-4 text-gray-900">Location & Facilities</Text>
+    <Text className="text-base font-bold mb-4 text-gray-900">Location & Facilities</Text>
     
     {/* Address Row */}
     <View className="flex-row items-start mb-2">
@@ -125,27 +125,27 @@ const LocationFacilitiesSection = () => (
         <LocationIcon width={22} height={22} />
       </View>
       <View>
-        <Text className="text-base text-black font-medium">107 Munuki Road, Opposite Exxom Energy</Text>
-        <Text className="text-sm text-gray-500">Juba, South Sudan</Text>
+        <Text className="text-xs text-black font-medium">107 Munuki Road, Opposite Exxom Energy</Text>
+        <Text className="text-xs text-gray-500">Juba, South Sudan</Text>
       </View>
     </View>
 
     {/* Distance Dropdown */}
     <TouchableOpacity className="border border-gray-400 rounded-2xl px-4 py-4 flex-row items-center justify-between mb-4">
-      <Text className="text-base text-gray-700">4.5 km from your Location</Text>
+      <Text className="text-xs text-gray-700">4.5 km from your Location</Text>
       <ChevronDownIcon width={20} height={20} />
     </TouchableOpacity>
 
     {/* Facilities Row */}
     <View className="flex-row justify-between mb-4">
       <View className="flex-1 bg-gray-100 rounded-xl py-4 mx-1 items-center">
-        <Text className="text-base font-semibold">5 schools</Text>
+        <Text className="text-xs font-semibold">5 schools</Text>
       </View>
       <View className="flex-1 bg-gray-100 rounded-xl py-4 mx-1 items-center">
-        <Text className="text-base font-semibold">2 Hospitals</Text>
+        <Text className="text-xs font-semibold">2 Hospitals</Text>
       </View>
       <View className="flex-1 bg-gray-100 rounded-xl py-4 mx-1 items-center">
-        <Text className="text-base font-semibold">6 Gas Stations</Text>
+        <Text className="text-xs font-semibold">6 Gas Stations</Text>
       </View>
     </View>
 
@@ -193,7 +193,7 @@ const LocationFacilitiesSection = () => (
       </MapView>
     </View>
     <TouchableOpacity className="bg-gray-100 py-4 rounded-b-2xl items-center" onPress={() => {/* handle view on map */}}>
-      <Text className="text-base font-semibold text-gray-700">View On Map</Text>
+      <Text className="text-xs font-semibold text-gray-700">View On Map</Text>
     </TouchableOpacity>
   </View>
 );
@@ -302,7 +302,7 @@ export default function ProductDetails() {
                 className="w-12 h-12 rounded-full"
               />
               <View className="ml-6">
-                <Text className="text-base font-semibold text-black">Jonathan</Text>
+                <Text className="text-xs font-semibold text-black">Jonathan</Text>
                 <Text className="text-xs text-primary">Landlord</Text>
               </View>
             </View>
@@ -317,8 +317,8 @@ export default function ProductDetails() {
           </View>
 
           {/* Amenities Section */}
-          <View className="mb-8">
-            <Text className="text-xl font-semibold mb-4">Amenities</Text>
+          <View className="mb-4">
+            <Text className="text-[17px] font-semibold mb-4">Amenities</Text>
             <View className="space-y-4">
               {amenities.map((amenity) => {
                 const IconComponent = amenity.Icon;
@@ -333,7 +333,7 @@ export default function ProductDetails() {
                         fill="none"
                       />
                     </View>
-                    <Text className="text-base text-gray-700">
+                    <Text className="text-xs text-gray-700">
                       {amenity.count ? `${amenity.count} ${amenity.name}` : amenity.name}
                     </Text>
                   </View>
@@ -344,27 +344,27 @@ export default function ProductDetails() {
               className="mt-4 py-4 rounded-full border border-gray-200 items-center"
               onPress={() => router.push('/screens/amenities')}
             >
-              <Text className="text-gray-700 font-medium">Show all 11 amenities</Text>
+              <Text className="text-gray-700 text-xs font-medium">Show all 11 amenities</Text>
             </TouchableOpacity>
           </View>
 
           {/* Location & Facilities Section */}
 
           {/* Terms and Conditions Section */}
-          <View className="mt-8">
-            <Text className="text-2xl font-bold mb-4">
+          <View>
+            <Text className="text-base font-bold mb-4">
               Terms and Conditions
             </Text>
-            <Text className="text-base font-semibold mb-2">
+            <Text className="text-base mb-2">
               Rent and Payment Terms:
             </Text>
-            <Text className="text-[15px] mb-1">
+            <Text className="text-xs mb-1">
               <Text className="font-bold">Rent Amount:</Text> UGX 1,200,000 per month, payable on or before the 5th of each month.
             </Text>
-            <Text className="text-[15px] mb-1">
+            <Text className="text-xs mb-1">
               <Text className="font-bold">Late Payment Fee:</Text> UGX 50,000 applies if payment is delayed beyond the due date.
             </Text>
-            <Text className="text-[15px] mb-4">
+            <Text className="text-xs mb-4">
               <Text className="font-bold">Payment Methods:</Text> Accepted via Mobile Money, Bank Transfer, or Cash.
             </Text>
             <TouchableOpacity
@@ -374,7 +374,7 @@ export default function ProductDetails() {
                 // TODO: Show all terms & conditions logic
               }}
             >
-              <Text className="text-lg text-gray-800">
+              <Text className="text-xs text-gray-800">
                 Show all terms & conditions
               </Text>
             </TouchableOpacity>
@@ -382,19 +382,17 @@ export default function ProductDetails() {
 
           {/* Property Description Section */}
           <View className="mb-8">
-            <Text className="text-2xl font-bold mb-3">
+            <Text className="text-base font-bold mb-3">
               Property Description
             </Text>
-            <Text className="text-[15px] text-gray-600 mb-3">
+            <Text className="text-xs text-gray-600 mb-3">
               This spacious and modern 3-bedroom apartment offers luxurious living in one of Nairobi's most sought-after neighborhoods. Located in Westlands, it features an open-plan living room with large windows for natural light, a fully equipped kitchen, and en-suite master bedroom with a private balcony. Enjoy proximity to top schools, shopping malls, and restaurants, all within a few minutes' walk.
             </Text>
-            <Text className="text-[15px] text-gray-600">
+            <Text className="text-xs text-gray-600">
               Ideal for families or professionals looking for comfort and convenience.
             </Text>
           </View>
-
           <LocationFacilitiesSection />
-
           {/* Reviews Section */}
           <ReviewsSection reviews={reviews} />
         </View>

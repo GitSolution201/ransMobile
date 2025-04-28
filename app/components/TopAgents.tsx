@@ -53,7 +53,7 @@ function AgentCard({ name, image, isPro, onPress }: AgentCardProps) {
           </View>
         )}
       </View>
-      <Text className="text-sm font-medium text-gray-900 mt-2">{name}</Text>
+      <Text className="text-xs font-medium text-gray-900 mt-2">{name}</Text>
     </Pressable>
   );
 }
@@ -62,9 +62,9 @@ export function TopAgents() {
   return (
     <View className="mt-6">
       <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-xl font-semibold text-gray-900">Top Agents</Text>
+        <Text className="text-base font-semibold text-gray-900">Top Agents</Text>
         <Pressable>
-          <Text className="text-sm text-gray-500">View All</Text>
+          <Text className="text-xs text-gray-500">View All</Text>
         </Pressable>
       </View>
 

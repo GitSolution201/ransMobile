@@ -92,9 +92,9 @@ export default function HomeScreen() {
       {/* Category List */}
       <CategoryList onSelectCategory={handleCategorySelect} />
       <View className="flex-row justify-between items-center px-4 my-4">
-        <Text className="text-lg font-semibold text-gray-800">Special Offers</Text>
+        <Text className="text-base font-semibold text-gray-800">#SpecialForYou</Text>
         <Pressable>
-          <Text className="text-sm text-gray-500">View All</Text>
+          <Text className="text-xs text-gray-500">View All</Text>
         </Pressable>
       </View>
       <MainSwiper/>

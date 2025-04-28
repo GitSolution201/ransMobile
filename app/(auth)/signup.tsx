@@ -1,8 +1,9 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { router } from 'expo-router';
 import { BackButton } from '@/components/BackButton';
 import { InputField } from '@/components/InputField';
+import { Button } from '@/components/Button';
 import UserIcon from '@/assets/icons/user.svg';
 import EmailIcon from '@/assets/icons/email.svg';
 import LockIcon from '@/assets/icons/lock.svg';
@@ -34,6 +35,10 @@ export default function SignupScreen() {
     return !Object.values(newErrors).some(error => error !== '');
   };
 
+  const isFormValid = useMemo(() => {
+    return fullName && email && password && country && !errors.fullName && !errors.email && !errors.password && !errors.country;
+  }, [fullName, email, password, country, errors]);
+
   const handleRegister = () => {
     if (validateForm()) {
       router.push('/(auth)/otp');
@@ -53,7 +58,7 @@ export default function SignupScreen() {
         {/* Illustration Container */}
         <View className="relative bg-white">
           <Image 
-          resizeMode='contain'
+            resizeMode='contain'
             source={require('@/assets/images/login-illustration.png')}
             className="w-full h-[200px] object-contain"
           />
@@ -142,15 +147,13 @@ export default function SignupScreen() {
             </Text>
           </View>
 
-            {/* Register Button */}
-            <TouchableOpacity
-            className="mt-8 bg-secondary py-4 mx-6 rounded-xl"
+          {/* Register Button */}
+          <Button
+            text="Register"
+            variant="secondary"
             onPress={handleRegister}
-          >
-            <Text className="text-white text-center font-semibold text-sm">
-              Register
-            </Text>
-          </TouchableOpacity>
+            disabled={!isFormValid}
+          />
         </View>
       </ScrollView>
     </View>

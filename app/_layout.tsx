@@ -9,6 +9,7 @@ import '../app/global.css';
 import { Provider } from 'react-redux';
 import { useColorScheme } from '@/utils/hooks/useColorScheme.web';
 import { store } from '@/redux/store';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -25,16 +26,23 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
+  useEffect(() => {
+    console.log('App initialized');
+    console.log('Redux store state:', store.getState());
+  }, []);
+
   if (!loaded) {
     return null;
   }
 
   return (
-    <Provider store={store}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <StatusBar style="auto" />
-        <Slot />
-      </ThemeProvider>
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <StatusBar style="auto" />
+          <Slot />
+        </ThemeProvider>
+      </Provider>
+    </ErrorBoundary>
   );
 }

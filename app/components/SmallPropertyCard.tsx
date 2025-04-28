@@ -121,7 +121,7 @@ function PropertyCard({
         <View className="p-3">
           {/* Title and Share */}
           <View className="flex-row justify-between items-center mb-1">
-            <Text className="text-base font-semibold text-gray-900 flex-1 mr-2" numberOfLines={1}>
+            <Text className="text-sm font-semibold text-gray-900 flex-1 mr-2" numberOfLines={1}>
               {title}
             </Text>
             <ShareIcon width={16} height={16} />
@@ -171,9 +171,9 @@ export function NearBy() {
   return (
     <View className="mt-6">
       <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-xl font-semibold text-gray-900">Near By</Text>
+        <Text className="text-base font-semibold text-gray-900">Near By</Text>
         <Pressable>
-          <Text className="text-sm text-gray-500">View All</Text>
+          <Text className="text-xs text-gray-500">View All</Text>
         </Pressable>
       </View>
 

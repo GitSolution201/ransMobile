@@ -11,11 +11,11 @@ import PaymentScreen from './account-setup/payment';
 
 export default function OnboardingScreen() {
   const handleSignIn = () => {
-    router.replace('/login');
+    router.push('/login');
   };
 
   const handleRegister = () => {
-    router.replace('/signup');
+    router.push('/signup');
   };
 
   return (
@@ -60,7 +60,7 @@ export default function OnboardingScreen() {
         </TouchableOpacity>
 
         {/* Or Divider */}
-        <View className="flex-row mb-6 items-center">
+        <View className="flex-row m-6 items-center">
           <View className="flex-1 h-[1px] bg-placeholder" />
           <Text className="mx-4 text-placeholder">Or</Text>
           <View className="flex-1 h-[1px] bg-placeholder" />

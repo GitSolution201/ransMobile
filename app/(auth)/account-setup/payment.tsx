@@ -287,7 +287,7 @@ export default function PaymentScreen() {
             variant="secondary"
             disabled={!isFormValid()}
             className="shadow-lg"
-            onPress={() => router.push('/(auth)/account-setup/profile-picture')}
+            onPress={() => router.push('/account-setup/profile-picture')}
           />
         </View>
       </View>

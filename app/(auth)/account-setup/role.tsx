@@ -127,7 +127,7 @@ export default function RoleScreen() {
           variant="secondary"
           position="absolute"
           disabled={selectedRole === null ? true : false}
-          onPress={() => router.push('/(auth)/account-setup/payment')}
+          onPress={() => router.push('/account-setup/payment')}
         />
     </View>
   );

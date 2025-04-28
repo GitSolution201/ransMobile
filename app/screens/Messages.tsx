@@ -53,7 +53,7 @@ export default function Messages() {
         {filters.map((filter) => (
           <TouchableOpacity
             key={filter}
-            className={`px-5 py-3 rounded-full ${
+            className={`px-5 py-3 mr-2 rounded-full ${
               activeFilter === filter ? 'bg-[#2563EB]' : 'bg-[#F7F5F5]'
             }`}
             onPress={() => setActiveFilter(filter)}

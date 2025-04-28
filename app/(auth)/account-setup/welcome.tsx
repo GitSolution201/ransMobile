@@ -39,7 +39,7 @@ export default function WelcomeScreen() {
         variant="secondary"
         position="absolute"
         bottom={32}
-        onPress={() => router.push('/(auth)/account-setup/location')}
+        onPress={() => router.push('/account-setup/location')}
       />
     </View>
   );
