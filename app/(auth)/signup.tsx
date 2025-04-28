@@ -60,23 +60,23 @@ export default function SignupScreen() {
           <Image 
             resizeMode='contain'
             source={require('@/assets/images/login-illustration.png')}
-            className="w-full h-[200px] object-contain"
+            className="w-full h-[175px] object-contain"
           />
         </View>
 
         {/* Title */}
         <View className="px-6">
           <Text className="text-sm ">
-            Create your <Text className="text-primary font-bold">Account</Text>
+            Create your <Text className="text-primary font-bold text-sm">Account</Text>
           </Text>
         </View>
 
         {/* Form Section */}
-        <View className="px-6">
+        <View className="px-6 h-[56px]">
           {/* Full Name Input */}
           <View className="mt-8">
             <InputField
-              icon={<UserIcon width={20} height={20} />}
+              icon={<UserIcon width={20} height={18} />}
               placeholder="Enter your Full Name"
               value={fullName}
               onChangeText={(text) => {
@@ -137,7 +137,7 @@ export default function SignupScreen() {
               className="text-primary"
               onPress={() => router.push('/screens/terms-conditions')}
             >
-              Terms of service
+              Terms of service  
             </Text>
             <Text 
               className="text-primary"

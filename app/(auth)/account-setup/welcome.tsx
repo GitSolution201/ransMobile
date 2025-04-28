@@ -15,7 +15,7 @@ export default function WelcomeScreen() {
       </View>
 
       {/* Background Image Section */}
-      <View className="h-[400px] w-full">
+      <View className="h-[397px] w-full">
         <ImageBackground
           source={require('@/assets/images/smile.png')}
           className="flex-1"
@@ -25,7 +25,7 @@ export default function WelcomeScreen() {
 
       {/* Welcome Text - Centered */}
       <View className="items-center mt-8">
-        <Text className="text-xl text-primary font-extrabold mb-2">
+        <Text className="text-primary font-extrabold mb-2 text-2xl" >
           Welcome to Rans
         </Text>
         <Text className="text-primary text-xs text-center">

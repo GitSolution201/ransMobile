@@ -11,7 +11,7 @@ interface PreferenceOptionProps {
 export function PreferenceOption({ image, title, isSelected = false, onPress }: PreferenceOptionProps) {
   return (
     <TouchableOpacity 
-      className={`flex-1 bg-gray-100 mx-2  w-full rounded-3xl p-4 border border-gray-100  ${isSelected ? 'border-primary' : ''}`}
+      className={`flex-1 bg-gray-100 mx-2  h-[202px]w-full rounded-3xl p-4 border border-gray-100  ${isSelected ? 'border-primary' : ''}`}
       onPress={onPress}
     >
       <View className="relative">

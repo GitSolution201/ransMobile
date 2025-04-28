@@ -1,14 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { router } from 'expo-router';
-import EmailIcon from '@/assets/icons/email.svg';
-import { SocialSignInButtons } from '@/components/SocialSignInButtons';
-import WelcomeScreen from './account-setup/welcome';
-import LocationScreen from './account-setup/location';
-import AccountSetupLayout from './account-setup/_layout';
-import PreferencesScreen from './account-setup/preferences';
-import RoleScreen from './account-setup/role';
-import PaymentScreen from './account-setup/payment';
-
+import EmailIcon from '@/assets/icons/email_login.svg';
 export default function OnboardingScreen() {
   const handleSignIn = () => {
     router.push('/login');
@@ -26,7 +18,7 @@ export default function OnboardingScreen() {
         <Image 
           resizeMode='contain'
           source={require('@/assets/images/rans-logo.png')}
-          className="w-32 h-20"
+          className="w-[155px] h-[50px]"
         />
       </View>
 
@@ -35,7 +27,7 @@ export default function OnboardingScreen() {
         <Image 
          resizeMode='contain'
           source={require('@/assets/images/onboarding-illustration.png')}
-          className="w-72 h-[200px]"
+          className="w-[206px] h-[202px]"
         />
         
         {/* Heading */}
@@ -48,11 +40,11 @@ export default function OnboardingScreen() {
       <View className=" mx-6 space-y-6">
         {/* Email Sign In */}
         <TouchableOpacity 
-          className="flex-row items-center bg-white border border-placeholder h-[54px] rounded-xl relative"
+          className="flex-row items-center bg-white border border-placeholder h-[56px] rounded-xl relative"
           onPress={handleSignIn}
         >
           <View className="absolute left-10">
-            <EmailIcon width={20} height={20} />
+            <EmailIcon width={19} height={19} color="#0056D3" />
           </View>
           <Text className="text-primary font-medium text-sm flex-1 text-center">
             Sign In with Email
@@ -62,7 +54,7 @@ export default function OnboardingScreen() {
         {/* Or Divider */}
         <View className="flex-row m-6 items-center">
           <View className="flex-1 h-[1px] bg-placeholder" />
-          <Text className="mx-4 text-placeholder">Or</Text>
+          <Text className="mx-4 text-placeholder text-sm">Or</Text>
           <View className="flex-1 h-[1px] bg-placeholder" />
         </View>
 
@@ -71,9 +63,9 @@ export default function OnboardingScreen() {
 
         {/* Register Link */}
         <View className="flex-row justify-center pt-8 items-center">
-          <Text className="text-placeholder">Don't have an account? </Text>
+          <Text className="text-placeholder text-sm" >Dont have an account ? </Text>
           <TouchableOpacity onPress={handleRegister}>
-            <Text className="text-placeholder font-medium">Register</Text>
+            <Text className="text-placeholder font-medium text-sm text-[#A5A5A5]">Register</Text>
           </TouchableOpacity>
         </View>
       </View>
