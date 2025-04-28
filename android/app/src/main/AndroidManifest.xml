@@ -28,7 +28,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
-        <data android:scheme="com.agent.app"/>
+        <data android:scheme="com.aventre.userapp.test"/>
       </intent-filter>
     </activity>
   </application>

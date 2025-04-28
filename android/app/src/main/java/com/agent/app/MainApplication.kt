@@ -1,4 +1,4 @@
-package com.agent.app
+package com.aventre.userapp.test
 
 import android.app.Application
 import android.content.res.Configuration

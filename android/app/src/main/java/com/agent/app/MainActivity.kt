@@ -1,4 +1,4 @@
-package com.agent.app
+package com.aventre.userapp.test
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
