@@ -76,12 +76,12 @@ export default function PreferencesScreen() {
       </View>
 
       <ScrollView 
-        className="flex-1 px-4 pt-36"
+        className="flex-1 px-4 pt-[140px]"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         {/* Title Section */}
-        <Text className="text-[28px] text-primary font-extrabold mb-2">
+        <Text className="text-2xl text-primary font-extrabold mb-2">
           What are you looking For ?
         </Text>
         <Text className="text-primary text-xs text-primary-600 mb-6">

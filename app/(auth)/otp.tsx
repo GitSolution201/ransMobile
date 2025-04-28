@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { router } from 'expo-router';
 import { BackButton } from '@/components/BackButton';
 import { useDispatch } from 'react-redux';
+import TimerIcon from '@/assets/icons/timer.svg';
 import { login } from '@/redux/authSlice';
 
 export default function OTPScreen() {
@@ -63,7 +64,7 @@ export default function OTPScreen() {
           <Image
           resizeMode='contain'
             source={require('@/assets/images/login-illustration.png')}
-            className="w-full h-[200px] object-contain"
+            className="w-full h-[175px] object-contain"
           />
         </View>
 
@@ -75,12 +76,12 @@ export default function OTPScreen() {
         </View>
       <View className="px-6 pt-6">
    
-        <Text className="text-primary font-bold mb-12">
+        <Text className="text-primary font-bold mb-12 text-sm">
           ddembe02@gmail.com
         </Text>
 
         {/* OTP Input Fields */}
-        <View className="flex-row justify-between mb-12">
+        <View className="flex-row justify-between mb-12 h-[56px]">
           {[0, 1, 2, 3, 4].map((index) => (
             <TextInput
               key={index}
@@ -108,28 +109,30 @@ export default function OTPScreen() {
      
       </View>
       <View className="absolute bottom-20 left-0 right-0">
-          <View className="flex-row items-center justify-center space-x-2">
-            <View className="flex-row items-center">
+        <View className="flex-1 justify-center items-center">
+          <View className="flex-row items-center justify-center w-[128px] h-[46px] space-x-2 rounded-full bg-[#F9F9F9]">
+            <TimerIcon width={20} height={20} />
+            <View className="flex-row items-center ml-2">
               <Text className="text-primary text-base mr-1">
                 {formatTime(timeLeft)}
               </Text>
             </View>
           </View>
-
-          <View className="flex-row justify-center mt-4">
-            <Text className="text-primary">
-              Didn't receive OTP?{' '}
-            </Text>
-            <TouchableOpacity 
-              onPress={handleResend}
-              disabled={timeLeft > 0}
-            >
-              <Text className={`${timeLeft > 0 ? 'text-gray-400' : 'text-primary'} font-semibold`}>
-                Resend OTP
-              </Text>
-            </TouchableOpacity>
-          </View>
         </View>
+        <View className="flex-row justify-center mt-4">
+          <Text className="text-primary">
+            Didn,t receive OTP?{' '}
+          </Text>
+          <TouchableOpacity 
+            onPress={handleResend}
+            disabled={timeLeft > 0}
+          >
+            <Text className={`${timeLeft > 0 ? 'text-gray-400' : 'text-primary'} font-semibold`}>
+              Resend OTP
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 } 

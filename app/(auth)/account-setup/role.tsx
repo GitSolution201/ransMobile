@@ -70,7 +70,7 @@ export default function RoleScreen() {
           </View>
         )}
       </View>
-      <Text className={`text-xs font-medium mt-1 ${selectedRole === item.id ? 'text-primary' : 'text-black'}`}>
+      <Text className={`text-xs mt-4 font-medium mt-1 ${selectedRole === item.id ? 'text-primary' : 'text-black'}`}>
         {item.title}
       </Text>
     </TouchableOpacity>
@@ -98,7 +98,7 @@ export default function RoleScreen() {
 
       <View className="flex-1 px-4 pt-36">
         {/* Title Section */}
-        <Text className="text-[28px] text-primary font-extrabold mb-4">
+        <Text className="text-2xl text-primary font-extrabold mb-4 mt-6">
           What's Your Role?
         </Text>
 
@@ -121,14 +121,19 @@ export default function RoleScreen() {
       </View>
 
       {/* Bottom Section with Progress and Next Button */}
-    
-      <Button  
+      <View className="px-4 pb-12 pt-4 bg-background absolute bottom-0 left-0 right-0 z-20">
+        {/* Progress Bar */}
+        <View className="h-1.5 bg-gray-200 rounded-full mb-2 mx-24">
+          <View className="w-[100px] h-full bg-primary rounded-full" />
+        </View>
+        <Button  
           text="Next"
           variant="secondary"
-          position="absolute"
-          disabled={selectedRole === null ? true : false}
+          className="mt-4"
+          disabled={selectedRole === null}
           onPress={() => router.push('/account-setup/payment')}
         />
+      </View>
     </View>
   );
 } 

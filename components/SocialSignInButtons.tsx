@@ -19,13 +19,13 @@ export function SocialSignInButtons() {
   return (
     <View className="flex-row justify-between  w-full">
       <TouchableOpacity 
-        className="flex-1 mr-6 flex-row items-center justify-center bg-white border border-border h-[56px] rounded-xl"
+        className="flex-1 mr-6 flex-row items-center justify-center bg-white border-[1px] border-border h-[56px] rounded-xl"
         onPress={handleGoogleSignIn}
       >
         <GoogleIcon width={35} height={35} />
       </TouchableOpacity>
       <TouchableOpacity 
-        className="flex-1 ml-6 flex-row items-center justify-center bg-white border border-border h-[56px] rounded-xl"
+        className="flex-1 ml-6 flex-row items-center justify-center bg-white border-[1px] border-border h-[56px] rounded-xl"
         onPress={handleAppleSignIn}
       >
         <AppleIcon width={35} height={35} />
