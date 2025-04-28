@@ -217,7 +217,11 @@ export default function ProductDetails() {
             className="w-3 h-3"
           />
         </TouchableOpacity>
-        <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md">
+        <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
+         onPress={() => {
+          router.push('/screens/FilterScreen')
+          }}
+        >
           <FilterIcon width={24} height={24} className="text-gray-400" />
         </TouchableOpacity>
       </View>

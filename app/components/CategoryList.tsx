@@ -1,74 +1,54 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Pressable } from 'react-native';
-import { SvgProps } from 'react-native-svg';
-import HomeIcon from '@/assets/icons/home.svg';
-import ApartmentIcon from '@/assets/icons/apartment.svg';
-import LandIcon from '@/assets/icons/land.svg';
-import OfficeIcon from '@/assets/icons/office.svg';
-import WarehouseIcon from '@/assets/icons/warehouse.svg';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-type Category = {
-  id: string;
-  name: string;
-  icon: React.FC<SvgProps>;
-};
-
-const categories: Category[] = [
-  { id: '1', name: 'All', icon: WarehouseIcon },
-  { id: '2', name: 'House', icon: HomeIcon },
-  { id: '3', name: 'Apartment', icon: ApartmentIcon },
-  { id: '4', name: 'Land', icon: LandIcon },
-  { id: '5', name: 'Office', icon: OfficeIcon },
+const propertyTypes = [
+  { id: '1', label: 'All', icon: (color: string) => <Ionicons name="home" size={24} color={color} /> },
+  { id: '2', label: 'Apartment', icon: (color: string) => <MaterialCommunityIcons name="office-building" size={24} color={color} /> },
+  { id: '3', label: 'Land', icon: (color: string) => <MaterialCommunityIcons name="terrain" size={24} color={color} /> },
+  { id: '4', label: 'Office', icon: (color: string) => <MaterialCommunityIcons name="desk" size={24} color={color} /> },
+  { id: '5', label: 'Warehouse', icon: (color: string) => <MaterialCommunityIcons name="warehouse" size={24} color={color} /> },
 ];
 
 interface CategoryListProps {
-  onSelectCategory?: (category: Category) => void;
+  onSelectCategory?: (category: { id: string; label: string }) => void;
 }
 
 export function CategoryList({ onSelectCategory }: CategoryListProps) {
-  const [selectedId, setSelectedId] = useState('1'); // Default to 'All'
+  const [selectedType, setSelectedType] = useState('1'); // Default to 'All'
 
-  const handleSelect = (category: Category) => {
-    setSelectedId(category.id);
-    onSelectCategory?.(category);
+  const handleSelect = (type: { id: string; label: string }) => {
+    setSelectedType(type.id);
+    onSelectCategory?.(type);
   };
 
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      className="py-4 max-h-[100px]"
-      contentContainerStyle={{ paddingHorizontal: 16, borderBottomWidth: 1, borderColor: 'lightgray', height: 81 }}
+      className="max-h-[80px] pt-4"
     >
-      {categories.map((category) => {
-        const isSelected = selectedId === category.id;
-        const Icon = category.icon;
-        
-        return (
-          <Pressable
-            key={category.id}
-            onPress={() => handleSelect(category)}
-            className={`px-4 h-[80px] mr-2 items-center justify-center bg-white ${
-              isSelected && 'border-b-[1px] border-[#0056D3]'
-            }`}
-          >
-            <Icon 
-              width={24} 
-              height={24} 
-              stroke={isSelected ? '#0056D3' : '#9CA3AF'}
-              fill="none"
-              strokeWidth={2}
-            />
-            <Text
-              className={`text-sm pt-3 ${
-                isSelected ? 'text-[#0056D3] font-medium' : 'text-gray-400'
-              }`}
+      <View className="flex-row items-center">
+        {propertyTypes.map((type) => {
+          const isSelected = selectedType === type.id;
+          return (
+            <TouchableOpacity
+              key={type.id}
+              className={`items-center justify-center w-[80px] pb-2 ${isSelected ? 'border-b-2 border-[#0056D3]' : ''}`}
+              onPress={() => handleSelect(type)}
             >
-              {category.name}
-            </Text>
-          </Pressable>
-        );
-      })}
+              {type.icon(isSelected ? '#0056D3' : '#737373')}
+              <Text 
+                className={`text-xs mt-1 ${
+                  isSelected ? 'text-[#0056D3] font-medium' : 'text-[#737373]'
+                }`}
+              >
+                {type.label}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
     </ScrollView>
   );
 } 

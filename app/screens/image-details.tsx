@@ -27,14 +27,18 @@ export default function ImageDetails() {
   return (
     <View className="flex-1 bg-black">
       {/* Top bar */}
-      <View className="flex-row justify-between items-center px-4 pt-10 pb-4 z-10">
-        <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 bg-white/80 rounded-full items-center justify-center">
-          <Text className="text-2xl">{'<'}</Text>
+      <View className="absolute top-12 left-4 right-4 z-10 flex-row justify-between">
+        <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md" onPress={() => router.back()}>
+          <Image 
+            source={require('@/assets/icons/back.png')}
+            className="w-3 h-3"
+          />
         </TouchableOpacity>
-        <TouchableOpacity className="w-10 h-10 bg-white/80 rounded-full items-center justify-center">
-          <Text className="text-2xl">⋮</Text>
+        <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md">
+          <Ionicons name="ellipsis-vertical" size={24} color="#737373" />
         </TouchableOpacity>
       </View>
+
 
       {/* Swiper */}
       <FlatList
