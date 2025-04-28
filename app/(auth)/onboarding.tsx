@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { router } from 'expo-router';
 import EmailIcon from '@/assets/icons/email_login.svg';
+import { SocialSignInButtons } from '@/components/SocialSignInButtons';
 export default function OnboardingScreen() {
   const handleSignIn = () => {
     router.push('/login');
