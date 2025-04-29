@@ -1,12 +1,12 @@
-import React from 'react';
-import { View, Image, ScrollView, Dimensions } from 'react-native';
+import React from "react";
+import { View, Image, ScrollView, Dimensions } from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 const ITEM_WIDTH = width * 0.8; // 80% of screen width
 
 const images = [
-  require('@/assets/images/banner1.png'),
-  require('@/assets/images/banner2.png'),
+  require("@/assets/images/banner1.png"),
+  require("@/assets/images/banner2.png"),
 ];
 
 export function MainSwiper() {
@@ -28,16 +28,15 @@ export function MainSwiper() {
         scrollEventThrottle={16}
         snapToInterval={ITEM_WIDTH}
         decelerationRate="fast"
-        className='h-[200px]'
-        contentContainerStyle={{
-        }}
+        className="h-[200px]"
+        contentContainerStyle={{}}
       >
         {images.map((image, index) => (
-          <View 
-            key={index} 
-            style={{ 
+          <View
+            key={index}
+            style={{
               width: ITEM_WIDTH,
-              marginRight: 12 // space between items
+              marginRight: 12, // space between items
             }}
           >
             <Image
@@ -54,11 +53,11 @@ export function MainSwiper() {
           <View
             key={index}
             className={`h-1.5 w-1.5 rounded-full mx-1 ${
-              activeIndex === index ? 'bg-[#0056D3] w-3' : 'bg-gray-300'
+              activeIndex === index ? "bg-[#0056D3] w-3" : "bg-gray-300"
             }`}
           />
         ))}
       </View>
     </View>
   );
-} 
+}
