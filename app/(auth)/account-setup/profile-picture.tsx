@@ -1,24 +1,37 @@
-import { View, Text, TouchableOpacity, TextInput, Image, Modal, Platform } from 'react-native';
-import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
-import UserIcon from '@/assets/icons/user.svg';
-import EditIcon from '@/assets/icons/edit.svg';
-import EmailIcon from '@/assets/icons/email.svg';
-import Iconemail from '@/assets/icons/emailicon.svg';
-import * as ImagePicker from 'expo-image-picker';
-import { useState } from 'react';
-import { Button } from '@/components/Button';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Image,
+  Modal,
+  Platform,
+} from "react-native";
+import { router } from "expo-router";
+import { BackButton } from "@/components/BackButton";
+import UserIcon from "@/assets/icons/user.svg";
+import EditIcon from "@/assets/icons/edit.svg";
+import EmailIcon from "@/assets/icons/email.svg";
+import Iconemail from "@/assets/icons/emailicon.svg";
+import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+import { Button } from "@/components/Button";
 
 export default function ProfilePictureScreen() {
   const [image, setImage] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const requestPermissions = async () => {
-    if (Platform.OS !== 'web') {
-      const { status: cameraStatus } = await ImagePicker.requestCameraPermissionsAsync();
-      const { status: libraryStatus } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (cameraStatus !== 'granted' || libraryStatus !== 'granted') {
-        alert('Sorry, we need camera and gallery permissions to make this work!');
+    if (Platform.OS !== "web") {
+      const { status: cameraStatus } =
+        await ImagePicker.requestCameraPermissionsAsync();
+      const { status: libraryStatus } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (cameraStatus !== "granted" || libraryStatus !== "granted") {
+        alert(
+          "Sorry, we need camera and gallery permissions to make this work!"
+        );
         return false;
       }
       return true;
@@ -62,8 +75,8 @@ export default function ProfilePictureScreen() {
   }) => {
     // Normalize the background color to lowercase for comparison
     const bg = backgroundColor.toLowerCase();
-    const isWhite = bg === '#fff' || bg === '#ffffff' || bg === 'white';
-    const textColor = isWhite ? 'text-black' : 'text-white';
+    const isWhite = bg === "#fff" || bg === "#ffffff" || bg === "white";
+    const textColor = isWhite ? "text-black" : "text-white";
 
     return (
       <View
@@ -79,19 +92,19 @@ export default function ProfilePictureScreen() {
   // 2. Array of items
   const items = [
     {
-      text: 'nionzima@gmail.com',
+      text: "nionzima@gmail.com",
       Icon: <UserIcon width={24} height={24} />,
-      backgroundColor: '#fff',
+      backgroundColor: "#fff",
     },
     {
-      text: 'Nionzima Enock',
+      text: "Nionzima Enock",
       Icon: <EmailIcon width={24} height={24} />,
-      backgroundColor: '#fff',
+      backgroundColor: "#fff",
     },
     {
-      text: 'Nionzima Enock',
+      text: "Nionzima Enock",
       Icon: <Iconemail width={24} height={24} />,
-      backgroundColor: '#0056D3',
+      backgroundColor: "#0056D3",
     },
     // Add more items as needed
   ];
@@ -99,8 +112,8 @@ export default function ProfilePictureScreen() {
   return (
     <View className="flex-1 bg-background">
       {/* Background Image */}
-      <Image 
-        source={require('@/assets/images/smile.png')}
+      <Image
+        source={require("@/assets/images/smile.png")}
         className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
         resizeMode="cover"
       />
@@ -108,7 +121,7 @@ export default function ProfilePictureScreen() {
       {/* Header */}
       <View className="flex-row justify-between items-center px-4 pt-12 pb-8">
         <BackButton />
-        <TouchableOpacity className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center'>
+        <TouchableOpacity className="h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center">
           <Text className="text-white text-sm font-medium">Skip</Text>
         </TouchableOpacity>
       </View>
@@ -134,14 +147,14 @@ export default function ProfilePictureScreen() {
                   resizeMode="cover"
                 />
               ) : (
-                <Image  
-                  source={require('@/assets/images/user.png')}
+                <Image
+                  source={require("@/assets/images/user.png")}
                   className="w-[60px] h-[60px]"
                   resizeMode="contain"
                 />
               )}
             </View>
-            <TouchableOpacity 
+            <TouchableOpacity
               className="absolute bottom-0 right-0 w-[30px] h-[30px] bg-primary rounded-full items-center justify-center"
               onPress={() => setShowModal(true)}
             >
@@ -166,18 +179,21 @@ export default function ProfilePictureScreen() {
       </View>
 
       {/* Bottom Section with Progress and Next Button */}
-      <View className="px-4 pb-12 pt-4">
+      <View className="px-4 pb-6 pt-4">
         {/* Progress Bar */}
-        <View className="h-1.5 bg-gray-200 rounded-full mb-4 mx-24">
-          <View className={`h-full bg-primary rounded-full ${image ? 'w-full' : 'w-2/3'}`} />
+        <View className="h-1 bg-gray-200 rounded-full mb-4 mx-24">
+          <View
+            className={`h-full bg-primary rounded-full ${
+              image ? "w-full" : "w-2/3"
+            }`}
+          />
         </View>
-        <Button  
+        <Button
           text="Next"
           variant="secondary"
           disabled={image === null ? true : false}
-          onPress={() => router.push('/(tabs)')}
+          onPress={() => setShowSuccessModal(true)}
         />
-
       </View>
 
       {/* Image Picker Modal */}
@@ -187,7 +203,7 @@ export default function ProfilePictureScreen() {
         visible={showModal}
         onRequestClose={() => setShowModal(false)}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           className="flex-1 justify-end bg-black/50"
           activeOpacity={1}
           onPress={() => setShowModal(false)}
@@ -215,6 +231,36 @@ export default function ProfilePictureScreen() {
           </View>
         </TouchableOpacity>
       </Modal>
+
+      {/* Success Modal */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={showSuccessModal}
+        onRequestClose={() => setShowSuccessModal(false)}
+      >
+        <View className="flex-1 justify-center items-center bg-black/50">
+          <View className="bg-white rounded-3xl p-8 w-[80%] items-center">
+            <Image
+              source={require("@/assets/icons/smile.png")}
+              className="w-[120px] h-[120px] mb-4"
+              resizeMode="contain"
+            />
+            <View className="flex-row items-center mb-12">
+              <Text className="text-[#0056D3] text-xl">Account set </Text>
+              <Text className="text-[#0056D3] text-xl font-bold">
+                Successfully
+              </Text>
+            </View>
+            <TouchableOpacity
+              className="w-full h-[56px] bg-[#1ABC9C] rounded-xl items-center justify-center"
+              onPress={() => router.push("/(tabs)")}
+            >
+              <Text className="text-white text-base font-medium">Finish</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
-} 
+}
