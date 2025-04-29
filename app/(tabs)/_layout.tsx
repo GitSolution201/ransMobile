@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Platform } from 'react-native';
-import ExploreIcon from '@/assets/icons/explore.svg';
+import ExploreIcon from '@/assets/icons/search.svg';
 import HeartIcon from '@/assets/icons/heart.svg';
 import ChatIcon from '@/assets/icons/chat.svg';
 import ProfileIcon from '@/assets/icons/profile.svg';
@@ -34,7 +34,6 @@ export default function TabLayout() {
             <ExploreIcon 
               width={20} 
               height={20} 
-              stroke={color}
               fill="none"
               strokeWidth={2}
             />

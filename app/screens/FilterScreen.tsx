@@ -210,7 +210,7 @@ export default function FilterScreen() {
               knobSize={12}
               barHeight={2}
             />
-            <View className="flex-row justify-between items-center mt-6">
+            <View className="flex-row justify-between items-center">
               <View className="items-start">
                 <Text className="text-sm text-[#737373] mb-2">Minimum</Text>
                 <View className="border border-[#737373] rounded-full px-4 h-[42px] items-center justify-center">

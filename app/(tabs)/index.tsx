@@ -11,12 +11,12 @@ import { TopLocations } from '../components/TopLocations';
 import { TopAgents } from '../components/TopAgents';
 import { NearBy } from '../components/SmallPropertyCard';
 import { NearbyProperties } from '../components/NearbyProperties';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function HomeScreen() {
+  const [selectedType, setSelectedType] = useState('1');
   const handleCategorySelect = (category: { id: string; name: string }) => {
-    console.log('Selected category:', category);
-    // Handle category selection
+    setSelectedType(category.id);
   };
 
   return (
@@ -92,7 +92,7 @@ export default function HomeScreen() {
       </View>
 
       {/* Category List */}
-      <CategoryList onSelectCategory={handleCategorySelect} />
+      <CategoryList selectedType={selectedType} onSelectCategory={handleCategorySelect} />
       <View className="flex-row justify-between items-center px-4 my-4">
         <Text className="text-xl font-semibold text-gray-800 text-base">#SpecialForYou</Text>
         <Pressable>
