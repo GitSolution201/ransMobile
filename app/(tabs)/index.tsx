@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, ScrollView, Pressable, SafeAreaView, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, Pressable, SafeAreaView, TextInput, Platform, StatusBar } from 'react-native';
 import { router } from 'expo-router';
 import LocationIcon from '@/assets/icons/location.svg';
 import LocationDropdownIcon from '@/assets/icons/location_dropdown.svg';
@@ -20,7 +20,8 @@ export default function HomeScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 py-20 bg-background">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-5 bg-background">
+    <ScrollView className="flex-1 bg-background">
       {/* Header with Location and Notification */}
       <View className="flex-row justify-between items-center px-4 pb-4">
         {/* Location Selector */}
@@ -104,7 +105,10 @@ export default function HomeScreen() {
       <TopLocations />
       <TopAgents />
       <NearBy />
+      <View className= {`${Platform.OS === 'android' ? 'h-[100px]' : 'h-[20px]'}`}></View>
     </ScrollView>
+    </SafeAreaView>
+
   );
 }
 

@@ -14,8 +14,8 @@ export default function TermsAndConditions() {
   });
   return (
     <SafeAreaView 
-      className="flex-1 bg-white"
       style={{ paddingTop: androidPaddingTop }}
+      className="flex-1 bg-white mt-2"
     >
       <Header 
         title="Terms & Conditions" 

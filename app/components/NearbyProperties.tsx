@@ -40,7 +40,7 @@ const properties = [
 export function NearbyProperties() {
   return (
     <View>
-      <View className="flex-row justify-between items-center px-4 mb-4">
+      <View className="flex-row justify-between items-center px-4  my-4 mt-8">
         <Text className="text-xl   font-semibold text-gray-900">Featured Properties</Text>
         <Pressable onPress={() => router.push('/screens/filtered_property')}>
           <Text className="text-xs text-[#737373]">View All</Text>

@@ -283,14 +283,14 @@ export default function ProductDetails() {
 
           <View className="flex-row gap-3 mb-6">
             <TouchableOpacity
-              className="w-[70px] h-[42 px] bg-blue-600 rounded-2xl items-center justify-center"
+              className="w-[70px] h-[56px] bg-blue-600 rounded-2xl items-center justify-center"
               onPress={() => {}}
             >
               <Text className="text-white font-semibold text-base">Rent</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              className="w-[70px] h-[42px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
+              className="w-[70px] h-[56px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
               onPress={() => {}}
             >
               <Image
@@ -326,7 +326,7 @@ export default function ProductDetails() {
             <View className="flex-row items-center">
               <TouchableOpacity
                 className="w-12 h-12 rounded-full items-center justify-center"
-                onPress={() => {}}
+                onPress={() => router.push("/(tabs)/chat")}
               >
                 <MessageIcon width={24} height={24} />
               </TouchableOpacity>

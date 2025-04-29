@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Image,
   Platform,
+  StatusBar,
 } from "react-native";
 import {
   Ionicons,
@@ -110,16 +111,16 @@ const Counter = ({ label, value, onIncrement, onDecrement }: CounterProps) => (
         onPress={onDecrement}
         className="w-8 h-8 rounded-full border border-gray-300 items-center justify-center"
       >
-        <Text className="text-lg">-</Text>
+        <Text className="text-base">-</Text>
       </TouchableOpacity>
-      <Text className="text-base min-w-[40px] text-center">
+      <Text className="text-sm min-w-[40px] text-center">
         {value || 'Any'}
       </Text>
       <TouchableOpacity
         onPress={onIncrement}
         className="w-8 h-8 rounded-full border border-gray-300 items-center justify-center"
       >
-        <Text className="text-lg">+</Text>
+        <Text className="text-sm">+</Text>
       </TouchableOpacity>
     </View>
   </View>
@@ -169,8 +170,8 @@ export default function FilterScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <Header title="Filter" />
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-white">
+      <Header title="Filters" />
       <ScrollView className="flex-1 px-4">
 
         {/* Property Type */}

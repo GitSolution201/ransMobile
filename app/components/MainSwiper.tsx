@@ -39,7 +39,6 @@ export function MainSwiper() {
             key={index}
             style={{
               width: ITEM_WIDTH,
-              marginRight: 12, // space between items
             }}
           >
             <Image

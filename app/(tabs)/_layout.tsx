@@ -15,13 +15,12 @@ export default function TabLayout() {
         tabBarStyle: {
           borderTopWidth: 1,
           borderTopColor: '#E5E7EB',
-          height: 60,
+          height: 80,
           paddingBottom: 8,
           paddingTop: 8,
           ...(Platform.OS === 'ios' ? {
-            height: 85,
             paddingBottom: 30,
-          } : {}),
+          } :{}),
         },
         headerShown: false,
       }}

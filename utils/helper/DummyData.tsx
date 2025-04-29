@@ -231,7 +231,6 @@ export const amenitiesData = [
   {
     title: "Internet & Office",
     data: [
-      { id: '1', icon: 'wifi', label: '24/7 Wifi' },
       { id: '2', icon: 'office', label: 'Office Space' },
     ]
   },
@@ -239,14 +238,13 @@ export const amenitiesData = [
     title: "Kitchen & Dining",
     data: [
       { id: '1', icon: 'kitchen', label: 'Kitchen' },
-      { id: '2', icon: 'dining', label: 'Dining' },
     ]
   },
   {
     title: "Others",
     data: [
-      { id: '1', icon: 'kitchen', label: 'Kitchen' },
-      { id: '2', icon: 'dining', label: 'Dining' },
+      { id: '2', icon: 'fire-extinguisher', label: 'Fire extinguisher' },
+      { id: '3', icon: 'security-dog', label: 'Security Dog' },
     ]
   }
 ];

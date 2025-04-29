@@ -53,7 +53,7 @@ export function CategoryList({ onSelectCategory, selectedType }: CategoryListPro
           return (
             <TouchableOpacity
               key={type.id}
-              className={`items-center justify-center w-[70px] mr-4 pb-2 ${
+              className={`items-center justify-center w-[80px] mr-4 pb-2 ${
                 isSelected ? "border-b-2 border-[#0056D3]" : ""
               }`}
               onPress={() => onSelectCategory(type)}

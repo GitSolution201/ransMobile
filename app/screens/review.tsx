@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ImageSourcePropType,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import { Header } from '../components/Header';
 import { AntDesign } from '@expo/vector-icons';
@@ -48,7 +50,7 @@ const reviews: Review[] = [
 ];
 
 const ReviewCard = ({ review }: { review: Review }) => (
-  <View className="bg-white p-4 rounded-2xl mb-4 shadow-sm">
+  <View className="bg-gray-50 p-4 rounded-2xl mb-4 shadow-sm">
     <View className="flex-row items-center mb-3">
       <Image
         source={review.avatar}
@@ -78,7 +80,7 @@ const ReviewCard = ({ review }: { review: Review }) => (
 
 export default function ReviewScreen() {
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-white">
       <Header title="Reviews" />
       <ScrollView className="flex-1 px-4">
         <View className="py-4">

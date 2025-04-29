@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image , SafeAreaView} from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image , SafeAreaView, Platform, StatusBar  } from 'react-native';
 import { Header } from '../components/Header';
 import { router } from 'expo-router';
 import EditIcon from '@/assets/icons/edit.svg';
@@ -27,7 +27,7 @@ export default function PersonalInformationScreen() {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 bg-white mt-2">
       <Header 
         title="Personal Information" 
         onBack={() => router.replace('/(tabs)/profile')}
@@ -44,7 +44,7 @@ export default function PersonalInformationScreen() {
               className="absolute bottom-0 right-0 bg-blue-600 w-8 h-8 rounded-full items-center justify-center"
               onPress={() => console.log('Change profile picture')}
             >
-              <EditIcon width={16} height={16} color="white" />
+              <EditIcon width={12} height={12} color="white" />
             </TouchableOpacity>
           </View>
         </View>

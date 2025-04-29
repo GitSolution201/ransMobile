@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, ScrollView, SafeAreaView, Platform, StatusBar } from 'react-native';
 import WebIcon from '@/assets/icons/web.svg';
 import EmailIcon from '@/assets/icons/email_white.svg';
 import DocumentIcon from '@/assets/icons/document.svg';
@@ -11,8 +11,8 @@ export default function FAQSupportScreen() {
   const [activeTab, setActiveTab] = useState<'buyer' | 'seller'>('buyer');
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
-      <Header />
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-background">
+      <Header title="FAQS & SUPPORT"  />
       <ScrollView className="flex-1 px-6">
         {/* Subtitle */}
 

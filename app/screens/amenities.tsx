@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, ScrollView, Image, SafeAreaView } from 'react-native';
+import { View, Text, ScrollView, Image, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { Header } from '../components/Header';
 import { Colors } from '@/utils/constants/Colors';
 import { amenitiesData, amenitiesIcons } from '@/utils/helper/DummyData';
 
 export default function Amenities() {
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-white">
       <Header title="Amenities" />
 
-      <ScrollView className="flex-1 px-5 pt-6">
+      <ScrollView className="flex-1 px-5 ">
         {amenitiesData.map((section, sectionIndex) => (
           <View key={sectionIndex} className="mb-8">
             <Text className="text-lg font-bold mb-4">{section.title}</Text>
