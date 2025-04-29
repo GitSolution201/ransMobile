@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-
+import BackIcon from "@/assets/icons/back_black.svg";
 const { width, height } = Dimensions.get('window');
 
 export default function ImageDetails() {
@@ -29,13 +29,10 @@ export default function ImageDetails() {
       {/* Top bar */}
       <View className="absolute top-12 left-4 right-4 z-10 flex-row justify-between">
         <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md" onPress={() => router.back()}>
-          <Image 
-            source={require('@/assets/icons/back.png')}
-            className="w-3 h-3"
-          />
+         <BackIcon width={10} height={10} color="#737373" />
         </TouchableOpacity>
         <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md">
-          <Ionicons name="ellipsis-vertical" size={24} color="#737373" />
+          <Ionicons name="ellipsis-vertical" size={15} color="#737373" />
         </TouchableOpacity>
       </View>
 
@@ -86,12 +83,12 @@ export default function ImageDetails() {
       )}
 
       {/* Thumbnails */}
-      <View className="absolute right-4 bottom-10 -translate-y-1/2 space-y-3 z-10">
+      <View className="absolute right-4 bottom-5 -translate-y-1/2 space-y-3 z-10">
         {images.slice(0, 3).map((img, idx) => (
-          <TouchableOpacity key={idx} onPress={() => goToIndex(idx)}>
+          <TouchableOpacity className=" mt-4" key={idx} onPress={() => goToIndex(idx)}>
             <Image
               source={typeof img === 'string' ? { uri: img } : img}
-              className={`w-16 h-16 rounded-xl border-2 ${currentIndex === idx ? 'border-blue-500' : 'border-white'}`}
+              className={`w-16 h-16 rounded-[10px] border-2 ${currentIndex === idx ? 'border-blue-500' : 'border-white'}`}
               resizeMode="cover"
             />
             {idx === 2 && images.length > 3 && (

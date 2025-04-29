@@ -8,7 +8,7 @@ export default function WelcomeScreen() {
   return (
     <View className="flex-1 bg-background">
       {/* Header */}
-      <View className="flex-row justify-between items-center absolute top-12 left-4 right-4 z-10">
+      <View className="flex-row justify-between items-center absolute top-[50px] left-4 right-4 z-10">
         <BackButton />
         <TouchableOpacity className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center' onPress={() => router.push('/(auth)/account-setup/location')}>
           <Text className="text-white text-sm font-medium">Skip</Text>
@@ -39,7 +39,7 @@ export default function WelcomeScreen() {
         text="Get Started"
         variant="secondary"
         position="absolute"
-        bottom={32}
+        bottom={50}
         onPress={() => router.push('/account-setup/location')}
       />
     </View>

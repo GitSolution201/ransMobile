@@ -2,7 +2,8 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-
+import React from 'react';
+import { LoginHeader } from '../components/LoginHeader';
 export default function ForgotPasswordScreen() {
   const [email, setEmail] = useState('');
 
@@ -12,8 +13,9 @@ export default function ForgotPasswordScreen() {
   };
 
   return (
-    <View className="flex-1 bg-white dark:bg-gray-900 p-6">
-      <View className="flex-1 justify-center">
+    <View className="flex-1 bg-white dark:bg-gray-900">
+      <LoginHeader />
+      <View className="flex-1 px-6 mt-10">
         <Text className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Reset Password
         </Text>

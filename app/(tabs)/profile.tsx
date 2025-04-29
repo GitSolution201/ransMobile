@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { legalSettings, privacySettings, settingsData, supportSettings } from '@/utils/helper/DummyData';
 import { router, useRouter } from 'expo-router';
 import BellIcon from '@/assets/icons/bell.svg';
+import React from 'react';
 
 
 // Setting Item Component
@@ -34,6 +35,8 @@ const handleSettingPress = (title: string) => {
     router.push('/screens/contact-us');
   } else if(title === 'Terms of service' ) {
     router.push('/screens/terms-conditions');
+  } else if(title === 'Personal Information') {
+    router.push('/screens/personal_information');
   } else {
     console.log('Setting pressed:', title);
   }
@@ -55,7 +58,10 @@ export default function ProfileScreen() {
       </View>
 
       {/* Profile Section */}
-      <TouchableOpacity className="flex-row items-center px-4 py-4 border-b border-[#73737333]">
+      <TouchableOpacity 
+        className="flex-row items-center px-4 py-4 border-b border-[#73737333]"
+        onPress={() => router.push('/screens/personal_information')}
+      >
         <Image 
           source={{ uri: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' }}
           className="w-16 h-16 rounded-full"

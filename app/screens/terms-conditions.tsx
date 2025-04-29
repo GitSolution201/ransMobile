@@ -1,16 +1,25 @@
 import React from 'react';
-import { View, Text, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, ScrollView, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { Header } from '../components/Header';
 import { Colors } from '@/utils/constants/Colors';
 import { termsAndConditionsData } from '@/utils/helper/DummyData';
 import { router } from 'expo-router';
+import { useAppSelector } from '@/redux/hooks';
 
 export default function TermsAndConditions() {
+  // Add Android-specific padding to account for status bar
+  const androidPaddingTop = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
+  const { isAuthenticated } = useAppSelector((state) => {
+    return state.auth;
+  });
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView 
+      style={{ paddingTop: androidPaddingTop }}
+      className="flex-1 bg-white mt-2"
+    >
       <Header 
         title="Terms & Conditions" 
-        onBack={() => router.push('/(auth)/signup')}
+        onBack={() =>isAuthenticated ? router.back() : router.push('/(auth)/signup')}
       />
 
       <ScrollView className="flex-1 px-5">

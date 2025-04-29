@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView ,SafeAreaView} from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView ,SafeAreaView, Platform, StatusBar} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { notifications } from '@/utils/helper/DummyData';
+import { Header } from '../components/Header';
 
 const filters = ['All', 'Mentions', 'Unread'];
 
@@ -9,8 +10,10 @@ export default function Notifications() {
   const [activeFilter, setActiveFilter] = useState('All');
 
   return (
-    <SafeAreaView className="flex-1 bg-white pt-10">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-white">
       {/* Header Icons */}
+
+      <Header title="Notifications" />
       <View className="flex-row justify-end items-center px-5 mb-2">
         <TouchableOpacity className="w-12 h-12 rounded-full bg-[#F7F5F5] items-center justify-center mr-3">
           <Ionicons name="search" size={20} color="#737373" />
@@ -67,7 +70,7 @@ export default function Notifications() {
                     {item.actions.map((action) => (
                       <TouchableOpacity
                         key={action}
-                        className={`px-6 py-3 rounded-full ${action === 'Accept' ? 'bg-[#2563EB]' : 'border border-[#737373] bg-white'}`}
+                        className={`px-6 py-3 mr-2 rounded-full ${action === 'Accept' ? 'bg-[#2563EB]' : 'border border-[#737373] bg-white'}`}
                       >
                         <Text className={`text-xs ${action === 'Accept' ? 'text-white' : 'text-[#222]'}`}>{action}</Text>
                       </TouchableOpacity>

@@ -30,7 +30,7 @@ function LocationCard({ name, image, onPress }: LocationCardProps) {
   return (
     <Pressable 
       onPress={onPress}
-      className="flex-row items-center bg-gray-200 rounded-full mr-3 pr-4 h-[57px] overflow-hidden"
+      className="flex-row items-center bg-gray-200 rounded-full mr-3 pr-4 overflow-hidden"
     >
       <Image
         source={{ uri: image }}

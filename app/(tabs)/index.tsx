@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, ScrollView, Pressable, SafeAreaView, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, Pressable, SafeAreaView, TextInput, Platform, StatusBar } from 'react-native';
 import { router } from 'expo-router';
 import LocationIcon from '@/assets/icons/location.svg';
 import LocationDropdownIcon from '@/assets/icons/location_dropdown.svg';
@@ -11,15 +11,17 @@ import { TopLocations } from '../components/TopLocations';
 import { TopAgents } from '../components/TopAgents';
 import { NearBy } from '../components/SmallPropertyCard';
 import { NearbyProperties } from '../components/NearbyProperties';
+import React, { useState } from 'react';
 
 export default function HomeScreen() {
+  const [selectedType, setSelectedType] = useState('1');
   const handleCategorySelect = (category: { id: string; name: string }) => {
-    console.log('Selected category:', category);
-    // Handle category selection
+    setSelectedType(category.id);
   };
 
   return (
-    <ScrollView className="flex-1 py-20 bg-background">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-5 bg-background">
+    <ScrollView className="flex-1 bg-background">
       {/* Header with Location and Notification */}
       <View className="flex-row justify-between items-center px-4 pb-4">
         {/* Location Selector */}
@@ -42,7 +44,7 @@ export default function HomeScreen() {
             // Handle notification press
             console.log('Notification bell pressed');
           }}
-          className="relative bottom-2"
+          className="relative"
         >
           <BellIcon width={23} height={23} />
           {/* Notification Badge */}
@@ -71,7 +73,7 @@ export default function HomeScreen() {
             <TextInput
               placeholder="Search for properties, agents, or services..."
               className="flex-1 ml-2 text-sm "
-              placeholderTextColor="#9CA3AF text-[#737373]"
+              placeholderTextColor="#737373"
             />
           </View>
 
@@ -91,7 +93,7 @@ export default function HomeScreen() {
       </View>
 
       {/* Category List */}
-      <CategoryList onSelectCategory={handleCategorySelect} />
+      <CategoryList selectedType={selectedType} onSelectCategory={handleCategorySelect} />
       <View className="flex-row justify-between items-center px-4 my-4">
         <Text className="text-xl font-semibold text-gray-800 text-base">#SpecialForYou</Text>
         <Pressable>
@@ -103,7 +105,10 @@ export default function HomeScreen() {
       <TopLocations />
       <TopAgents />
       <NearBy />
+      <View className= {`${Platform.OS === 'android' ? 'h-[100px]' : 'h-[20px]'}`}></View>
     </ScrollView>
+    </SafeAreaView>
+
   );
 }
 

@@ -6,6 +6,7 @@ import MessageIcon from "@/assets/icons/message.svg";
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg";
 import { router } from "expo-router";
 import { NearBy } from "../components/SmallPropertyCard";
+import BackIcon from "@/assets/icons/back_black.svg";
 
 
 // Dummy amenities data for demonstration
@@ -22,7 +23,6 @@ const amenities = [
     count: 1,
     Icon: require("@/assets/icons/bath.svg").default,
   },
-  { id: 4, name: "Wifi", Icon: require("@/assets/icons/wifi.svg").default },
 ];
 
 const reviews = [
@@ -122,7 +122,10 @@ const ReviewsSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
     {reviews.map((review, idx) => (
       <ReviewCard key={idx} {...review} />
     ))}
-    <TouchableOpacity className="bg-blue-600 py-4 rounded-2xl items-center mt-2">
+    <TouchableOpacity 
+      className="bg-blue-600 h-[40px] rounded-[40px] items-center justify-center mt-2"
+      onPress={() => router.push('/screens/review')}
+    >
       <Text className="text-white text-base font-semibold">
         View All Reviews
       </Text>
@@ -150,9 +153,12 @@ const LocationFacilitiesSection = () => (
     </View>
 
     {/* Distance Dropdown */}
-    <TouchableOpacity className="border border-gray-400 rounded-2xl px-4 py-4 flex-row items-center justify-between mb-4">
-      <Text className="text-xs text-gray-700">4.5 km from your Location</Text>
-      <ChevronDownIcon width={20} height={20} />
+    <TouchableOpacity className="border border-gray-400 rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4">
+      <View className="flex-row items-center">
+        <LocationIcon width={16} height={16} />
+        <Text className="text-xs text-gray-700 ml-3">4.5 km from your Location</Text>
+      </View>
+      <ChevronDownIcon width={16} height={16} />
     </TouchableOpacity>
 
     {/* Facilities Row */}
@@ -204,10 +210,7 @@ export default function ProductDetails() {
           className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
           onPress={() => router.back()}
         >
-          <Image
-            source={require("@/assets/icons/back.png")}
-            className="w-3 h-3"
-          />
+         <BackIcon width={10} height={10} color="#737373"  />
         </TouchableOpacity>
         <TouchableOpacity
           className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
@@ -215,7 +218,7 @@ export default function ProductDetails() {
             router.push("/screens/FilterScreen");
           }}
         >
-          <FilterIcon width={20} height={20} className="text-gray-400" />
+          <FilterIcon width={15} height={15} className="text-gray-400" />
         </TouchableOpacity>
       </View>
 
@@ -244,7 +247,7 @@ export default function ProductDetails() {
                 })
               }
             >
-              <Text className="text-white text-sm font-semibold">+4</Text>
+              <Text className="text-white text-sm font-semibold">+2</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -280,14 +283,14 @@ export default function ProductDetails() {
 
           <View className="flex-row gap-3 mb-6">
             <TouchableOpacity
-              className="w-[70px] h-[42 px] bg-blue-600 rounded-2xl items-center justify-center"
+              className="w-[70px] h-[56px] bg-blue-600 rounded-2xl items-center justify-center"
               onPress={() => {}}
             >
               <Text className="text-white font-semibold text-base">Rent</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              className="w-[70px] h-[42px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
+              className="w-[70px] h-[56px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
               onPress={() => {}}
             >
               <Image
@@ -314,7 +317,7 @@ export default function ProductDetails() {
                 className="w-12 h-12 rounded-full"
               />
               <View className="ml-6">
-                <Text className="text-xs font-semibold text-black">
+                <Text className="text-sm font-semibold text-black">
                   Jonathan
                 </Text>
                 <Text className="text-xs text-primary">Landlord</Text>
@@ -323,7 +326,7 @@ export default function ProductDetails() {
             <View className="flex-row items-center">
               <TouchableOpacity
                 className="w-12 h-12 rounded-full items-center justify-center"
-                onPress={() => {}}
+                onPress={() => router.push("/(tabs)/chat")}
               >
                 <MessageIcon width={24} height={24} />
               </TouchableOpacity>
@@ -338,12 +341,10 @@ export default function ProductDetails() {
                 const IconComponent = amenity.Icon;
                 return (
                   <View key={amenity.id} className="flex-row items-center">
-                    <View className="w-8 h-8 mr-4 items-center justify-center">
+                    <View className="w-8 h-8 mr-4 mb-2 items-center justify-center">
                       <IconComponent
                         width={24}
                         height={24}
-                        stroke="#6B7280"
-                        strokeWidth={1.5}
                         fill="none"
                       />
                     </View>
@@ -357,10 +358,11 @@ export default function ProductDetails() {
               })}
             </View>
             <TouchableOpacity
-              className="mt-4 py-4 rounded-full border border-gray-200 items-center"
+              className="mt-4  h-[51px] rounded-[40px] border border-gray-400 items-center justify-center"
               onPress={() => router.push("/screens/amenities")}
+
             >
-              <Text className="text-gray-700 text-xs font-medium">
+              <Text className="text-xs text-gray-800">
                 Show all 11 amenities
               </Text>
             </TouchableOpacity>
@@ -387,13 +389,12 @@ export default function ProductDetails() {
               Mobile Money, Bank Transfer, or Cash.
             </Text>
             <TouchableOpacity
-              className="border-2 border-gray-300 rounded-2xl py-4 items-center mb-8"
+              className="border border-gray-400 justify-center items-center rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4"
               onPress={() => {
                 router.push("/screens/terms-conditions");
-                // TODO: Show all terms & conditions logic
               }}
             >
-              <Text className="text-xs text-gray-800">
+              <Text className="text-xs text-center w-full text-gray-800">
                 Show all terms & conditions
               </Text>
             </TouchableOpacity>
