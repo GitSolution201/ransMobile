@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, Image, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Button } from '@/components/Button';
+import React from 'react';
+import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
 
 type PaymentMethod = 'paypal' | 'mastercard' | 'visa';
 
@@ -190,20 +191,14 @@ export default function PaymentScreen() {
       className="flex-1"
     >
       <View className="flex-1 bg-background">
-        {/* Background Image */}
-        <Image 
-          source={require('@/assets/images/smile.png')}
-          className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
-          resizeMode="cover"
-        />
-
-        {/* Header */}
-        <View className="flex-row justify-between items-center px-6 pt-12 pb-8">
-          <BackButton />
-          <TouchableOpacity className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center'>
-            <Text className="text-white text-sm font-medium">Skip</Text>
-          </TouchableOpacity>
-        </View>
+      <AccountSetupHeader
+        onBackPress={() => {
+          router.back();
+        }}
+        onSkipPress={() => {
+          router.push('/(auth)/account-setup/profile-picture');
+        }}
+      />
 
         <ScrollView 
           className="flex-1"

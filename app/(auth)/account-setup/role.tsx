@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
 import { useState } from 'react';
 import CheckIcon from '@/assets/icons/check.svg';
 import { Button } from '@/components/Button';
+import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
+import React from 'react';
 
 interface Role {
   id: string;
@@ -79,26 +80,18 @@ export default function RoleScreen() {
   return (
     <View className="flex-1 bg-background">
       {/* Background Image */}
-      <Image 
-        source={require('@/assets/images/smile.png')}
-        className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
-        resizeMode="cover"
+      <AccountSetupHeader
+        onBackPress={() => {
+          router.back();
+        }}
+        onSkipPress={() => {
+          router.push('/(auth)/account-setup/payment');
+        }}
       />
 
-      {/* Header */}
-      <View className="flex-row justify-between items-center absolute top-12 left-4 right-4 z-10">
-        <BackButton />
-        <TouchableOpacity 
-          className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center'
-          onPress={() => router.push('/(auth)/account-setup/location')}
-        >
-          <Text className="text-white text-sm font-medium">Skip</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View className="flex-1 px-4 pt-36">
+      <View className="flex-1 px-4 pt-[20px]">
         {/* Title Section */}
-        <Text className="text-2xl text-primary font-extrabold mb-4 mt-6">
+        <Text className="text-2xl text-primary font-extrabold mb-4">
           What's Your Role?
         </Text>
 

@@ -1,14 +1,15 @@
-import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
 import { useDispatch } from 'react-redux';
 import TimerIcon from '@/assets/icons/timer.svg';
 import { login } from '@/redux/authSlice';
+import { LoginHeader } from '../components/LoginHeader';
+import React from 'react';
 
 export default function OTPScreen() {
   const [otp, setOtp] = useState(['', '', '', '', '']);
-  const [timeLeft, setTimeLeft] = useState(15); // 15 seconds timer
+  const [timeLeft, setTimeLeft] = useState(60);
   const inputRefs = useRef<Array<React.RefObject<TextInput>>>([...Array(5)].map(() => useRef<TextInput>(null)));
   const dispatch = useDispatch();
 
@@ -41,7 +42,6 @@ export default function OTPScreen() {
   const handleVerify = () => {
     const otpString = otp.join('');
     if (otpString.length === 5) {
-      // Handle verification
       dispatch(login({ email: 'ddembe02@gmail.com', id: '1' }));
       router.replace('/(auth)/account-setup/welcome');
     }
@@ -55,59 +55,52 @@ export default function OTPScreen() {
 
   return (
     <View className="flex-1 bg-white">
-      {/* Back Button */}
-      <View className="absolute top-12 left-6 z-10">
-        <BackButton />
+      <LoginHeader />
+
+      {/* Title */}
+      <View className="px-6">
+        <Text className="text-sm text-primary">
+          Enter 5 digit verification code sent to
+        </Text>
       </View>
-
-      <View className="relative bg-white">
-          <Image
-          resizeMode='contain'
-            source={require('@/assets/images/login-illustration.png')}
-            className="w-full h-[175px] object-contain"
-          />
-        </View>
-
-        {/* Title */}
-        <View className="px-6">
-          <Text className="text-sm text-primary ">
-          Enter 5 digit verification code sent to  
-          </Text>
-        </View>
       <View className="px-6 pt-6">
-   
         <Text className="text-primary font-bold mb-12 text-sm">
           ddembe02@gmail.com
         </Text>
 
         {/* OTP Input Fields */}
-        <View className="flex-row justify-between mb-12 h-[56px]">
+        <View className="flex-row justify-between mb-12">
           {[0, 1, 2, 3, 4].map((index) => (
-            <TextInput
+            <View 
               key={index}
-              ref={inputRefs.current[index]}
-              className="w-[56px] h-[56px] border border-border rounded-2xl text-center text-xl"
-              maxLength={1}
-              keyboardType="number-pad"
-              value={otp[index]}
-              onChangeText={(text) => handleOtpChange(text, index)}
-            />
+              className={`w-[48px] h-[48px] border ${otp[index] ? 'border-primary' : 'border-border'} rounded-xl items-center justify-center`}
+            >
+              <TextInput
+                ref={inputRefs.current[index]}
+                className="w-full h-full text-center text-xl text-primary"
+                maxLength={1}
+                keyboardType="number-pad"
+                value={otp[index]}
+                onChangeText={(text) => handleOtpChange(text, index)}
+                selectTextOnFocus
+              />
+            </View>
           ))}
         </View>
 
         {/* Verify Button */}
         <TouchableOpacity
-          className="bg-secondary py-4 rounded-2xl mb-8 mx-6"
+          className={`py-4 rounded-2xl mb-8 mx-6 ${otp.join('').length === 5 ? 'bg-primary' : 'bg-gray-300'}`}
           onPress={handleVerify}
+          disabled={otp.join('').length !== 5}
         >
           <Text className="text-white text-center text-sm font-semibold">
             Verify Code
           </Text>
         </TouchableOpacity>
-
-        {/* Timer and Resend - Moved to bottom */}
-     
       </View>
+
+      {/* Timer and Resend */}
       <View className="absolute bottom-20 left-0 right-0">
         <View className="flex-1 justify-center items-center">
           <View className="flex-row items-center justify-center w-[128px] h-[46px] space-x-2 rounded-full bg-[#F9F9F9]">
@@ -121,7 +114,7 @@ export default function OTPScreen() {
         </View>
         <View className="flex-row justify-center mt-4">
           <Text className="text-primary">
-            Didn,t receive OTP?{' '}
+            Didn't receive OTP?{' '}
           </Text>
           <TouchableOpacity 
             onPress={handleResend}

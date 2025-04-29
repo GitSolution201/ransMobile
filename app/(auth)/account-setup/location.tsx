@@ -1,31 +1,25 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { router } from "expo-router";
-import { BackButton } from "@/components/BackButton";
 import LocationIcon from "@/assets/icons/location.svg";
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg";
 import { Button } from "@/components/Button";
+import { AccountSetupHeader } from "@/app/components/AccountSetupHeader";
+import React from "react";
 
 export default function LocationScreen() {
   return (
     <View className="flex-1 bg-background">
-      {/* Background Image */}
-      <Image
-        source={require("@/assets/images/smile.png")}
-        className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
-        resizeMode="cover"
+      <AccountSetupHeader
+        onBackPress={() => {
+          router.back();
+        }}
+        onSkipPress={() => {
+          router.push('/(auth)/account-setup/preferences');
+        }}
       />
-
-      {/* Header */}
-      <View className="flex-row justify-between items-center absolute top-12 left-4 right-4 z-10">
-        <BackButton />
-        <TouchableOpacity className="h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center">
-          <Text className="text-white text-sm font-medium">Skip</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View className="flex-1 px-4">
+      <View className="flex-1 px-4 pt-[20px]">
         {/* Title Section */}
-        <View className="pt-36 z-20">
+        <View className=" z-20">
           <Text className="text-2xl text-primary font-extrabold mb-2">
             Add your Location
           </Text>
@@ -45,7 +39,7 @@ export default function LocationScreen() {
             <View
               className="absolute bottom-0 left-0 right-0 bg-[#FFF8F880] py-3 items-center"
 
-              //  className="bg-[#FFF8F880] w-full py-3"
+            //  className="bg-[#FFF8F880] w-full py-3"
             >
               <Text className="text-primary text-base text-center">
                 Select on Map

@@ -14,13 +14,21 @@ import EditIcon from "@/assets/icons/edit.svg";
 import EmailIcon from "@/assets/icons/email.svg";
 import Iconemail from "@/assets/icons/emailicon.svg";
 import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/Button";
+import React from "react";
+import { AccountSetupHeader } from "@/app/components/AccountSetupHeader";
+import { SuccessBottomSheet } from '@/app/components/SuccessBottomSheet';
 
 export default function ProfilePictureScreen() {
   const [image, setImage] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // Add console log to track state changes
+  useEffect(() => {
+    console.log('showSuccessModal changed:', showSuccessModal);
+  }, [showSuccessModal]);
 
   const requestPermissions = async () => {
     if (Platform.OS !== "web") {
@@ -112,19 +120,12 @@ export default function ProfilePictureScreen() {
   return (
     <View className="flex-1 bg-background">
       {/* Background Image */}
-      <Image
-        source={require("@/assets/images/smile.png")}
-        className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
-        resizeMode="cover"
+      <AccountSetupHeader
+        onBackPress={() => {
+          router.back();
+        }}
+        onSkipPress={() =>setShowSuccessModal(true) }
       />
-
-      {/* Header */}
-      <View className="flex-row justify-between items-center px-4 pt-12 pb-8">
-        <BackButton />
-        <TouchableOpacity className="h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center">
-          <Text className="text-white text-sm font-medium">Skip</Text>
-        </TouchableOpacity>
-      </View>
 
       {/* Content */}
       <View className="px-4 flex-1 mt-8">
@@ -179,7 +180,7 @@ export default function ProfilePictureScreen() {
       </View>
 
       {/* Bottom Section with Progress and Next Button */}
-      <View className="px-4 pb-6 pt-4">
+      <View className="px-4 pb-6">
         {/* Progress Bar */}
         <View className="h-1 bg-gray-200 rounded-full mb-4 mx-24">
           <View
@@ -232,35 +233,14 @@ export default function ProfilePictureScreen() {
         </TouchableOpacity>
       </Modal>
 
-      {/* Success Modal */}
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={showSuccessModal}
-        onRequestClose={() => setShowSuccessModal(false)}
-      >
-        <View className="flex-1 justify-center items-center bg-black/50">
-          <View className="bg-white rounded-3xl p-8 w-[80%] items-center">
-            <Image
-              source={require("@/assets/icons/smile.png")}
-              className="w-[120px] h-[120px] mb-4"
-              resizeMode="contain"
-            />
-            <View className="flex-row items-center mb-12">
-              <Text className="text-[#0056D3] text-xl">Account set </Text>
-              <Text className="text-[#0056D3] text-xl font-bold">
-                Successfully
-              </Text>
-            </View>
-            <TouchableOpacity
-              className="w-full h-[56px] bg-[#1ABC9C] rounded-xl items-center justify-center"
-              onPress={() => router.push("/(tabs)")}
-            >
-              <Text className="text-white text-base font-medium">Finish</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+      {/* Success Bottom Sheet */}
+      <SuccessBottomSheet 
+        isVisible={showSuccessModal}
+        onClose={() => {
+          console.log('Bottom sheet onClose called');
+          setShowSuccessModal(false);
+        }}
+      />
     </View>
   );
 }

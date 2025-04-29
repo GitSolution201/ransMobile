@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-nati
 import { router } from 'expo-router';
 import { BackButton } from '@/components/BackButton';
 import { Button } from '@/components/Button';
+import React from 'react';
 
 export default function WelcomeScreen() {
   return (
@@ -9,7 +10,7 @@ export default function WelcomeScreen() {
       {/* Header */}
       <View className="flex-row justify-between items-center absolute top-12 left-4 right-4 z-10">
         <BackButton />
-        <TouchableOpacity className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center' onPress={() => router.push('/(auth)/faq-support')}>
+        <TouchableOpacity className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center' onPress={() => router.push('/(auth)/account-setup/location')}>
           <Text className="text-white text-sm font-medium">Skip</Text>
         </TouchableOpacity>
       </View>
