@@ -63,11 +63,6 @@ export const legalSettings = [
   // Privacy Settings Data
  export const privacySettings = [
     {
-      id: '1',
-      icon: 'shield-outline' as keyof typeof Ionicons.glyphMap,
-      title: 'Privacy Policy',
-    },
-    {
       id: '2',
       icon: 'person-outline' as keyof typeof Ionicons.glyphMap,
       title: 'Login Activity',

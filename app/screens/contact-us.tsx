@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image , SafeAreaView} from 'react-native';
 import { contactOptions } from '@/utils/helper/DummyData';
 import { Colors } from '@/utils/constants/Colors';
 import { Header } from '../components/Header';
 
 export default function ContactUs() {
   return (
-    <View className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-white">
       <Header title="Contact Us" />
 
       {/* Contact Options */}
@@ -59,6 +59,6 @@ export default function ContactUs() {
           );
         })}
       </View>
-    </View>
+    </SafeAreaView>
   );
 } 
