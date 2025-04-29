@@ -18,7 +18,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.aventre.userapp.test",
       "buildNumber": "1",
-       "icon": "./assets/images/icon.png"
+      "icon": "./assets/images/icon.png"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,6 +33,14 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "06d92136-f932-4143-88a0-a6fa8a7d5c63"
+      }
+    }
   }
 }
