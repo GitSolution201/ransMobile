@@ -34,7 +34,7 @@ export default function TabLayout() {
               width={20} 
               height={20} 
               fill="none"
-              strokeWidth={2}
+              strokeWidth={1}
             />
           ),
         }}
