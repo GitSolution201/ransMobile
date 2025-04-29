@@ -122,7 +122,7 @@ const ReviewsSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
     {reviews.map((review, idx) => (
       <ReviewCard key={idx} {...review} />
     ))}
-    <TouchableOpacity className="bg-blue-600 py-4 rounded-2xl items-center mt-2">
+    <TouchableOpacity className="bg-blue-600 h-[40px] rounded-[40px] items-center justify-center mt-2">
       <Text className="text-white text-base font-semibold">
         View All Reviews
       </Text>
@@ -150,9 +150,12 @@ const LocationFacilitiesSection = () => (
     </View>
 
     {/* Distance Dropdown */}
-    <TouchableOpacity className="border border-gray-400 rounded-2xl px-4 py-4 flex-row items-center justify-between mb-4">
-      <Text className="text-xs text-gray-700">4.5 km from your Location</Text>
-      <ChevronDownIcon width={20} height={20} />
+    <TouchableOpacity className="border border-gray-400 rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4">
+      <View className="flex-row items-center">
+        <LocationIcon width={16} height={16} />
+        <Text className="text-xs text-gray-700 ml-3">4.5 km from your Location</Text>
+      </View>
+      <ChevronDownIcon width={16} height={16} />
     </TouchableOpacity>
 
     {/* Facilities Row */}
@@ -311,7 +314,7 @@ export default function ProductDetails() {
                 className="w-12 h-12 rounded-full"
               />
               <View className="ml-6">
-                <Text className="text-xs font-semibold text-black">
+                <Text className="text-sm font-semibold text-black">
                   Jonathan
                 </Text>
                 <Text className="text-xs text-primary">Landlord</Text>
@@ -352,7 +355,7 @@ export default function ProductDetails() {
               })}
             </View>
             <TouchableOpacity
-              className="border-2 border-gray-300 rounded-2xl py-4 items-center mb-8"
+              className="mt-4 py-4 rounded-[40px] border border-gray-400 items-center"
               onPress={() => router.push("/screens/amenities")}
 
             >
@@ -383,10 +386,9 @@ export default function ProductDetails() {
               Mobile Money, Bank Transfer, or Cash.
             </Text>
             <TouchableOpacity
-              className="border-2 border-gray-300 rounded-2xl py-4 items-center mb-8"
+              className="border border-gray-400 rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4"
               onPress={() => {
                 router.push("/screens/terms-conditions");
-                // TODO: Show all terms & conditions logic
               }}
             >
               <Text className="text-xs text-gray-800">

@@ -5,7 +5,7 @@ import { SocialSignInButtons } from '@/components/SocialSignInButtons';
 import React from 'react';
 export default function OnboardingScreen() {
   const handleSignIn = () => {
-    router.push('/(auth)/account-setup/profile-picture');
+    router.push('/(auth)/login');
   };
 
   const handleRegister = () => {
