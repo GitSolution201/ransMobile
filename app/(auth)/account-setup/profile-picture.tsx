@@ -182,17 +182,8 @@ export default function ProfilePictureScreen() {
       {/* Bottom Section with Progress and Next Button */}
       <View className="px-4 pb-6">
         {/* Progress Bar */}
-<<<<<<< Updated upstream
-        <View className="h-1 bg-gray-200 rounded-full mb-4 mx-24">
-          <View
-            className={`h-full bg-primary rounded-full ${
-              image ? "w-full" : "w-2/3"
-            }`}
-          />
-=======
         <View className="h-1.5s bg-gray-200 rounded-full mb-4 mx-24">
           <View className={`h-full bg-primary rounded-full ${image ? 'w-full' : 'w-2/3'}`} />
->>>>>>> Stashed changes
         </View>
         <Button
           text="Next"
