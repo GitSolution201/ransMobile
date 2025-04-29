@@ -1,61 +1,46 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import HomeIcon from '@/assets/icons/home.svg';
 import ApartmentIcon from '@/assets/icons/apartment_icon.svg';
 import LandIcon from '@/assets/icons/land_icon.svg';
 import OfficeIcon from '@/assets/icons/office_icon.svg';
 import WarehouseIcon from '@/assets/icons/warehouse_icon.svg';
+import { Colors } from '../../utils/constants/Colors';
 
 const propertyTypes = [
   {
     id: "1",
     label: "All",
-    icon: (color: string) => (
-      <HomeIcon width={24} height={24} stroke={color} fill={color} />
-    ),
+    image: require('../../assets/images/home.png')
   },
   {
     id: "2",
     label: "Apartment",
-    icon: (color: string) => (
-      <ApartmentIcon width={24} height={24} stroke={color} fill={color} />
-    ),
+    image: require('../../assets/images/apartment.png')
   },
   {
     id: "3",
     label: "Land",
-    icon: (color: string) => (
-      <LandIcon width={24} height={24} stroke={color} fill={color} />
-    ),
+    image: require('../../assets/images/land.png')
   },
   {
     id: "4",
     label: "Office",
-    icon: (color: string) => (
-      <OfficeIcon width={24} height={24} stroke={color} fill={color} />
-    ),
+    image: require('../../assets/images/office.png')
   },
   {
     id: "5",
     label: "Warehouse",
-    icon: (color: string) => (
-      <WarehouseIcon width={24} height={24} stroke={color} fill={color} />
-    ),
+    image: require('../../assets/images/warehouse.png')
   },
 ];
 
 interface CategoryListProps {
-  onSelectCategory?: (category: { id: string; label: string }) => void;
+  onSelectCategory: (category: { id: string; label: string }) => void;
+  selectedType: string;
 }
 
-export function CategoryList({ onSelectCategory }: CategoryListProps) {
-  const [selectedType, setSelectedType] = useState("1"); // Default to 'All'
-
-  const handleSelect = (type: { id: string; label: string }) => {
-    setSelectedType(type.id);
-    onSelectCategory?.(type);
-  };
-
+export function CategoryList({ onSelectCategory, selectedType }: CategoryListProps) {
   return (
     <ScrollView
       horizontal
@@ -68,12 +53,16 @@ export function CategoryList({ onSelectCategory }: CategoryListProps) {
           return (
             <TouchableOpacity
               key={type.id}
-              className={`items-center justify-center w-[70px] pb-2 ${
+              className={`items-center justify-center w-[70px] mr-4 pb-2 ${
                 isSelected ? "border-b-2 border-[#0056D3]" : ""
               }`}
-              onPress={() => handleSelect(type)}
+              onPress={() => onSelectCategory(type)}
             >
-              {type.icon(isSelected ? "#0056D3" : "#737373")}
+              <Image 
+                source={type.image}
+                className="w-6 h-6"
+                style={{ tintColor: isSelected ? Colors.light.primary : Colors.light.textGray }}
+              />
               <Text
                 className={`text-sm mt-1 ${
                   isSelected ? "text-[#0056D3] font-medium" : "text-[#737373]"

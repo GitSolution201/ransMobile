@@ -122,7 +122,10 @@ const ReviewsSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
     {reviews.map((review, idx) => (
       <ReviewCard key={idx} {...review} />
     ))}
-    <TouchableOpacity className="bg-blue-600 h-[40px] rounded-[40px] items-center justify-center mt-2">
+    <TouchableOpacity 
+      className="bg-blue-600 h-[40px] rounded-[40px] items-center justify-center mt-2"
+      onPress={() => router.push('/screens/review')}
+    >
       <Text className="text-white text-base font-semibold">
         View All Reviews
       </Text>
@@ -355,7 +358,7 @@ export default function ProductDetails() {
               })}
             </View>
             <TouchableOpacity
-              className="mt-4 py-4 rounded-[40px] border border-gray-400 items-center"
+              className="mt-4  h-[51px] rounded-[40px] border border-gray-400 items-center justify-center"
               onPress={() => router.push("/screens/amenities")}
 
             >
@@ -386,12 +389,12 @@ export default function ProductDetails() {
               Mobile Money, Bank Transfer, or Cash.
             </Text>
             <TouchableOpacity
-              className="border border-gray-400 rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4"
+              className="border border-gray-400 justify-center items-center rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4"
               onPress={() => {
                 router.push("/screens/terms-conditions");
               }}
             >
-              <Text className="text-xs text-gray-800">
+              <Text className="text-xs text-center w-full text-gray-800">
                 Show all terms & conditions
               </Text>
             </TouchableOpacity>

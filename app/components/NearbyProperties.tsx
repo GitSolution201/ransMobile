@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { PropertyCard } from './PropertyCard';
+import { router } from 'expo-router';
 
 const properties = [
   {
@@ -41,7 +42,7 @@ export function NearbyProperties() {
     <View>
       <View className="flex-row justify-between items-center px-4 mb-4">
         <Text className="text-xl   font-semibold text-gray-900">Featured Properties</Text>
-        <Pressable>
+        <Pressable onPress={() => router.push('/screens/filtered_property')}>
           <Text className="text-xs text-[#737373]">View All</Text>
         </Pressable>
       </View>

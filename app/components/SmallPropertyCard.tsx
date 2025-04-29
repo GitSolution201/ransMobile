@@ -167,16 +167,17 @@ function PropertyCard({
   );
 }
 
-export function NearBy() {
+export function NearBy({noHeader}: {noHeader?: boolean}) {
   return (
     <View className="mt-6">
-      <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-xl font-semibold text-gray-900">Near By</Text>
-        <Pressable>
-          <Text className="text-xs text-[#737373]">View All</Text>
-        </Pressable>
-      </View>
-
+      {!noHeader && (
+        <View className="flex-row justify-between items-center px-4 mb-4">
+          <Text className="text-xl font-semibold text-gray-900">Near By</Text>
+          <Pressable onPress={() => router.push('/screens/filtered_property')}>
+            <Text className="text-xs text-[#737373]">View All</Text>
+          </Pressable>
+        </View>
+      )}
       <FlatList
         data={properties}
         renderItem={({ item }) => (

@@ -32,8 +32,8 @@ export default function TabLayout() {
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
             <ExploreIcon 
-              width={24} 
-              height={24} 
+              width={20} 
+              height={20} 
               stroke={color}
               fill="none"
               strokeWidth={2}
@@ -47,8 +47,8 @@ export default function TabLayout() {
           title: 'Wishlist',
           tabBarIcon: ({ color, focused }) => (
             <HeartIcon 
-              width={24} 
-              height={24} 
+              width={20} 
+              height={20} 
               fill="none"
               strokeWidth={1.5}
             />
@@ -61,10 +61,10 @@ export default function TabLayout() {
           title: 'Chat',
           tabBarIcon: ({ color, focused }) => (
             <ChatIcon 
-              width={24} 
-              height={24} 
+              width={20} 
+              height={20} 
               fill="none"
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           ),
         }}
@@ -75,8 +75,8 @@ export default function TabLayout() {
           title: 'Profile',
           tabBarIcon: ({ color, focused }) => (
             <ProfileIcon 
-              width={24} 
-              height={24} 
+              width={20} 
+              height={20} 
               stroke={color}
               fill="none"
               strokeWidth={1.5}

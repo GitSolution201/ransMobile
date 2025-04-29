@@ -83,12 +83,12 @@ export default function ImageDetails() {
       )}
 
       {/* Thumbnails */}
-      <View className="absolute right-4 bottom-10 -translate-y-1/2 space-y-3 z-10">
+      <View className="absolute right-4 bottom-5 -translate-y-1/2 space-y-3 z-10">
         {images.slice(0, 3).map((img, idx) => (
-          <TouchableOpacity key={idx} onPress={() => goToIndex(idx)}>
+          <TouchableOpacity className=" mt-4" key={idx} onPress={() => goToIndex(idx)}>
             <Image
               source={typeof img === 'string' ? { uri: img } : img}
-              className={`w-16 h-16 rounded-xl border-2 ${currentIndex === idx ? 'border-blue-500' : 'border-white'}`}
+              className={`w-16 h-16 rounded-[10px] border-2 ${currentIndex === idx ? 'border-blue-500' : 'border-white'}`}
               resizeMode="cover"
             />
             {idx === 2 && images.length > 3 && (

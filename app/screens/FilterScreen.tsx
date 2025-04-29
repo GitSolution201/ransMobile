@@ -13,9 +13,11 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
-import RangeSlider from "rn-range-slider";
+import Slider from 'react-native-range-slider-expo';
 import { Header } from "../components/Header";
 import { CategoryList } from "../components/CategoryList";
+import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
 
 const propertyTypes = [
   {
@@ -124,7 +126,7 @@ const Counter = ({ label, value, onIncrement, onDecrement }: CounterProps) => (
 );
 
 export default function FilterScreen() {
-  const [selectedType, setSelectedType] = useState("All");
+  const [selectedType, setSelectedType] = useState("1");
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [selectedTransaction, setSelectedTransaction] = useState("Buy");
   const [priceRange, setPriceRange] = useState({ min: 300, max: 1000 });
@@ -134,9 +136,7 @@ export default function FilterScreen() {
     bathrooms: 0,
   });
 
-  const handlePriceChange = useCallback((low: number, high: number) => {
-    setPriceRange({ min: low, max: high });
-  }, []);
+  const navigation = useNavigation();
 
   const toggleAmenity = (label: string) => {
     setSelectedAmenities((prev) =>
@@ -145,7 +145,7 @@ export default function FilterScreen() {
   };
 
   const handleCategorySelect = (category: { id: string; label: string }) => {
-    console.log("Selected category:", category);
+    setSelectedType(category.id);
   };
 
   const handleIncrement = (type: 'bedrooms' | 'beds' | 'bathrooms') => {
@@ -157,7 +157,7 @@ export default function FilterScreen() {
   };
 
   const handleClearAll = () => {
-    setSelectedType("All");
+    setSelectedType("1");
     setSelectedAmenities([]);
     setSelectedTransaction("Buy");
     setPriceRange({ min: 300, max: 1000 });
@@ -172,12 +172,16 @@ export default function FilterScreen() {
     <SafeAreaView className="flex-1 bg-white">
       <Header title="Filter" />
       <ScrollView className="flex-1 px-4">
+
         {/* Property Type */}
         <Text className="text-xl font-semibold text-black mb-4">
           Property Type
         </Text>
         <View className="flex-row items-center justify-between mb-6">
-          <CategoryList onSelectCategory={handleCategorySelect} />
+          <CategoryList 
+            onSelectCategory={handleCategorySelect}
+            selectedType={selectedType}
+          />
         </View>
 
         {/* Price Range */}
@@ -186,38 +190,36 @@ export default function FilterScreen() {
         </Text>
         <View className="mb-4">
           <Image
-            source={require("@/assets/images/price_range.png")}
-            className="w-full h-[80px] mb-4"
+            source={require("../../assets/images/price_range.png")}
+            className="w-full h-[80px]"
             resizeMode="contain"
           />
           <View className="w-full">
-            {/* <RangeSlider
-              style={{ width: "100%", height: 40 }}
+            <Slider
               min={300}
               max={1000}
+              fromValueOnChange={value => setPriceRange(prev => ({ ...prev, min: value }))}
+              toValueOnChange={value => setPriceRange(prev => ({ ...prev, max: value }))}
+              initialFromValue={priceRange.min}
+              initialToValue={priceRange.max}
               step={10}
-              floatingLabel
-              renderThumb={() => (
-                <View className="w-6 h-6 rounded-full bg-white border-2 border-[#0056D3] shadow-lg" />
-              )}
-              renderRail={() => (
-                <View className="flex-1 h-[1px] rounded bg-[#E5E5EA]" />
-              )}
-              renderRailSelected={() => (
-                <View className="flex-1 h-[1px] rounded bg-[#E5E5EA]" />
-              )}
-              onValueChanged={handlePriceChange}
-            /> */}
-            <View className="flex-row justify-between items-center">
+              fromKnobColor="#0056D3"
+              toKnobColor="#0056D3"
+              inRangeBarColor="#0056D3"
+              outOfRangeBarColor="#E5E5EA"
+              knobSize={12}
+              barHeight={2}
+            />
+            <View className="flex-row justify-between items-center mt-6">
               <View className="items-start">
                 <Text className="text-sm text-[#737373] mb-2">Minimum</Text>
-                <View className="border border-[#737373] rounded-full px-4  h-[42px] items-center justify-center">
+                <View className="border border-[#737373] rounded-full px-4 h-[42px] items-center justify-center">
                   <Text className="text-sm">${Math.round(priceRange.min)}</Text>
                 </View>
               </View>
-              <View className="items-end ">
+              <View className="items-end">
                 <Text className="text-sm text-[#737373] mb-2">Maximum</Text>
-                <View className="border border-[#737373]  h-[42px] items-center justify-center rounded-full px-4 ">
+                <View className="border border-[#737373] h-[42px] items-center justify-center rounded-full px-4">
                   <Text className="text-sm">${Math.round(priceRange.max)}</Text>
                 </View>
               </View>
@@ -261,16 +263,17 @@ export default function FilterScreen() {
         <Text className="text-xl font-semibold text-black mb-4">
           Transaction Type
         </Text>
-        <View className="flex-row justify-between items-center mb-4">
+        <View className="flex-row items-center mb-4">
           {transactionTypes.map((type) => (
             <TouchableOpacity
               key={type}
-              className={`border rounded-full px-8 h-[42px] items-center justify-center ${
+              className={`border rounded-full mr-2 px-8 h-[42px] items-center justify-center ${
                 selectedTransaction === type
                   ? "bg-[#0056D3] border-[#0056D3]"
                   : "border-[#737373]"
               }`}
-              onPress={() => setSelectedTransaction(type)}
+              onPress={() => 
+                setSelectedTransaction(type)}
             >
               <Text
                 className={`text-sm ${
@@ -323,6 +326,13 @@ export default function FilterScreen() {
           </TouchableOpacity>
           
           <TouchableOpacity
+            onPress={() => router.push('/screens/filtered_property', {
+              propertyType: selectedType,
+              transactionType: selectedTransaction,  
+              priceRange,
+              amenities: selectedAmenities,
+              rooms,
+            })}
             className="bg-[#0056D3] px-6 py-3 rounded-full flex-row items-center"
           >
             <Text className="text-white font-medium">Show 1000+ Properties</Text>
