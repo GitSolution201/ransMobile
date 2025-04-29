@@ -4,6 +4,7 @@ import ExploreIcon from '@/assets/icons/explore.svg';
 import HeartIcon from '@/assets/icons/heart.svg';
 import ChatIcon from '@/assets/icons/chat.svg';
 import ProfileIcon from '@/assets/icons/profile.svg';
+import React from 'react';
 
 export default function TabLayout() {
   return (
@@ -48,9 +49,8 @@ export default function TabLayout() {
             <HeartIcon 
               width={24} 
               height={24} 
-              stroke={color}
               fill="none"
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           ),
         }}
@@ -63,7 +63,6 @@ export default function TabLayout() {
             <ChatIcon 
               width={24} 
               height={24} 
-              stroke={color}
               fill="none"
               strokeWidth={2}
             />
@@ -80,7 +79,7 @@ export default function TabLayout() {
               height={24} 
               stroke={color}
               fill="none"
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           ),
         }}

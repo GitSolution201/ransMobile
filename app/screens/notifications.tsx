@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView ,SafeAreaView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { notifications } from '@/utils/helper/DummyData';
+import { Header } from '../components/Header';
 
 const filters = ['All', 'Mentions', 'Unread'];
 
@@ -11,6 +12,8 @@ export default function Notifications() {
   return (
     <SafeAreaView className="flex-1 bg-white pt-10">
       {/* Header Icons */}
+
+      <Header title="Notifications" />
       <View className="flex-row justify-end items-center px-5 mb-2">
         <TouchableOpacity className="w-12 h-12 rounded-full bg-[#F7F5F5] items-center justify-center mr-3">
           <Ionicons name="search" size={20} color="#737373" />

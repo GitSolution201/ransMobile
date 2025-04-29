@@ -6,6 +6,7 @@ import MessageIcon from "@/assets/icons/message.svg";
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg";
 import { router } from "expo-router";
 import { NearBy } from "../components/SmallPropertyCard";
+import BackIcon from "@/assets/icons/back_black.svg";
 
 
 // Dummy amenities data for demonstration
@@ -22,7 +23,6 @@ const amenities = [
     count: 1,
     Icon: require("@/assets/icons/bath.svg").default,
   },
-  { id: 4, name: "Wifi", Icon: require("@/assets/icons/wifi.svg").default },
 ];
 
 const reviews = [
@@ -204,10 +204,7 @@ export default function ProductDetails() {
           className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
           onPress={() => router.back()}
         >
-          <Image
-            source={require("@/assets/icons/back.png")}
-            className="w-3 h-3"
-          />
+         <BackIcon width={10} height={10} color="#737373"  />
         </TouchableOpacity>
         <TouchableOpacity
           className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
@@ -215,7 +212,7 @@ export default function ProductDetails() {
             router.push("/screens/FilterScreen");
           }}
         >
-          <FilterIcon width={20} height={20} className="text-gray-400" />
+          <FilterIcon width={15} height={15} className="text-gray-400" />
         </TouchableOpacity>
       </View>
 
@@ -244,7 +241,7 @@ export default function ProductDetails() {
                 })
               }
             >
-              <Text className="text-white text-sm font-semibold">+4</Text>
+              <Text className="text-white text-sm font-semibold">+2</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -338,12 +335,10 @@ export default function ProductDetails() {
                 const IconComponent = amenity.Icon;
                 return (
                   <View key={amenity.id} className="flex-row items-center">
-                    <View className="w-8 h-8 mr-4 items-center justify-center">
+                    <View className="w-8 h-8 mr-4 mb-2 items-center justify-center">
                       <IconComponent
                         width={24}
                         height={24}
-                        stroke="#6B7280"
-                        strokeWidth={1.5}
                         fill="none"
                       />
                     </View>
@@ -357,10 +352,11 @@ export default function ProductDetails() {
               })}
             </View>
             <TouchableOpacity
-              className="mt-4 py-4 rounded-full border border-gray-200 items-center"
+              className="border-2 border-gray-300 rounded-2xl py-4 items-center mb-8"
               onPress={() => router.push("/screens/amenities")}
+
             >
-              <Text className="text-gray-700 text-xs font-medium">
+              <Text className="text-xs text-gray-800">
                 Show all 11 amenities
               </Text>
             </TouchableOpacity>

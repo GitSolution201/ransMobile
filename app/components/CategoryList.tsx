@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import HomeIcon from '@/assets/icons/home_icon.svg';
+import HomeIcon from '@/assets/icons/home.svg';
 import ApartmentIcon from '@/assets/icons/apartment_icon.svg';
 import LandIcon from '@/assets/icons/land_icon.svg';
 import OfficeIcon from '@/assets/icons/office_icon.svg';
@@ -11,35 +11,35 @@ const propertyTypes = [
     id: "1",
     label: "All",
     icon: (color: string) => (
-      <HomeIcon width={24} height={24} color={color} />
+      <HomeIcon width={24} height={24} stroke={color} fill={color} />
     ),
   },
   {
     id: "2",
     label: "Apartment",
     icon: (color: string) => (
-      <ApartmentIcon width={24} height={24} color={color} />
+      <ApartmentIcon width={24} height={24} stroke={color} fill={color} />
     ),
   },
   {
     id: "3",
     label: "Land",
     icon: (color: string) => (
-      <LandIcon width={24} height={24} color={color} />
+      <LandIcon width={24} height={24} stroke={color} fill={color} />
     ),
   },
   {
     id: "4",
     label: "Office",
     icon: (color: string) => (
-      <OfficeIcon width={24} height={24} color={color} />
+      <OfficeIcon width={24} height={24} stroke={color} fill={color} />
     ),
   },
   {
     id: "5",
     label: "Warehouse",
     icon: (color: string) => (
-      <WarehouseIcon width={24} height={24} color={color} />
+      <WarehouseIcon width={24} height={24} stroke={color} fill={color} />
     ),
   },
 ];

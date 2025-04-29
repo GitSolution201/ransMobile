@@ -11,6 +11,7 @@ import { TopLocations } from '../components/TopLocations';
 import { TopAgents } from '../components/TopAgents';
 import { NearBy } from '../components/SmallPropertyCard';
 import { NearbyProperties } from '../components/NearbyProperties';
+import React from 'react';
 
 export default function HomeScreen() {
   const handleCategorySelect = (category: { id: string; name: string }) => {
@@ -42,7 +43,7 @@ export default function HomeScreen() {
             // Handle notification press
             console.log('Notification bell pressed');
           }}
-          className="relative bottom-2"
+          className="relative"
         >
           <BellIcon width={23} height={23} />
           {/* Notification Badge */}
@@ -71,7 +72,7 @@ export default function HomeScreen() {
             <TextInput
               placeholder="Search for properties, agents, or services..."
               className="flex-1 ml-2 text-sm "
-              placeholderTextColor="#9CA3AF text-[#737373]"
+              placeholderTextColor="#737373"
             />
           </View>
 
