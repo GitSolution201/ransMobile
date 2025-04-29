@@ -4,11 +4,14 @@ import { Header } from '../components/Header';
 import { Colors } from '@/utils/constants/Colors';
 import { termsAndConditionsData } from '@/utils/helper/DummyData';
 import { router } from 'expo-router';
+import { useAppSelector } from '@/redux/hooks';
 
 export default function TermsAndConditions() {
   // Add Android-specific padding to account for status bar
   const androidPaddingTop = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
-
+  const { isAuthenticated } = useAppSelector((state) => {
+    return state.auth;
+  });
   return (
     <SafeAreaView 
       className="flex-1 bg-white"
@@ -16,7 +19,7 @@ export default function TermsAndConditions() {
     >
       <Header 
         title="Terms & Conditions" 
-        onBack={() => router.push('/(auth)/signup')}
+        onBack={() =>isAuthenticated ? router.back() : router.push('/(auth)/signup')}
       />
 
       <ScrollView className="flex-1 px-5">
