@@ -14,51 +14,34 @@ export default function LocationScreen() {
           router.back();
         }}
         onSkipPress={() => {
-          router.push('/(auth)/account-setup/preferences');
+          router.push("/(auth)/account-setup/preferences");
         }}
       />
       <View className="flex-1 px-4 pt-[20px]">
         {/* Title Section */}
         <View className=" z-20">
-          <Text className="text-2xl text-primary font-extrabold mb-2">
-            Add your Location
-          </Text>
-          <Text className="text-primary text-xs mb-8">
-            This can be edited later in your account settings
-          </Text>
+          <Text className="text-2xl text-primary font-extrabold mb-2">Add your Location</Text>
+          <Text className="text-primary text-xs mb-8">This can be edited later in your account settings</Text>
         </View>
 
         {/* Map Container */}
         <View className="w-full h-[366px] rounded-3xl overflow-hidden mb-4 relative">
-          <Image
-            source={require("@/assets/images/map.png")}
-            className="w-full h-full"
-            resizeMode="cover"
-          />
+          <Image source={require("@/assets/images/MAP.png")} className="w-full h-full" resizeMode="cover" />
           <View className="absolute bottom-0 left-0 right-0">
             <View
               className="absolute bottom-0 left-0 right-0 bg-[#FFF8F880] py-3 items-center"
 
-            //  className="bg-[#FFF8F880] w-full py-3"
+              //  className="bg-[#FFF8F880] w-full py-3"
             >
-              <Text className="text-primary text-base text-center">
-                Select on Map
-              </Text>
+              <Text className="text-primary text-base text-center">Select on Map</Text>
             </View>
           </View>
         </View>
 
         {/* Location Selector */}
         <TouchableOpacity className="flex-row items-center border border-border h-[56px] rounded-xl px-4 mb-6 mx-4 bg-white">
-          <LocationIcon
-            width={20}
-            height={20}
-            color="#4B5563"
-            className="mr-2 ml-4"
-          />
-          <Text className="text-sm mr-1 mx-3 text-primary">
-            Juba, South Sudan
-          </Text>
+          <LocationIcon width={20} height={20} color="#4B5563" className="mr-2 ml-4" />
+          <Text className="text-sm mr-1 mx-3 text-primary">Juba, South Sudan</Text>
           <View className="pl-8">
             <ChevronDownIcon width={10} height={10} color="#4B5563" />
           </View>
@@ -70,12 +53,7 @@ export default function LocationScreen() {
         </View>
 
         {/* Next Button */}
-        <Button
-          text="Next"
-          variant="secondary"
-          className="mx-8"
-          onPress={() => router.push("/(auth)/account-setup/preferences")}
-        />
+        <Button text="Next" variant="secondary" className="mx-8" onPress={() => router.push("/(auth)/account-setup/preferences")} />
       </View>
     </View>
   );
