@@ -26,7 +26,7 @@ export default function LocationScreen() {
 
         {/* Map Container */}
         <View className="w-full h-[366px] rounded-3xl overflow-hidden mb-4 relative">
-          <Image source={require("@/assets/images/map.png")} className="w-full h-full" resizeMode="cover" />
+          <Image source={require("../../assets/images/map.png")} className="w-full h-full" resizeMode="cover" />
           <View className="absolute bottom-0 left-0 right-0">
             <View
               className="absolute bottom-0 left-0 right-0 bg-[#FFF8F880] py-3 items-center"
