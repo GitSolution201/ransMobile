@@ -1,15 +1,16 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import FilterIcon from "@/assets/icons/filter.svg";
-import LocationIcon from "@/assets/icons/location.svg";
+import LocationIcon from "@/assets/icons/location_icon.svg";
 import MessageIcon from "@/assets/icons/message.svg";
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg";
 import { router } from "expo-router";
 import { NearBy } from "../components/SmallPropertyCard";
 
+
 // Dummy amenities data for demonstration
 const amenities = [
-  {
+  { 
     id: 1,
     name: "Bedroom",
     count: 2,
@@ -214,7 +215,7 @@ export default function ProductDetails() {
             router.push("/screens/FilterScreen");
           }}
         >
-          <FilterIcon width={24} height={24} className="text-gray-400" />
+          <FilterIcon width={20} height={20} className="text-gray-400" />
         </TouchableOpacity>
       </View>
 
@@ -262,7 +263,7 @@ export default function ProductDetails() {
                   fill="#737373"
                   stroke="#737373"
                 />
-                <Text className="text-xs text-[#737373]">
+                <Text className="text-xs text-[#737373] pl-2">
                   Juba, South Sudan
                 </Text>
               </View>
@@ -279,27 +280,27 @@ export default function ProductDetails() {
 
           <View className="flex-row gap-3 mb-6">
             <TouchableOpacity
-              className="w-[80px] h-[56px] bg-blue-600 rounded-2xl items-center justify-center"
+              className="w-[70px] h-[42 px] bg-blue-600 rounded-2xl items-center justify-center"
               onPress={() => {}}
             >
               <Text className="text-white font-semibold text-base">Rent</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              className="w-[56px] h-[56px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
+              className="w-[70px] h-[42px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
               onPress={() => {}}
             >
               <Image
                 source={require("@/assets/icons/360.png")}
-                className="w-6 h-6"
+                className="w-8 h-8"
               />
             </TouchableOpacity>
 
             <TouchableOpacity
-              className="flex-1 h-[56px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
+              className="flex-1 h-[56px]  bg-[#F7F5F5] rounded-2xl items-center justify-center"
               onPress={() => router.push("/screens/inspection-form")}
             >
-              <Text className="text-blue-600 font-semibold text-sm">
+              <Text className="text-blue-600 font-semibold text-base">
                 Request Inspection
               </Text>
             </TouchableOpacity>

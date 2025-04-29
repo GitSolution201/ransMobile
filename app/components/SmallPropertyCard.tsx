@@ -171,9 +171,9 @@ export function NearBy() {
   return (
     <View className="mt-6">
       <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-base font-semibold text-gray-900">Near By</Text>
+        <Text className="text-xl font-semibold text-gray-900">Near By</Text>
         <Pressable>
-          <Text className="text-xs text-gray-500">View All</Text>
+          <Text className="text-xs text-[#737373]">View All</Text>
         </Pressable>
       </View>
 

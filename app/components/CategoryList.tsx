@@ -1,39 +1,45 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import HomeIcon from '@/assets/icons/home_icon.svg';
+import ApartmentIcon from '@/assets/icons/apartment_icon.svg';
+import LandIcon from '@/assets/icons/land_icon.svg';
+import OfficeIcon from '@/assets/icons/office_icon.svg';
+import WarehouseIcon from '@/assets/icons/warehouse_icon.svg';
 
 const propertyTypes = [
   {
     id: "1",
     label: "All",
-    icon: (color: string) => <Ionicons name="home" size={24} color={color} />,
+    icon: (color: string) => (
+      <HomeIcon width={24} height={24} color={color} />
+    ),
   },
   {
     id: "2",
     label: "Apartment",
     icon: (color: string) => (
-      <MaterialCommunityIcons name="office-building" size={24} color={color} />
+      <ApartmentIcon width={24} height={24} color={color} />
     ),
   },
   {
     id: "3",
     label: "Land",
     icon: (color: string) => (
-      <MaterialCommunityIcons name="terrain" size={24} color={color} />
+      <LandIcon width={24} height={24} color={color} />
     ),
   },
   {
     id: "4",
     label: "Office",
     icon: (color: string) => (
-      <MaterialCommunityIcons name="desk" size={24} color={color} />
+      <OfficeIcon width={24} height={24} color={color} />
     ),
   },
   {
     id: "5",
     label: "Warehouse",
     icon: (color: string) => (
-      <MaterialCommunityIcons name="warehouse" size={24} color={color} />
+      <WarehouseIcon width={24} height={24} color={color} />
     ),
   },
 ];
@@ -54,7 +60,7 @@ export function CategoryList({ onSelectCategory }: CategoryListProps) {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      className="max-h-[80px] pt-4"
+      className="max-h-[80px] pt-6"
     >
       <View className="flex-row items-center">
         {propertyTypes.map((type) => {
@@ -69,7 +75,7 @@ export function CategoryList({ onSelectCategory }: CategoryListProps) {
             >
               {type.icon(isSelected ? "#0056D3" : "#737373")}
               <Text
-                className={`text-xs mt-1 ${
+                className={`text-sm mt-1 ${
                   isSelected ? "text-[#0056D3] font-medium" : "text-[#737373]"
                 }`}
               >

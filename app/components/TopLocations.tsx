@@ -30,7 +30,7 @@ function LocationCard({ name, image, onPress }: LocationCardProps) {
   return (
     <Pressable 
       onPress={onPress}
-      className="flex-row items-center bg-gray-100 rounded-full mr-3 pr-4 overflow-hidden"
+      className="flex-row items-center bg-gray-200 rounded-full mr-3 pr-4 h-[57px] overflow-hidden"
     >
       <Image
         source={{ uri: image }}
@@ -38,8 +38,8 @@ function LocationCard({ name, image, onPress }: LocationCardProps) {
         resizeMode="cover"
       />
       <View className="flex-row items-center ml-3">
-        <Text className="text-sm font-medium text-gray-900">{name}</Text>
-        <Ionicons name="chevron-forward" size={18} color="#6B7280" />
+        <Text className="text-sm font-medium text-gray-900 pr-1">{name}</Text>
+        <Ionicons name="chevron-forward" size={16} color="#6B7280" />
       </View>
     </Pressable>
   );
@@ -49,9 +49,9 @@ export function TopLocations() {
   return (
     <View className="mt-6">
       <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-base font-semibold text-gray-900">Top Locations</Text>
+        <Text className="text-xl font-semibold text-gray-900">Top Locations</Text>
         <Pressable>
-          <Text className="text-xs text-gray-500">View All</Text>
+          <Text className="text-xs text-[#737373]">View All</Text>
         </Pressable>
       </View>
 

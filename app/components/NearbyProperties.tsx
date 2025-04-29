@@ -40,9 +40,9 @@ export function NearbyProperties() {
   return (
     <View>
       <View className="flex-row justify-between items-center px-4 mb-4">
-        <Text className="text-base font-semibold text-gray-900">Featured Properties</Text>
+        <Text className="text-xl   font-semibold text-gray-900">Featured Properties</Text>
         <Pressable>
-          <Text className="text-xs text-gray-500">View All</Text>
+          <Text className="text-xs text-[#737373]">View All</Text>
         </Pressable>
       </View>
 
