@@ -4,6 +4,8 @@ import { BackButton } from '@/components/BackButton';
 import { PreferenceOption } from '@/components/PreferenceOption';
 import { useState } from 'react';
 import { Button } from '@/components/Button';
+import React from 'react';
+import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
 
 export default function PreferencesScreen() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -58,30 +60,22 @@ export default function PreferencesScreen() {
   return (
     <View className="flex-1 bg-background">
       {/* Background Image */}
-      <Image 
-        source={require('@/assets/images/smile.png')}
-        className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
-        resizeMode="cover"
+      <AccountSetupHeader
+        onBackPress={() => {
+          router.back();
+        }}
+        onSkipPress={() => {
+          router.push('/(auth)/account-setup/role');
+        }}
       />
 
-      {/* Header */}
-      <View className="flex-row justify-between items-center absolute top-12 left-4 right-4 z-10">
-        <BackButton />
-        <TouchableOpacity 
-          className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center'
-          onPress={() => router.push('/(auth)/account-setup/role')}
-        >
-          <Text className="text-white text-sm font-medium">Skip</Text>
-        </TouchableOpacity>
-      </View>
-
       <ScrollView 
-        className="flex-1 px-4 pt-36"
+        className="flex-1 px-4 pt-[20px]"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         {/* Title Section */}
-        <Text className="text-[28px] text-primary font-extrabold mb-2">
+        <Text className="text-2xl text-primary font-extrabold mb-2">
           What are you looking For ?
         </Text>
         <Text className="text-primary text-xs text-primary-600 mb-6">

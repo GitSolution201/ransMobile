@@ -1,15 +1,19 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, SafeAreaView } from 'react-native';
 import { Header } from '../components/Header';
 import { Colors } from '@/utils/constants/Colors';
 import { termsAndConditionsData } from '@/utils/helper/DummyData';
+import { router } from 'expo-router';
 
 export default function TermsAndConditions() {
   return (
-    <View className="flex-1 bg-white">
-      <Header title="Terms & Conditions" />
+    <SafeAreaView className="flex-1 bg-white">
+      <Header 
+        title="Terms & Conditions" 
+        onBack={() => router.push('/(auth)/signup')}
+      />
 
-      <ScrollView className="flex-1 px-5 pt-6">
+      <ScrollView className="flex-1 px-5">
         {termsAndConditionsData.map((section, sectionIndex) => (
           <View key={sectionIndex} className="mb-6">
             <Text className="text-lg font-bold mb-3 mt-4">{section.title}</Text>
@@ -26,6 +30,6 @@ export default function TermsAndConditions() {
           </View>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

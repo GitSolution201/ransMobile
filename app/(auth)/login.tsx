@@ -1,15 +1,15 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { useState, useMemo } from 'react';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
 import { InputField } from '@/components/InputField';
 import { Button } from '@/components/Button';
 import { SocialSignInButtons } from '@/components/SocialSignInButtons';
-import EmailIcon from '@/assets/icons/email.svg';
+import EmailIcon from '@/assets/icons/email_signin.svg';
 import LockIcon from '@/assets/icons/lock.svg';
 import { login } from '@/redux/authSlice';
 import { useDispatch } from 'react-redux';
-
+import { LoginHeader } from '../components/LoginHeader';
+import React from 'react';
 export default function LoginScreen() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -55,28 +55,19 @@ export default function LoginScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      {/* Back Button - Fixed at top */}
-      <View className="absolute top-12 left-6 z-10">
-        <BackButton />
-      </View>
+
+      <LoginHeader />
 
       {/* Main Content */}
       <ScrollView className="flex-1" bounces={false}>
-        {/* Illustration Container */}
-        <View className="relative bg-white">
-          <Image 
-            resizeMode='contain'
-            source={require('@/assets/images/login-illustration.png')}
-            className="w-full h-[175px] object-contain"
-          />
-        </View>
+
         <View className='px-6'>
           <Text className="text-sm py-10 ">
-            Let's <Text className="text-primary font-bold">Sign in</Text>
+            Let's <Text className="text-primary font-bold text-sm" >Sign in</Text>
           </Text>
         </View>
         {/* Form Section */}
-        <View className="px-6">
+        <View className="px-6 h=[56px]">
           {/* Input Fields */}
           <InputField
             centered={true}
@@ -90,10 +81,10 @@ export default function LoginScreen() {
             error={errors.email}
           />
 
-          <View className="mt-4">
+          <View className="mt-4 h-[56px]">
             <InputField
               centered={true}
-              icon={<LockIcon width={22} height={22} />}
+              icon={<LockIcon width={20} height={20} />}
               placeholder="Enter your password"
               value={password}
               onChangeText={(text) => {
@@ -106,13 +97,13 @@ export default function LoginScreen() {
           </View>
 
           <View className="flex-row justify-between items-center mt-4">
-            <Text 
+            <Text
               className="text-primary text-sm"
               onPress={() => router.push('/forgot-password')}
             >
               Forgot Password ?
-            </Text> 
-            <Text 
+            </Text>
+            <Text
               className="text-primary text-sm"
               onPress={() => setShowPassword(!showPassword)}
             >
@@ -123,7 +114,7 @@ export default function LoginScreen() {
           {/* Divider */}
           <View className="flex-row items-center mt-12">
             <View className="flex-1 h-[1px] bg-placeholder" />
-            <Text className="mx-4 text-placeholder">Or</Text>
+            <Text className="mx-4 text-placeholder text-sm">Or</Text>
             <View className="flex-1 h-[1px] bg-placeholder" />
           </View>
 
@@ -131,7 +122,7 @@ export default function LoginScreen() {
           <View className="mt-4">
             <SocialSignInButtons />
           </View>
-  
+
           {/* Login Button */}
           <Button
             text="Login"
@@ -140,23 +131,20 @@ export default function LoginScreen() {
             disabled={!isFormValid}
             className="mt-8"
           />
-
-          {/* Register Link - Moved to bottom */}
-        
         </View>
-        
+
       </ScrollView>
       <View className="absolute bottom-20 left-0 right-0">
-            <View className="flex-row justify-center items-center">
-              <Text className="text-gray-400">Don't have an account? </Text>
-              <Text 
-                className="text-primary font-medium"
-                onPress={() => router.push('/signup')}
-              >
-                Register
-              </Text>
-            </View>
-          </View>
+        <View className="flex-row justify-center items-center">
+          <Text className="text-gray-400 text-sm">Dont have an account ? </Text>
+          <Text
+            className="text-primary font-medium text-sm"
+            onPress={() => router.push('/signup')}
+          >
+            Register
+          </Text>
+        </View>
+      </View>
     </View>
   );
 } 

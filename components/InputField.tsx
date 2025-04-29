@@ -1,5 +1,6 @@
 import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
+import Svg, { Path } from 'react-native-svg';
 
 interface InputFieldProps {
   icon: React.ReactNode;
@@ -24,12 +25,12 @@ export function InputField({
 }: InputFieldProps) {
   return (
     <View className="space-y-1">
-      <View className="flex-row items-center bg-white border border-gray-200 rounded-xl h-[56px] px-10">
-        <View className="pr-4">
+      <View className="flex-row items-center bg-white border border-gray-200 rounded-xl h-[56px] px-4">
+        <View className="pr-3">
           {icon}
         </View>
         <TextInput
-          className={`flex-1 text-sm text-text ${centered ? 'text-center' : 'text-left'}`}
+          className={`flex-1 h-[56px] text-sm text-text ${centered ? 'text-center' : 'text-left'}`}
           placeholder={placeholder}
           placeholderTextColor="#9CA3AF"
           value={value}

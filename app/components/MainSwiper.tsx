@@ -1,12 +1,15 @@
-import React from 'react';
-import { View, Image, ScrollView, Dimensions } from 'react-native';
+import React from "react";
+import { View, Image, ScrollView, Dimensions } from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 const ITEM_WIDTH = width * 0.8; // 80% of screen width
 
 const images = [
-  require('@/assets/images/banner1.png'),
-  require('@/assets/images/banner2.png'),
+  require("@/assets/images/banner1.png"),
+  require("@/assets/images/banner2.png"),
+  require("@/assets/images/banner1.png"), // Add more images or reuse existing ones
+  require("@/assets/images/banner2.png"),
+  require("@/assets/images/banner1.png"),
 ];
 
 export function MainSwiper() {
@@ -28,16 +31,15 @@ export function MainSwiper() {
         scrollEventThrottle={16}
         snapToInterval={ITEM_WIDTH}
         decelerationRate="fast"
-        className='h-[200px]'
-        contentContainerStyle={{
-        }}
+        className="h-[200px]"
+        contentContainerStyle={{}}
       >
         {images.map((image, index) => (
-          <View 
-            key={index} 
-            style={{ 
+          <View
+            key={index}
+            style={{
               width: ITEM_WIDTH,
-              marginRight: 12 // space between items
+              marginRight: 12, // space between items
             }}
           >
             <Image
@@ -49,16 +51,17 @@ export function MainSwiper() {
         ))}
       </ScrollView>
 
+      {/* 5 Dots Indicator */}
       <View className="flex-row justify-center items-center mt-4">
-        {images.map((_, index) => (
+        {[0, 1, 2, 3, 4].map((index) => (
           <View
             key={index}
-            className={`h-1.5 w-1.5 rounded-full mx-1 ${
-              activeIndex === index ? 'bg-[#0056D3] w-3' : 'bg-gray-300'
+            className={`h-2 w-2 rounded-full mx-1 ${
+              activeIndex === index ? "bg-[#0056D3] w-2" : "bg-gray-300"
             }`}
           />
         ))}
       </View>
     </View>
   );
-} 
+}

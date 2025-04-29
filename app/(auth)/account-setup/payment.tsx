@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, Image, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Button } from '@/components/Button';
+import React from 'react';
+import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
 
 type PaymentMethod = 'paypal' | 'mastercard' | 'visa';
 
@@ -22,7 +23,7 @@ function PaymentMethodButton({ method, isSelected, onPress }: PaymentMethodButto
 
   return (
     <TouchableOpacity 
-      className={`h-12 px-5 rounded-full flex-row items-center ${isSelected ? 'bg-primary' : 'bg-gray-50'}`}
+      className={`h-12 px-8 rounded-full flex-row items-center ${isSelected ? 'bg-primary' : 'bg-white'}`}
       onPress={onPress}
     >
       <Image 
@@ -30,7 +31,7 @@ function PaymentMethodButton({ method, isSelected, onPress }: PaymentMethodButto
         source={icons[method]}
         className="w-5 h-5 mr-2"
       />
-      <Text className={`text-[10px] font-medium ${isSelected ? 'text-white' : 'text-black'}`}>
+      <Text className={`text-[12px] font-medium ${isSelected ? 'text-white' : 'text-black'}`}>
         {method.charAt(0).toUpperCase() + method.slice(1)}
       </Text>
     </TouchableOpacity>
@@ -190,27 +191,21 @@ export default function PaymentScreen() {
       className="flex-1"
     >
       <View className="flex-1 bg-background">
-        {/* Background Image */}
-        <Image 
-          source={require('@/assets/images/smile.png')}
-          className="absolute top-0 left-0 w-[200px] h-[125px] rounded-br-[40px]"
-          resizeMode="cover"
-        />
-
-        {/* Header */}
-        <View className="flex-row justify-between items-center px-6 pt-12 pb-8">
-          <BackButton />
-          <TouchableOpacity className='h-[50px] w-[100px] rounded-xl bg-primary items-center justify-center'>
-            <Text className="text-white text-sm font-medium">Skip</Text>
-          </TouchableOpacity>
-        </View>
+      <AccountSetupHeader
+        onBackPress={() => {
+          router.back();
+        }}
+        onSkipPress={() => {
+          router.push('/(auth)/account-setup/profile-picture');
+        }}
+      />
 
         <ScrollView 
           className="flex-1"
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flexGrow: 1 }}
         >
-          <View className="px-4 pt-2">
+          <View className="px-4 pt-8">
             {/* Title Section */}
             <Text className="text-2xl text-primary font-extrabold mb-2">
               Add Payment Method
@@ -218,38 +213,13 @@ export default function PaymentScreen() {
             <Text className="text-sm text-gray-500 mb-8">
               This can be edited later in your account settings
             </Text>
-
-            {/* Card Preview - Always visible */}
-            <View className="w-full aspect-[1.586] bg-black rounded-[20px] p-6 mb-8">
-              <View className="flex-row items-center gap-2 mb-12">
-                <View className="w-10 h-7 bg-[#FFD700] rounded-md" />
-                <View className="w-7 h-7 bg-white/20 rounded-full" />
-                <View className="w-7 h-7 bg-white/20 rounded-full" />
-                <Image 
-                  source={require('@/assets/icons/apple-pay.png')}
-                  className="w-10 h-7"
-                  resizeMode="contain"
-                />
-                <Image 
-                  source={require('@/assets/icons/google-pay.png')}
-                  className="w-10 h-7"
-                  resizeMode="contain"
-                />
-              </View>
-              <Text className="text-white text-xl tracking-wider font-medium mb-8">
-                **** **** **** 1234
-              </Text>
-              <View className="flex-row justify-between items-end">
-                <View>
-                  <Text className="text-white/60 text-[10px] mb-1">VALID THRU</Text>
-                  <Text className="text-white text-sm">{formData.expiry || "MM/YY"}</Text>
-                </View>
-                <Text className="text-white text-lg font-medium">{formData.name || "Card Holder"}</Text>
-              </View>
-            </View>
-
+            <Image
+              resizeMode='contain'
+              source={require('@/assets/images/card.jpg')}
+              className='w-full h-[200px] rounded-2xl'
+            />
             {/* Payment Methods */}
-            <View className="flex-row justify-between mb-8">
+            <View className="flex-row justify-between mb-8 mt-8">
               <PaymentMethodButton
                 method="paypal"
                 isSelected={selectedMethod === 'paypal'}
@@ -278,7 +248,7 @@ export default function PaymentScreen() {
         {/* Bottom Section with Progress and Next Button */}
         <View className="px-4 pb-12 pt-4 bg-background absolute bottom-0 left-0 right-0 z-20">
           {/* Progress Bar */}
-          <View className="h-1 bg-gray-200 rounded-full mb-4 mx-24">
+          <View className="h-1.5 bg-gray-200 rounded-full mb-4 mx-24">
             <View className="w-2/3 h-full bg-primary rounded-full" />
           </View>
 
