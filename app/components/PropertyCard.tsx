@@ -77,7 +77,7 @@ export function PropertyCard({
       <View className="p-4">
         {/* Title and Rating */}
         <View className="flex-row justify-between items-center mb-2">
-          <Text className="text-base font-semibold text-gray-900 flex-1 mr-2" numberOfLines={1}>
+          <Text className="text-lg font-semibold text-gray-900 flex-1 mr-2" numberOfLines={1}>
             {title}
           </Text>
           <View className="flex-row items-center">
@@ -101,7 +101,7 @@ export function PropertyCard({
         {/* Price and Features */}
         <View className="flex-row items-center justify-between">
           <View >
-            <Text className="text-base font-bold text-gray-900">{price}        
+            <Text className="text-lg font-bold text-gray-900">{price}        
                    <Text className="text-xs text-gray-500">{' '}/mon</Text>
             </Text>
           </View>

@@ -2,6 +2,7 @@ import { View, TextInput, Pressable } from 'react-native';
 import { router } from 'expo-router';
 import SearchIcon from '@/assets/icons/search.svg';
 import FilterIcon from '@/assets/icons/filter.svg';
+import React from 'react';
 
 interface SearchBarProps {
   placeholder?: string;
@@ -10,9 +11,9 @@ interface SearchBarProps {
 
 export const SearchBar = ({ placeholder = "Search for properties, agents, or services...", onSearch }: SearchBarProps) => {
   return (
-    <View className="px-4 mt-2">
+    <View className="px-4 mt-2 ">
       <View 
-        className="flex-row items-center bg-white rounded-[32px] shadow-lg h-[50px]"
+        className="flex-row items-center bg-white rounded-[32px] shadow-lg h-[55px]"
         style={{
           shadowColor: '#000',
           shadowOffset: {

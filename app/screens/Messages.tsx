@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { messages } from '@/utils/helper/DummyData';
-import { useRouter } from 'expo-router';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { messages } from "@/utils/helper/DummyData";
+import { useRouter } from "expo-router";
 
-const filters = ['All', 'Support', 'Groups', 'Unread'];
+const filters = ["All", "Support", "Groups", "Unread"];
 
 export default function Messages() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState("All");
   const router = useRouter();
 
   const handleMessagePress = (item: any) => {
-    router.replace(`/chat/${item.id}?name=${item.name}&members=${item.isGroup ? '60 Members' : ''}&isOnline=${item.isGroup ? '1' : '0'}&isGroup=${item.isGroup ? '1' : '0'}`);
+    router.navigate(
+      `/chat/${item.id}?name=${item.name}&members=${
+        item.isGroup ? "60 Members" : ""
+      }&isOnline=${item.isGroup ? "1" : "0"}&isGroup=${
+        item.isGroup ? "1" : "0"
+      }`
+    );
   };
 
   const renderAvatar = (item: any) => {
     if (item.isGroup) {
       return (
         <View className="w-12 h-12 rounded-full bg-[#2563EB] items-center justify-center">
-          <Image 
-            source={require('@/assets/icons/three-person.png')}
+          <Image
+            source={require("@/assets/icons/three-person.png")}
             className="w-6 h-6"
           />
         </View>
       );
     }
-    return (
-      <Image 
-        source={item.avatar} 
-        className="w-12 h-12 rounded-full"
-      />
-    );
+    return <Image source={item.avatar} className="w-12 h-12 rounded-full" />;
   };
 
   return (
@@ -46,7 +54,9 @@ export default function Messages() {
       </View>
 
       {/* Messages Title */}
-      <Text className="text-2xl font-bold text-[#737373] px-5 mb-4 mt-2">Messages</Text>
+      <Text className="text-2xl font-bold text-[#737373] px-5 mb-4 mt-2">
+        Messages
+      </Text>
 
       {/* Filters */}
       <View className="flex-row px-5 mb-4 space-x-3">
@@ -54,13 +64,13 @@ export default function Messages() {
           <TouchableOpacity
             key={filter}
             className={`px-5 py-3 mr-2 rounded-full ${
-              activeFilter === filter ? 'bg-[#2563EB]' : 'bg-[#F7F5F5]'
+              activeFilter === filter ? "bg-[#2563EB]" : "bg-[#F7F5F5]"
             }`}
             onPress={() => setActiveFilter(filter)}
           >
             <Text
               className={`text-xs ${
-                activeFilter === filter ? 'text-white' : 'text-[#737373]'
+                activeFilter === filter ? "text-white" : "text-[#737373]"
               }`}
             >
               {filter}
@@ -86,20 +96,35 @@ export default function Messages() {
           <TouchableOpacity
             key={item.id}
             className={`flex-row items-center px-5 py-4 ${
-              !item.isArchived ? 'border-b border-[#F7F5F5]' : ''
+              !item.isArchived ? "border-b border-[#F7F5F5]" : ""
             }`}
             onPress={() => handleMessagePress(item)}
           >
             {renderAvatar(item)}
             <View className="flex-1 ml-3">
               <View className="flex-row items-center justify-between">
-                <Text className={`font-medium text-base ${item.unread ? 'text-[#222222]' : 'text-[#737373]'}`}>
+                <Text
+                  className={`font-medium text-base ${
+                    item.unread ? "text-[#222222]" : "text-[#737373]"
+                  }`}
+                >
                   {item.name}
                 </Text>
-                <Text className={`text-xs ${item.unread ? 'text-[#000000]' : 'text-[#737373]'}`}>{item.time}</Text>
+                <Text
+                  className={`text-xs ${
+                    item.unread ? "text-[#000000]" : "text-[#737373]"
+                  }`}
+                >
+                  {item.time}
+                </Text>
               </View>
               <View className="flex-row items-center justify-between mt-1">
-                <Text className={`text-xs ${item.unread ? 'text-[#000000]' : 'text-[#737373]'}`} numberOfLines={1}>
+                <Text
+                  className={`text-xs ${
+                    item.unread ? "text-[#000000]" : "text-[#737373]"
+                  }`}
+                  numberOfLines={1}
+                >
                   {item.message}
                 </Text>
                 {item.unread && (
@@ -116,20 +141,35 @@ export default function Messages() {
 
         {messages.slice(0, 2).map((item) => (
           <TouchableOpacity
-            key={item.id + '_all'}
+            key={item.id + "_all"}
             className="flex-row items-center px-5 py-4 border-b border-[#F7F5F5]"
             onPress={() => handleMessagePress(item)}
           >
             {renderAvatar(item)}
             <View className="flex-1 ml-3">
               <View className="flex-row items-center justify-between">
-                <Text className={`font-medium text-base ${item.unread ? 'text-[#222222]' : 'text-[#737373]'}`}>
+                <Text
+                  className={`font-medium text-base ${
+                    item.unread ? "text-[#222222]" : "text-[#737373]"
+                  }`}
+                >
                   {item.name}
                 </Text>
-                <Text className={`text-xs ${item.unread ? 'text-[#000000]' : 'text-[#737373]'}`}>{item.time}</Text>
+                <Text
+                  className={`text-xs ${
+                    item.unread ? "text-[#000000]" : "text-[#737373]"
+                  }`}
+                >
+                  {item.time}
+                </Text>
               </View>
               <View className="flex-row items-center justify-between mt-1">
-                <Text className={`text-xs ${item.unread ? 'text-[#000000]' : 'text-[#737373]'}`} numberOfLines={1}>
+                <Text
+                  className={`text-xs ${
+                    item.unread ? "text-[#000000]" : "text-[#737373]"
+                  }`}
+                  numberOfLines={1}
+                >
                   {item.message}
                 </Text>
                 {item.unread && (
@@ -142,4 +182,4 @@ export default function Messages() {
       </ScrollView>
     </SafeAreaView>
   );
-} 
+}

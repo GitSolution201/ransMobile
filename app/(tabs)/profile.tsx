@@ -1,10 +1,14 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { legalSettings, privacySettings, settingsData, supportSettings } from '@/utils/helper/DummyData';
-import { router } from 'expo-router';
-import BellIcon from '@/assets/icons/bell.svg';
-import React from 'react';
-
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import {
+  legalSettings,
+  privacySettings,
+  settingsData,
+  supportSettings,
+} from "@/utils/helper/DummyData";
+import { router } from "expo-router";
+import BellIcon from "@/assets/icons/bell.svg";
+import React from "react";
 
 // Setting Item Component
 type SettingItemProps = {
@@ -15,7 +19,7 @@ type SettingItemProps = {
 
 function SettingItem({ icon, title, onPress }: SettingItemProps) {
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       className="flex-row items-center py-4 border-b border-[#73737333]"
       onPress={onPress}
     >
@@ -29,19 +33,29 @@ function SettingItem({ icon, title, onPress }: SettingItemProps) {
 }
 
 const handleSettingPress = (title: string) => {
-  if (title === 'Notifications') {
-    router.push('/screens/notifications');
-  } else if (title === 'Contact us') {
-    router.push('/screens/contact-us');
-  } else if(title === 'Terms of service' ) {
-    router.push('/screens/terms-conditions');
-  } else if(title === 'Personal Information') {
-    router.push('/screens/personal_information');
-  } else {
-    console.log('Setting pressed:', title);
+  if (title === "Notifications") {
+    router.push("/screens/notifications");
+  } else if (title === "Contact us") {
+    router.push("/screens/contact-us");
+  } else if (title === "Terms of service") {
+    router.push("/screens/terms-conditions");
+  } else if (title === "Payment Methods & Pay outs") {
+    router.push("/screens/transaction");
+  } else if (title === "Permissions") {
+    router.push("/screens/UnderMaintenance");
+  } else if (title === "Data Sharing Preferences") {
+    router.push("/screens/NoGpsConnection");
+  } else if (title === "Translations") {
+    router.push("/screens/FiltersNotFound");
+  } else if (title === "Privacy Policy") {
+    router.push("/screens/terms-conditions");
+  } else if (title === "Personal Information") {
+    router.push("/screens/personal_information");
+    console.log("Setting pressed:", title);
+  }else{
+    console.log("Setting pressed:", title);
   }
-}
-
+};
 
 export default function ProfileScreen() {
   return (
@@ -49,13 +63,13 @@ export default function ProfileScreen() {
       {/* Header */}
       <View className="flex-row justify-between items-center px-4 pt-14 pb-4">
         <Text className="text-2xl font-bold">Profile</Text>
-        <TouchableOpacity 
+        <TouchableOpacity
           onPress={() => {
             router.push({
-              pathname: '/screens/notifications',
-              params: { returnTo: '/(tabs)/profile' }
+              pathname: "/screens/notifications",
+              params: { returnTo: "/(tabs)/profile" },
             });
-          }} 
+          }}
           className="relative"
         >
           <BellIcon width={24} height={24} />
@@ -64,12 +78,14 @@ export default function ProfileScreen() {
       </View>
 
       {/* Profile Section */}
-      <TouchableOpacity 
+      <TouchableOpacity
         className="flex-row items-center px-4 py-4 border-b border-[#73737333]"
-        onPress={() => router.push('/screens/personal_information')}
+        onPress={() => router.push("/screens/personal_information")}
       >
-        <Image 
-          source={{ uri: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' }}
+        <Image
+          source={{
+            uri: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          }}
           className="w-16 h-16 rounded-full"
         />
         <View className="flex-1 ml-4">
@@ -83,13 +99,17 @@ export default function ProfileScreen() {
       <View className="mx-4 my-6 bg-[#1ABC9C] rounded-3xl p-6">
         <View className="relative">
           <View>
-            <Text className="text-white text-xl mb-1 w-48">Start Listing Your</Text>
+            <Text className="text-white text-xl mb-1 w-48">
+              Start Listing Your
+            </Text>
             <Text className="text-white text-xl mb-2">Own</Text>
-            <Text className="text-white text-2xl font-semibold">Properties Now</Text>
+            <Text className="text-white text-2xl font-semibold">
+              Properties Now
+            </Text>
           </View>
           <View className="absolute right-0 top-0">
-            <Image 
-              source={require('@/assets/icons/hut.png')}
+            <Image
+              source={require("@/assets/icons/hut.png")}
               className="w-24 h-24"
               resizeMode="contain"
             />
@@ -103,14 +123,12 @@ export default function ProfileScreen() {
       {/* Settings Section */}
       <View className="px-4 mb-6">
         <Text className="text-xl font-semibold mb-4">Settings</Text>
-        {settingsData.map(setting => (
+        {settingsData.map((setting) => (
           <SettingItem
             key={setting.id}
             icon={setting.icon}
             title={setting.title}
-            onPress={() => {
-              handleSettingPress(setting.title)
-            }}
+            onPress={() => handleSettingPress(setting.title)}
           />
         ))}
       </View>
@@ -118,13 +136,13 @@ export default function ProfileScreen() {
       {/* Privacy Settings */}
       <View className="px-4 mb-6">
         <Text className="text-xl font-semibold mb-4">Privacy Settings</Text>
-        {privacySettings.map(setting => (
+        {privacySettings.map((setting) => (
           <SettingItem
             key={setting.id}
             icon={setting.icon}
             title={setting.title}
             onPress={() => {
-              handleSettingPress(setting.title)
+              handleSettingPress(setting.title);
             }}
           />
         ))}
@@ -133,18 +151,18 @@ export default function ProfileScreen() {
       {/* Support & Feedback */}
       <View className="px-4 mb-6">
         <Text className="text-xl font-semibold mb-4">Support & Feedback</Text>
-        {supportSettings.map(setting => (
+        {supportSettings.map((setting) => (
           <SettingItem
             key={setting.id}
             icon={setting.icon}
             title={setting.title}
             onPress={() => {
-              if (setting.title === 'Contact us') {
-                router.push('/screens/contact-us');
-              } else if (setting.title === 'Contact us') {
-                router.push('/screens/contact-us');
+              if (setting.title === "Contact us") {
+                router.push("/screens/contact-us");
+              } else if (setting.title === "Contact us") {
+                router.push("/screens/contact-us");
               } else {
-                console.log('Support setting pressed:', setting.title);
+                console.log("Support setting pressed:", setting.title);
               }
             }}
           />
@@ -154,7 +172,7 @@ export default function ProfileScreen() {
       {/* Legal */}
       <View className="px-4 mb-6">
         <Text className="text-xl font-semibold mb-4">Legal</Text>
-        {legalSettings.map(setting => (
+        {legalSettings.map((setting) => (
           <SettingItem
             key={setting.id}
             icon={setting.icon}
@@ -170,9 +188,12 @@ export default function ProfileScreen() {
       </View>
 
       {/* Log Out Button */}
-      <TouchableOpacity onPress={() => router.push('/(auth)/login')} className="mx-12 mb-8 bg-[#2563EB] py-4 px-8 rounded-xl">
+      <TouchableOpacity
+        onPress={() => router.push("/(auth)/login")}
+        className="mx-12 mb-8 bg-[#2563EB] py-4 px-8 rounded-xl"
+      >
         <Text className="text-white text-center font-semibold">Log Out</Text>
       </TouchableOpacity>
     </ScrollView>
   );
-} 
+}
