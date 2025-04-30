@@ -31,7 +31,7 @@ export default function LocationScreen() {
         {/* Map Container */}
         <View className="w-full h-[366px] rounded-3xl overflow-hidden mb-4 relative">
           <Image
-            source={require("@/assets/images/map.png")}
+            source={require("../../../assets/images/map.png")}
             className="w-full h-full"
             resizeMode="cover"
           />
