@@ -153,12 +153,12 @@ const LocationFacilitiesSection = () => (
     </View>
 
     {/* Distance Dropdown */}
-    <TouchableOpacity className="border border-gray-400 rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4">
+    <TouchableOpacity className="border border-gray-400 rounded-[40px] mt-3 px-6 h-[51px] flex-row items-center justify-between mb-4">
       <View className="flex-row items-center">
         <LocationIcon width={16} height={16} />
         <Text className="text-xs text-gray-700 ml-3">4.5 km from your Location</Text>
       </View>
-      <ChevronDownIcon width={16} height={16} />
+      <ChevronDownIcon width={12} height={12} />
     </TouchableOpacity>
 
     {/* Facilities Row */}
