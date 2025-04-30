@@ -14,7 +14,7 @@ export default function LocationScreen() {
           router.back();
         }}
         onSkipPress={() => {
-          router.push('/(auth)/account-setup/preferences');
+          router.push("/(auth)/account-setup/preferences");
         }}
       />
       <View className="flex-1 px-4 pt-[20px]">
@@ -39,7 +39,7 @@ export default function LocationScreen() {
             <View
               className="absolute bottom-0 left-0 right-0 bg-[#FFF8F880] py-3 items-center"
 
-            //  className="bg-[#FFF8F880] w-full py-3"
+              //  className="bg-[#FFF8F880] w-full py-3"
             >
               <Text className="text-primary text-base text-center">
                 Select on Map

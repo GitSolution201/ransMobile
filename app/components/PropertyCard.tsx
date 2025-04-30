@@ -1,124 +1,98 @@
-import React from 'react';
-import { View, Text, Image, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import ShareIcon from '@/assets/icons/share.svg';
-import BedIcon from '@/assets/icons/bed.svg';
-import BathIcon from '@/assets/icons/bath.svg';
-import { useNavigation } from '@react-navigation/native';
-import { router } from 'expo-router';
+import React from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
 interface PropertyCardProps {
-  title: string;
-  location: string;
-  price: string;
-  rating: number;
-  beds: number;
-  baths: number;
-  type: 'For Rent' | 'For Sale';
-  isFeatured?: boolean;
-  images: string[];
+  onRentPress?: () => void;
+  onSharePress?: () => void;
 }
 
-export function PropertyCard({
-  title,
-  location,
-  price,
-  rating,
-  beds,
-  baths,
-  type,
-  isFeatured = false,
-  images
-}: PropertyCardProps) {
-  const navigation = useNavigation();
-
+export const PropertyCard = ({
+  onRentPress,
+  onSharePress,
+}: PropertyCardProps) => {
   return (
-    <Pressable
-      className="w-[300px] bg-gray-100 rounded-2xl mr-4 shadow-sm"
-      onPress={() =>router.push('/screens/product-details')}
-    >
+    <View className="bg-white rounded-2xl shadow-sm border border-gray-100">
       <View className="relative">
         <Image
-          source={{ uri: images[0] }}
-          className="w-full h-[180px] rounded-t-2xl"
+          source={require("@/assets/images/property.jpg")}
+          className="w-full h-[200px] rounded-t-2xl"
           resizeMode="cover"
         />
-        
-        {/* Tags */}
-        <View className="absolute top-4 left-4 flex-row gap-2">
-          {isFeatured && (
-            <View className="bg-[#9F7AEA] px-3 py-1 rounded-full">
-              <Text className="text-white text-xs font-medium">Featured</Text>
-            </View>
-          )}
-          <View className="bg-white px-3 py-1 rounded-full">
-            <Text className="text-gray-900 text-xs font-medium">{type}</Text>
+        <View className="absolute top-2 left-2">
+          <View className="bg-blue-500 px-3 py-1 rounded-full">
+            <Text className="text-white text-xs">Featured</Text>
           </View>
         </View>
-
-        {/* Favorite Button */}
-        <Pressable className="absolute top-4 right-4 w-8 h-8 items-center justify-center">
-          <Ionicons name="heart-outline" size={24} color="white" />
-        </Pressable>
-
-        {/* Image Pagination Dots */}
-        <View className="absolute bottom-4 left-0 right-0 flex-row justify-center gap-1">
-          {images.map((_, index) => (
-            <View
-              key={index}
-              className={`h-1.5 w-1.5 rounded-full ${
-                index === 0 ? 'bg-white' : 'bg-white/50'
-              }`}
-            />
-          ))}
-        </View>
+        <TouchableOpacity className="absolute top-2 right-2">
+          <Image
+            source={require("@/assets/icons/heart.svg")}
+            className="w-6 h-6"
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
       </View>
 
       <View className="p-4">
-        {/* Title and Rating */}
-        <View className="flex-row justify-between items-center mb-2">
-          <Text className="text-base font-semibold text-gray-900 flex-1 mr-2" numberOfLines={1}>
-            {title}
-          </Text>
+        <Text className="text-lg font-semibold mb-2">Busabala Apartment</Text>
+        <View className="flex-row items-center mb-2">
+          <Image
+            source={require("@/assets/icons/location.svg")}
+            className="w-4 h-4 mr-1"
+          />
+          <Text className="text-sm text-gray-600">Kampala, Uganda</Text>
+          <View className="flex-row items-center ml-2">
+            <Text className="text-sm text-gray-600">4.6</Text>
+            <Text className="text-xs text-gray-400">/5</Text>
+          </View>
+        </View>
+
+        <View className="flex-row items-center justify-between mb-4">
+          <Text className="text-lg font-bold">UGX 1,500,000</Text>
+          <Text className="text-sm text-gray-500">/mon</Text>
+        </View>
+
+        <View className="flex-row items-center space-x-4">
           <View className="flex-row items-center">
-            <View className='flex-row items-center'>  
-            <Ionicons name="star" size={16} color="#F59E0B" />
-            <Text className="text-sm font-medium text-gray-900 ml-1">{rating}</Text>
-            <Text className="text-sm text-gray-500">/5</Text>
-            </View>
-            <View className='flex-row ml-2 items-center'>  
-          <ShareIcon/>
-            </View>
+            <Image
+              source={require("@/assets/icons/bed.svg")}
+              className="w-4 h-4 mr-1"
+            />
+            <Text className="text-sm">1</Text>
           </View>
-        </View>
-
-        {/* Location */}
-        <View className="flex-row items-center mb-3">
-          <Ionicons name="location-outline" size={16} color="#6B7280" />
-          <Text className="text-sm text-gray-500 ml-1" numberOfLines={1}>{location}</Text>
-        </View>
-
-        {/* Price and Features */}
-        <View className="flex-row items-center justify-between">
-          <View >
-            <Text className="text-base font-bold text-gray-900">{price}        
-                   <Text className="text-xs text-gray-500">{' '}/mon</Text>
-            </Text>
+          <View className="flex-row items-center">
+            <Image
+              source={require("@/assets/icons/bath.svg")}
+              className="w-4 h-4 mr-1"
+            />
+            <Text className="text-sm">2</Text>
           </View>
-
-          <View className="flex-row items-center gap-3">
-            <View className="flex-row items-center">
-              <BedIcon/>
-              <Text className="text-sm text-gray-500 ml-1">{beds}</Text>
-            </View>
-            <View className="flex-row items-center">
-              <BathIcon/>
-              <Text className="text-sm text-gray-500 ml-1">{baths}</Text>
-            </View>
-            
+          <View className="flex-row items-center">
+            <Image
+              source={require("@/assets/icons/bathroom.png")}
+              className="w-4 h-4 mr-1"
+            />
+            <Text className="text-sm">1</Text>
           </View>
         </View>
       </View>
-    </Pressable>
+
+      {/* Rent Button */}
+      <View className="flex-row mx-4 mb-4">
+        <TouchableOpacity
+          className="bg-blue-600 py-4 px-8 rounded-xl"
+          onPress={onRentPress}
+        >
+          <Text className="text-white font-medium">Rent</Text>
+        </TouchableOpacity>
+        <View className="ml-auto">
+          <TouchableOpacity onPress={onSharePress}>
+            <Image
+              source={require("@/assets/icons/share.svg")}
+              className="w-6 h-6"
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
   );
-} 
+};
