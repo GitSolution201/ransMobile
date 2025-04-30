@@ -8,10 +8,9 @@ import { router } from "expo-router";
 import { NearBy } from "../components/SmallPropertyCard";
 import BackIcon from "@/assets/icons/back_black.svg";
 
-
 // Dummy amenities data for demonstration
 const amenities = [
-  { 
+  {
     id: 1,
     name: "Bedroom",
     count: 2,
@@ -53,8 +52,7 @@ const reviews = [
     roleColor: "text-blue-500",
     date: "August 12, 2024",
     rating: 4,
-    review:
-      "We've been living in this house for six months now, and it's been amazing. The kids love the big backyard, and the proximity to their school is a huge plus. Th......",
+    review: "We've been living in this house for six months now, and it's been amazing. The kids love the big backyard, and the proximity to their school is a huge plus. Th......",
   },
   // Add more reviews as needed
 ];
@@ -69,21 +67,9 @@ type Review = {
   review: string;
 };
 
-const ReviewCard: React.FC<Review> = ({
-  avatar,
-  name,
-  role,
-  roleColor,
-  date,
-  rating,
-  review,
-}) => (
+const ReviewCard: React.FC<Review> = ({ avatar, name, role, roleColor, date, rating, review }) => (
   <View className="bg-[#F7F7FA] rounded-2xl p-4 mb-4 flex-row">
-    <Image
-      source={avatar}
-      className="w-14 h-14 rounded-full mr-4"
-      resizeMode="cover"
-    />
+    <Image source={avatar} className="w-14 h-14 rounded-full mr-4" resizeMode="cover" />
     <View className="flex-1">
       <View className="flex-row justify-between items-center mb-1">
         <View>
@@ -122,22 +108,15 @@ const ReviewsSection: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
     {reviews.map((review, idx) => (
       <ReviewCard key={idx} {...review} />
     ))}
-    <TouchableOpacity 
-      className="bg-blue-600 h-[40px] rounded-[40px] items-center justify-center mt-2"
-      onPress={() => router.push('/screens/review')}
-    >
-      <Text className="text-white text-base font-semibold">
-        View All Reviews
-      </Text>
+    <TouchableOpacity className="bg-blue-600 h-[40px] rounded-[40px] items-center justify-center mt-2" onPress={() => router.push("/screens/review")}>
+      <Text className="text-white text-base font-semibold">View All Reviews</Text>
     </TouchableOpacity>
   </View>
 );
 
 const LocationFacilitiesSection = () => (
   <View className="mb-10">
-    <Text className="text-base font-bold mb-4 text-gray-900">
-      Location & Facilities
-    </Text>
+    <Text className="text-base font-bold mb-4 text-gray-900">Location & Facilities</Text>
 
     {/* Address Row */}
     <View className="flex-row items-start mb-2">
@@ -145,9 +124,7 @@ const LocationFacilitiesSection = () => (
         <LocationIcon width={22} height={22} />
       </View>
       <View>
-        <Text className="text-xs text-black font-medium">
-          107 Munuki Road, Opposite Exxom Energy
-        </Text>
+        <Text className="text-xs text-black font-medium">107 Munuki Road, Opposite Exxom Energy</Text>
         <Text className="text-xs text-gray-500">Juba, South Sudan</Text>
       </View>
     </View>
@@ -176,11 +153,7 @@ const LocationFacilitiesSection = () => (
 
     {/* Map Image with Button */}
     <View className="rounded-2xl overflow-hidden mb-2">
-      <Image
-        source={require("@/assets/images/mapImage.png")}
-        className="w-full h-[200px]"
-        resizeMode="cover"
-      />
+      <Image source={require("../../assets/images/mapImage.png")} className="w-full h-[200px]" resizeMode="cover" />
       <TouchableOpacity
         className="absolute bottom-0 left-0 right-0 bg-[#F7F5F5] py-3 items-center"
         onPress={() => {
@@ -206,11 +179,8 @@ export default function ProductDetails() {
   return (
     <View className="flex-1 bg-[#F5F5F5]">
       <View className="absolute top-12 left-4 right-4 z-10 flex-row justify-between">
-        <TouchableOpacity
-          className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
-          onPress={() => router.back()}
-        >
-         <BackIcon width={10} height={10} color="#737373"  />
+        <TouchableOpacity className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md" onPress={() => router.back()}>
+          <BackIcon width={10} height={10} color="#737373" />
         </TouchableOpacity>
         <TouchableOpacity
           className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md"
@@ -224,20 +194,10 @@ export default function ProductDetails() {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View className="h-[400px] w-full relative">
-          <Image
-            source={require("@/assets/images/property.jpg")}
-            className="w-full h-full"
-            resizeMode="cover"
-          />
+          <Image source={require("@/assets/images/property.jpg")} className="w-full h-full" resizeMode="cover" />
           <View className="absolute bottom-10 right-4 flex-col gap-2">
-            <Image
-              source={require("@/assets/images/property.jpg")}
-              className="w-[70px] h-[70px] rounded-xl border-[2px] border-white"
-            />
-            <Image
-              source={require("@/assets/images/property.jpg")}
-              className="w-[70px] h-[70px] rounded-xl border-[2px] border-white"
-            />
+            <Image source={require("@/assets/images/property.jpg")} className="w-[70px] h-[70px] rounded-xl border-[2px] border-white" />
+            <Image source={require("@/assets/images/property.jpg")} className="w-[70px] h-[70px] rounded-xl border-[2px] border-white" />
             <TouchableOpacity
               className="w-[70px] h-[70px] rounded-xl bg-black/60 items-center justify-center border-[2px] border-white"
               onPress={() =>
@@ -255,79 +215,44 @@ export default function ProductDetails() {
         <View className="px-4 pt-6 bg-white -mt-6 rounded-t-3xl">
           <View className="flex-row justify-between items-start mb-4">
             <View>
-              <Text className="text-lg text-[#737373] font-semibold mb-2">
-                Dream Apartment
-              </Text>
+              <Text className="text-lg text-[#737373] font-semibold mb-2">Dream Apartment</Text>
               <View className="flex-row items-center">
-                <LocationIcon
-                  width={16}
-                  height={16}
-                  className="mr-1"
-                  fill="#737373"
-                  stroke="#737373"
-                />
-                <Text className="text-xs text-[#737373] pl-2">
-                  Juba, South Sudan
-                </Text>
+                <LocationIcon width={16} height={16} className="mr-1" fill="#737373" stroke="#737373" />
+                <Text className="text-xs text-[#737373] pl-2">Juba, South Sudan</Text>
               </View>
             </View>
             <View className="items-end">
               <View className="flex-row items-center">
-                <Text className="text-base text-black font-extrabold">
-                  UGX 1,200,000
-                </Text>
+                <Text className="text-base text-black font-extrabold">UGX 1,200,000</Text>
                 <Text className="text-xs text-gray-500 ml-1">/month</Text>
               </View>
             </View>
           </View>
 
           <View className="flex-row gap-3 mb-6">
-            <TouchableOpacity
-              className="w-[70px] h-[56px] bg-blue-600 rounded-2xl items-center justify-center"
-              onPress={() => {}}
-            >
+            <TouchableOpacity className="w-[70px] h-[56px] bg-blue-600 rounded-2xl items-center justify-center" onPress={() => {}}>
               <Text className="text-white font-semibold text-base">Rent</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="w-[70px] h-[56px] bg-[#F7F5F5] rounded-2xl items-center justify-center"
-              onPress={() => {}}
-            >
-              <Image
-                source={require("@/assets/icons/360.png")}
-                className="w-8 h-8"
-              />
+            <TouchableOpacity className="w-[70px] h-[56px] bg-[#F7F5F5] rounded-2xl items-center justify-center" onPress={() => {}}>
+              <Image source={require("@/assets/icons/360.png")} className="w-8 h-8" />
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="flex-1 h-[56px]  bg-[#F7F5F5] rounded-2xl items-center justify-center"
-              onPress={() => router.push("/screens/inspection-form")}
-            >
-              <Text className="text-blue-600 font-semibold text-base">
-                Request Inspection
-              </Text>
+            <TouchableOpacity className="flex-1 h-[56px]  bg-[#F7F5F5] rounded-2xl items-center justify-center" onPress={() => router.push("/screens/inspection-form")}>
+              <Text className="text-blue-600 font-semibold text-base">Request Inspection</Text>
             </TouchableOpacity>
           </View>
 
           <View className="flex-row items-center justify-between bg-[#F7F5F5] p-4 rounded-2xl shadow-sm mb-8 border border-gray-100">
             <View className="flex-row items-center">
-              <Image
-                source={require("@/assets/images/avatar.png")}
-                resizeMode="contain"
-                className="w-12 h-12 rounded-full"
-              />
+              <Image source={require("@/assets/images/avatar.png")} resizeMode="contain" className="w-12 h-12 rounded-full" />
               <View className="ml-6">
-                <Text className="text-sm font-semibold text-black">
-                  Jonathan
-                </Text>
+                <Text className="text-sm font-semibold text-black">Jonathan</Text>
                 <Text className="text-xs text-primary">Landlord</Text>
               </View>
             </View>
             <View className="flex-row items-center">
-              <TouchableOpacity
-                className="w-12 h-12 rounded-full items-center justify-center"
-                onPress={() => router.push("/(tabs)/chat")}
-              >
+              <TouchableOpacity className="w-12 h-12 rounded-full items-center justify-center" onPress={() => router.push("/(tabs)/chat")}>
                 <MessageIcon width={24} height={24} />
               </TouchableOpacity>
             </View>
@@ -342,29 +267,15 @@ export default function ProductDetails() {
                 return (
                   <View key={amenity.id} className="flex-row items-center">
                     <View className="w-8 h-8 mr-4 mb-2 items-center justify-center">
-                      <IconComponent
-                        width={24}
-                        height={24}
-                        fill="none"
-                      />
+                      <IconComponent width={24} height={24} fill="none" />
                     </View>
-                    <Text className="text-xs text-gray-700">
-                      {amenity.count
-                        ? `${amenity.count} ${amenity.name}`
-                        : amenity.name}
-                    </Text>
+                    <Text className="text-xs text-gray-700">{amenity.count ? `${amenity.count} ${amenity.name}` : amenity.name}</Text>
                   </View>
                 );
               })}
             </View>
-            <TouchableOpacity
-              className="mt-4  h-[51px] rounded-[40px] border border-gray-400 items-center justify-center"
-              onPress={() => router.push("/screens/amenities")}
-
-            >
-              <Text className="text-xs text-gray-800">
-                Show all 11 amenities
-              </Text>
+            <TouchableOpacity className="mt-4  h-[51px] rounded-[40px] border border-gray-400 items-center justify-center" onPress={() => router.push("/screens/amenities")}>
+              <Text className="text-xs text-gray-800">Show all 11 amenities</Text>
             </TouchableOpacity>
           </View>
 
@@ -372,21 +283,16 @@ export default function ProductDetails() {
 
           {/* Terms and Conditions Section */}
           <View>
-            <Text className="text-base font-bold mb-4">
-              Terms and Conditions
-            </Text>
+            <Text className="text-base font-bold mb-4">Terms and Conditions</Text>
             <Text className="text-base mb-2">Rent and Payment Terms:</Text>
             <Text className="text-xs mb-1">
-              <Text className="font-bold">Rent Amount:</Text> UGX 1,200,000 per
-              month, payable on or before the 5th of each month.
+              <Text className="font-bold">Rent Amount:</Text> UGX 1,200,000 per month, payable on or before the 5th of each month.
             </Text>
             <Text className="text-xs mb-1">
-              <Text className="font-bold">Late Payment Fee:</Text> UGX 50,000
-              applies if payment is delayed beyond the due date.
+              <Text className="font-bold">Late Payment Fee:</Text> UGX 50,000 applies if payment is delayed beyond the due date.
             </Text>
             <Text className="text-xs mb-4">
-              <Text className="font-bold">Payment Methods:</Text> Accepted via
-              Mobile Money, Bank Transfer, or Cash.
+              <Text className="font-bold">Payment Methods:</Text> Accepted via Mobile Money, Bank Transfer, or Cash.
             </Text>
             <TouchableOpacity
               className="border border-gray-400 justify-center items-center rounded-[40px] mt-3 px-4 h-[51px] flex-row items-center justify-between mb-4"
@@ -394,30 +300,19 @@ export default function ProductDetails() {
                 router.push("/screens/terms-conditions");
               }}
             >
-              <Text className="text-xs text-center w-full text-gray-800">
-                Show all terms & conditions
-              </Text>
+              <Text className="text-xs text-center w-full text-gray-800">Show all terms & conditions</Text>
             </TouchableOpacity>
           </View>
 
           {/* Property Description Section */}
           <View className="mb-8">
-            <Text className="text-base font-bold mb-3">
-              Property Description
-            </Text>
+            <Text className="text-base font-bold mb-3">Property Description</Text>
             <Text className="text-xs text-gray-600 mb-3">
-              This spacious and modern 3-bedroom apartment offers luxurious
-              living in one of Nairobi's most sought-after neighborhoods.
-              Located in Westlands, it features an open-plan living room with
-              large windows for natural light, a fully equipped kitchen, and
-              en-suite master bedroom with a private balcony. Enjoy proximity to
-              top schools, shopping malls, and restaurants, all within a few
-              minutes' walk.
+              This spacious and modern 3-bedroom apartment offers luxurious living in one of Nairobi's most sought-after neighborhoods. Located in Westlands, it features an
+              open-plan living room with large windows for natural light, a fully equipped kitchen, and en-suite master bedroom with a private balcony. Enjoy proximity to top
+              schools, shopping malls, and restaurants, all within a few minutes' walk.
             </Text>
-            <Text className="text-xs text-gray-600">
-              Ideal for families or professionals looking for comfort and
-              convenience.
-            </Text>
+            <Text className="text-xs text-gray-600">Ideal for families or professionals looking for comfort and convenience.</Text>
           </View>
           <LocationFacilitiesSection />
           {/* Reviews Section */}
