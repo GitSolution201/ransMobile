@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, SafeAreaView, TextInput, Platform, StatusBar   } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, SafeAreaView, TextInput, Platform, StatusBar, KeyboardAvoidingView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
@@ -134,65 +134,53 @@ export default function ChatDetail() {
   );
 
   return (
-    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 bg-white mt-2">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 bg-white">
       {/* Header */}
-      <View className="border-b border-[#F5F5F5]">
-        <View className="flex-row items-center px-4 py-3">
-          <TouchableOpacity onPress={() => {
-            if (router.canGoBack()) {
-              router.back();
-            } else {
-              router.replace('/(tabs)/chat');
-            }
-          }} className="mr-3">
-            <Ionicons name="chevron-back" size={24} color="#737373" />
+      <View className="flex-row items-center px-4 py-3 border-b border-[#F5F5F5]">
+        <TouchableOpacity onPress={() => router.back()} className="mr-3">
+          <Ionicons name="chevron-back" size={24} color="#737373" />
+        </TouchableOpacity>
+        <View className="flex-1">
+          <Text className="text-lg font-semibold">{name}</Text>
+          {members && (
+            <Text className="text-sm text-[#737373]">
+              {members} • {isOnline ? '42 Online' : 'Offline'}
+            </Text>
+          )}
+        </View>
+        <TouchableOpacity className="ml-4">
+          <Ionicons name="ellipsis-vertical" size={20} color="#737373" />
+        </TouchableOpacity>
+      </View>
+
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        className="flex-1"
+      >
+        {/* Messages */}
+        <ScrollView className="flex-1">
+          <Text className="text-center text-sm text-[#737373] my-4">Today</Text>
+          {dummyMessages.map(renderMessage)}
+          {renderPoll()}
+        </ScrollView>
+
+        {/* Message Input */}
+        <View className="flex-row items-center px-4 py-2 border-t border-[#F5F5F5] bg-white">
+          <TouchableOpacity className="mr-3">
+            <Ionicons name="attach" size={24} color="#737373" />
           </TouchableOpacity>
-          <View className="w-10 h-10 rounded-full bg-[#2563EB] items-center justify-center mr-3">
-            <Image 
-              source={require('@/assets/icons/three-person.png')}
-              className="w-5 h-5"
-            />
-          </View>
-          <View className="flex-1">
-            <Text className="text-lg font-semibold">{name}</Text>
-            {members && (
-              <Text className="text-sm text-[#737373]">
-                {members} • {isOnline === '1' ? '42 Online' : 'Offline'}
-              </Text>
-            )}
-          </View>
-          <TouchableOpacity className="ml-4">
-            <Ionicons name="ellipsis-vertical" size={20} color="#737373" />
+          <TextInput
+            placeholder="Message"
+            className="flex-1 bg-[#F5F5F5] rounded-full px-4 py-2.5 mr-3 text-base"
+            placeholderTextColor="#737373"
+          />
+          <TouchableOpacity>
+            <View className="w-10 h-10 rounded-full bg-[#2563EB] items-center justify-center">
+              <Ionicons name="mic" size={20} color="white" />
+            </View>
           </TouchableOpacity>
         </View>
-      </View>
-
-      {/* Messages */}
-      <ScrollView className="flex-1">
-        <Text className="text-center text-sm text-[#737373] my-4">Today</Text>
-        {dummyMessages.map(renderMessage)}
-        {renderPoll()}
-      </ScrollView>
-
-      {/* Message Input */}
-      <View className="flex-row items-center px-4 py-3 border-t border-[#F5F5F5]">
-        <TouchableOpacity className="mr-3">
-          <Image 
-            source={require('@/assets/icons/attachment.svg')}
-            className="w-6 h-6"
-          />
-        </TouchableOpacity>
-        <TextInput
-          placeholder="Message"
-          className="flex-1 bg-[#F5F5F5] rounded-full px-4 py-2.5 mr-3 text-base"
-          placeholderTextColor="#737373"
-        />
-        <TouchableOpacity>
-          <View className="w-11 h-11 rounded-full bg-[#2563EB] items-center justify-center">
-            <Ionicons name="mic" size={22} color="white" />
-          </View>
-        </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 } 

@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { legalSettings, privacySettings, settingsData, supportSettings } from '@/utils/helper/DummyData';
-import { router, useRouter } from 'expo-router';
+import { router } from 'expo-router';
 import BellIcon from '@/assets/icons/bell.svg';
 import React from 'react';
 
@@ -44,14 +44,20 @@ const handleSettingPress = (title: string) => {
 
 
 export default function ProfileScreen() {
-  const router = useRouter();
-
   return (
     <ScrollView className="flex-1 bg-white">
       {/* Header */}
       <View className="flex-row justify-between items-center px-4 pt-14 pb-4">
         <Text className="text-2xl font-bold">Profile</Text>
-        <TouchableOpacity onPress={() => router.push('/screens/notifications')} className="relative">
+        <TouchableOpacity 
+          onPress={() => {
+            router.push({
+              pathname: '/screens/notifications',
+              params: { returnTo: '/(tabs)/profile' }
+            });
+          }} 
+          className="relative"
+        >
           <BellIcon width={24} height={24} />
           <View className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full" />
         </TouchableOpacity>

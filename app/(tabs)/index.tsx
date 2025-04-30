@@ -1,22 +1,26 @@
-import { View, Text, TouchableOpacity, Image, ScrollView, Pressable, SafeAreaView, TextInput, Platform, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, Pressable, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { router } from 'expo-router';
 import LocationIcon from '@/assets/icons/location.svg';
 import LocationDropdownIcon from '@/assets/icons/location_dropdown.svg';
 import BellIcon from '@/assets/icons/bell.svg';
-import SearchIcon from '@/assets/icons/search.svg';
-import FilterIcon from '@/assets/icons/filter.svg';
 import { CategoryList } from '@/app/components/CategoryList';
 import { MainSwiper } from '../components/MainSwiper';
 import { TopLocations } from '../components/TopLocations';
 import { TopAgents } from '../components/TopAgents';
 import { NearBy } from '../components/SmallPropertyCard';
 import { NearbyProperties } from '../components/NearbyProperties';
+import { SearchBar } from '../components/SearchBar';
 import React, { useState } from 'react';
 
 export default function HomeScreen() {
   const [selectedType, setSelectedType] = useState('1');
-  const handleCategorySelect = (category: { id: string; name: string }) => {
+  const handleCategorySelect = (category: { id: string; label: string }) => {
     setSelectedType(category.id);
+  };
+
+  const handleSearch = (text: string) => {
+    // Handle search functionality
+    console.log('Searching for:', text);
   };
 
   return (
@@ -53,44 +57,12 @@ export default function HomeScreen() {
       </View>
 
       {/* Search Bar */}
-      <View className="px-4 mt-2">
-        <View 
-          className="flex-row items-center bg-white rounded-[32px] shadow-lg h-[50px]"
-          style={{
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.1,
-            shadowRadius: 8,
-            elevation: 5,
-          }}
-        >
-          {/* Search Input Section */}
-          <View className="flex-row items-center flex-1 px-4 py-3">
-            <SearchIcon width={18} height={18} className="text-gray-400" />
-            <TextInput
-              placeholder="Search for properties, agents, or services..."
-              className="flex-1 ml-2 text-sm "
-              placeholderTextColor="#737373"
-            />
-          </View>
-
-          {/* Vertical Divider */}
-          <View className="w-[2px] h-6 bg-[#737373]" />
-
-          {/* Filter Button */}
-          <Pressable
-            onPress={() => {
-            router.push('/screens/FilterScreen')
-            }}
-            className="px-5 py-3"
-          >
-            <FilterIcon width={16} height={13} className="text-gray-400" />
-          </Pressable>
-        </View>
-      </View>
+      <SearchBar 
+        placeholder="Search for properties, agents, or services..." 
+        onSearch={(text) => {
+          // Handle search
+        }} 
+      />
 
       {/* Category List */}
       <CategoryList selectedType={selectedType} onSelectCategory={handleCategorySelect} />
@@ -108,7 +80,6 @@ export default function HomeScreen() {
       <View className= {`${Platform.OS === 'android' ? 'h-[100px]' : 'h-[20px]'}`}></View>
     </ScrollView>
     </SafeAreaView>
-
   );
 }
 

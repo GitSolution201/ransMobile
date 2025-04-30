@@ -3,17 +3,29 @@ import { View, Text, TouchableOpacity, Image, ScrollView ,SafeAreaView, Platform
 import { Ionicons } from '@expo/vector-icons';
 import { notifications } from '@/utils/helper/DummyData';
 import { Header } from '../components/Header';
+import { router, useLocalSearchParams } from 'expo-router';
 
 const filters = ['All', 'Mentions', 'Unread'];
 
-export default function Notifications() {
+export default function NotificationsScreen() {
+  const params = useLocalSearchParams();
+  const returnTo = params.returnTo as string;
+
+  const handleBack = () => {
+    if (returnTo) {
+      router.replace(returnTo);
+    } else {
+      router.back();
+    }
+  };
+
   const [activeFilter, setActiveFilter] = useState('All');
 
   return (
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-white">
       {/* Header Icons */}
 
-      <Header title="Notifications" />
+      <Header title="Notifications" onBack={handleBack} />
       <View className="flex-row justify-end items-center px-5 mb-2">
         <TouchableOpacity className="w-12 h-12 rounded-full bg-[#F7F5F5] items-center justify-center mr-3">
           <Ionicons name="search" size={20} color="#737373" />
@@ -31,7 +43,7 @@ export default function Notifications() {
         {filters.map((filter) => (
           <TouchableOpacity
             key={filter}
-            className={`px-5 py-3 rounded-full ${activeFilter === filter ? 'bg-[#2563EB]' : 'bg-[#F7F5F5]'}`}
+            className={`px-5 py-3 mr-2 rounded-full ${activeFilter === filter ? 'bg-[#2563EB]' : 'bg-[#F7F5F5]'}`}
             onPress={() => setActiveFilter(filter)}
           >
             <Text className={`text-xs ${activeFilter === filter ? 'text-[#ffffff]' : 'text-[#737373]'}`}>{filter}</Text>
