@@ -6,6 +6,8 @@ import {
   Image,
   Modal,
   Platform,
+  Alert,
+  Linking,
 } from "react-native";
 import { router } from "expo-router";
 import { BackButton } from "@/components/BackButton";
@@ -32,17 +34,60 @@ export default function ProfilePictureScreen() {
 
   const requestPermissions = async () => {
     if (Platform.OS !== "web") {
-      const { status: cameraStatus } =
-        await ImagePicker.requestCameraPermissionsAsync();
-      const { status: libraryStatus } =
-        await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (cameraStatus !== "granted" || libraryStatus !== "granted") {
-        alert(
-          "Sorry, we need camera and gallery permissions to make this work!"
+      try {
+        const { status: cameraStatus, canAskAgain: canAskCamera } =
+          await ImagePicker.requestCameraPermissionsAsync();
+        const { status: libraryStatus, canAskAgain: canAskLibrary } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (cameraStatus === "denied" && !canAskCamera) {
+          Alert.alert(
+            "Permission Required",
+            "Camera permission is required. Please enable it in your phone settings.",
+            [
+              { text: "Cancel", style: "cancel" },
+              { text: "Open Settings", onPress: () => Linking.openSettings() }
+            ]
+          );
+          return false;
+        }
+
+        if (libraryStatus === "denied" && !canAskLibrary) {
+          Alert.alert(
+            "Permission Required",
+            "Photo library permission is required. Please enable it in your phone settings.",
+            [
+              { text: "Cancel", style: "cancel" },
+              { text: "Open Settings", onPress: () => Linking.openSettings() }
+            ]
+          );
+          return false;
+        }
+
+        if (cameraStatus !== "granted" || libraryStatus !== "granted") {
+          Alert.alert(
+            "Permissions Required",
+            "We need camera and photo library access to let you choose or take a profile picture.",
+            [
+              { text: "Cancel", style: "cancel" },
+              { 
+                text: "Try Again", 
+                onPress: () => requestPermissions() 
+              }
+            ]
+          );
+          return false;
+        }
+
+        return true;
+      } catch (error) {
+        console.error("Error requesting permissions:", error);
+        Alert.alert(
+          "Error",
+          "There was an error requesting permissions. Please try again."
         );
         return false;
       }
-      return true;
     }
     return true;
   };

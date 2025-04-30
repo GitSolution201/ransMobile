@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
   Platform,
+  StatusBar,
 } from "react-native";
 import { TransactionPropertyCard } from "../components/TransactionPropertyCard";
 import { Header } from "../components/Header";
@@ -71,7 +72,7 @@ export default function transaction() {
   //   }
   // };
   return (
-    <SafeAreaView className="flex-1 bg-[#fff]">
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} className="flex-1 mt-2 bg-white">
       <Header title="Transaction" />
       <ScrollView className="flex-1">
         <View className="p-4">
