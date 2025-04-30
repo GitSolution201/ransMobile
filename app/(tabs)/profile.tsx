@@ -48,8 +48,6 @@ const handleSettingPress = (title: string) => {
   } else if (title === "Translations") {
     router.push("/screens/FiltersNotFound");
   } else if (title === "Privacy Policy") {
-    console.log("object");
-    // router.push("/screens/maintenance");
     router.push("/screens/terms-conditions");
   } else {
     console.log("Setting pressed:", title);
