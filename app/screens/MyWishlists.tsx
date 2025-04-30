@@ -28,7 +28,7 @@ export default function MyWishlists() {
         }} 
       />
       {/* Wishlist Card */}
-      <View className="px-5 mb-6 mt-6">
+      <View className="px-5 mb-6 w-4/5 mt-6">
         <View
           className="bg-white rounded-3xl overflow-hidden"
           style={{
