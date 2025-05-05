@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { router } from "expo-router";
 import LocationIcon from "@/assets/icons/location.svg";
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg";
-import { Button } from "@/components/Button";
+import { Button } from "@/app/components/Button";
 import { AccountSetupHeader } from "@/app/components/AccountSetupHeader";
 import React from "react";
 

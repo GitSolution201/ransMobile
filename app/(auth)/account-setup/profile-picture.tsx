@@ -10,14 +10,14 @@ import {
   Linking,
 } from "react-native";
 import { router } from "expo-router";
-import { BackButton } from "@/components/BackButton";
+import { BackButton } from "@/app/components/BackButton";
 import UserIcon from "@/assets/icons/user.svg";
 import EditIcon from "@/assets/icons/edit.svg";
 import EmailIcon from "@/assets/icons/email.svg";
 import Iconemail from "@/assets/icons/emailicon.svg";
 import * as ImagePicker from "expo-image-picker";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/Button";
+import { Button } from "@/app/components/Button";
 import React from "react";
 import { AccountSetupHeader } from "@/app/components/AccountSetupHeader";
 import { SuccessBottomSheet } from '@/app/components/SuccessBottomSheet';

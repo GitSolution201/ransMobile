@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
-import { Button } from '@/components/Button';
+import { BackButton } from '@/app/components/BackButton';
+import { Button } from '@/app/components/Button';
 import React from 'react';
 
 export default function WelcomeScreen() {

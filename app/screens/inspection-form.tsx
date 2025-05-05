@@ -6,7 +6,7 @@ import { CustomInput } from '../components/CustomInput';
 import { CustomCheckbox } from '../components/CustomCheckbox';
 import { Header } from '../components/Header';
 import { RequestButton } from '../components/RequestButton';
-import { Button } from '@/components/Button';
+import { Button } from '@/app/components/Button';
 
 export default function InspectionForm() {
   const [selectedType, setSelectedType] = useState<string>('');

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Button } from "@/components/Button";
+import { Button } from "@/app/components/Button";
 import { VoucherBottomSheet } from "./VoucherBottomSheet";
 
 export const VoucherSection = () => {

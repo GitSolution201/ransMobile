@@ -1,8 +1,8 @@
 import { View, Text, ScrollView, TouchableOpacity, Modal } from 'react-native';
 import { useState, useMemo } from 'react';
 import { router } from 'expo-router';
-import { InputField } from '@/components/InputField';
-import { Button } from '@/components/Button';
+import { InputField } from '@/app/components/InputField';
+import { Button } from '@/app/components/Button';
 import LocationIcon from '@/assets/icons/location.svg';
 import EmailIcon from '@/assets/icons/email_signin.svg';
 import LockIcon from '@/assets/icons/lock.svg';

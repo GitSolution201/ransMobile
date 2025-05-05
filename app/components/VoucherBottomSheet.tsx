@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Button } from "@/components/Button";
+import { Button } from "@/app/components/Button";
 import BottomSheet from "@gorhom/bottom-sheet";
 
 import { router } from "expo-router";

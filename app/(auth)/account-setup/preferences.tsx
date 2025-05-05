@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { router } from 'expo-router';
-import { BackButton } from '@/components/BackButton';
-import { PreferenceOption } from '@/components/PreferenceOption';
+import { BackButton } from '@/app/components/BackButton';
+import { PreferenceOption } from '@/app/components/PreferenceOption';
 import { useState } from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/app/components/Button';
 import React from 'react';
 import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
 

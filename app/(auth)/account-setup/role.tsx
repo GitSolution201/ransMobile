@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import CheckIcon from '@/assets/icons/check.svg';
-import { Button } from '@/components/Button';
+import { Button } from '@/app/components/Button';
 import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
 import React from 'react';
 

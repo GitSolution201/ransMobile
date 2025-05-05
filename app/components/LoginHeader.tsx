@@ -1,7 +1,7 @@
 // LoginHeader.tsx
 import React from "react";
 import { View, Image } from "react-native";
-import { BackButton } from "@/components/BackButton";
+import { BackButton } from "@/app/components/BackButton";
 import { TabRouter } from "@react-navigation/native";
 
 export const LoginHeader = ({

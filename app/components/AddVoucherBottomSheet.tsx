@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Button } from "@/components/Button";
+import { Button } from "@/app/components/Button";
 
 interface AddVoucherBottomSheetProps {
   onClose: () => void;

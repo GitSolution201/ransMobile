@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image, TextInput, ScrollView, KeyboardAvo
 import { router } from 'expo-router';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Button } from '@/components/Button';
+import { Button } from '@/app/components/Button';
 import React from 'react';
 import { AccountSetupHeader } from '@/app/components/AccountSetupHeader';
 
